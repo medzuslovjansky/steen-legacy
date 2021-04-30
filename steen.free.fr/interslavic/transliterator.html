@@ -1,0 +1,142 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Interslavic transliterator, automatic transliteration between Latin and Cyrillic — Medžuslovjansky transliterator, avtomatična transliteracija medžu latiniceju i kiriliceju — Меджусловјанскы транслитератор, автоматична транслитерација меджу латиницеју и кирилицеју" />
+<title>Interslavic – Transliteration</title>
+
+<script type="text/javascript">
+
+window.onload = function(e) 
+{
+ 	document.getElementById("SourceText").focus();
+}
+
+function trans ()
+{
+	var iSource = document.getElementById("SourceText").value;
+	var type = document.getElementById("orto").value; if (!type) type = 1;
+	var caps = document.getElementById("caps").value; if (!caps) caps = 0;
+	result = transliterate (iSource, type, "3", caps, 1);	
+	document.getElementById("ResultText").value = result;
+}
+
+function setLetter(text)
+{	var txtarea = document.getElementById("SourceText");
+	if (txtarea.createTextRange && txtarea.caretPos)
+		{	var caretPos = txtarea.caretPos;
+			caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+			txtarea.focus();
+		}
+	else	{	txtarea.value += text;
+			txtarea.focus();
+		}
+}
+
+</script>
+
+<style type="text/css">
+TEXTAREA
+	{
+	width:				97%;
+	height:				450px;
+	background:			#ccf;
+	font-size:			100%;
+	font-weight:			normal;
+	font-family:			Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
+					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
+	font-size:			10pt;
+	overflow:			auto;
+
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				25px;
+	height:				25px;
+	background:			#ccccff; /** #ddb0f0; #e090b0; **/
+	}
+
+</style>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<h1> Transliteration of Interslavic</h1>
+<h2> Transliteracija medžuslovjanskogo jezyka<br> Транслитерација меджусловјанского језыка</h2>
+
+<table class="toolkop" width="100%" cellspacing="2" cellpadding="0" border="0" style="text-align:center">
+<tr>
+<th>Insert your source text here:<br>Tu vpiši svoj žrlovy tekst:<br>Ту впиши свој жрловы текст:</th>
+<th>Choose:<br>Izberi:<br>Избери:</th>
+<th>Result:<br>Rezultat:<br>Резултат:</th></tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr valign="middle"><td width="45%">
+	<table width="100%" cellspacing="1" cellpadding="0" border="0">
+	   <tr>
+		<td><textarea id="SourceText" onkeyup="trans ()" onselect="trans ()" onclick="trans ()" onchange="trans ()" rows="10" cols="20"></textarea>
+	   </td></tr>
+	</table>
+</td><td width="10%"><center><br />
+	<b>Orthography:<br />Pravopis:<br />Правопис:</b>
+	<select id="orto" onchange="trans ()" style="margin:10px;">
+	  <option value="5">Latin to Cyrillic &nbsp; </option>
+	  <option value="1">Cyrillic to Latin</option>
+	</select>
+	<br /><br /><b>Capitals:<br />Velike bukvy:<br />Велике буквы:</b><br />
+	<select id="caps" onchange="trans ()" style="margin:10px;">
+	  <option value="0">Unchanged</option>
+	  <option value="1">All uppercase</option>
+	  <option value="2">All lowercase</option>
+	</select>
+	<br /><br /><b>Insert letter:<br>Vstav bukvu:<br>Встав букву:</b><br>
+	<div style="margin-top:10px;">
+	  <input type="button" value="Č" class="button" onclick="setLetter('Č')">&nbsp;<input type="button" value="č" class="button" onclick="setLetter('č')">
+	  <input type="button" value="Ě" class="button" onclick="setLetter('Ě')">&nbsp;<input type="button" value="ě" class="button" onclick="setLetter('ě')"><br />
+	  <input type="button" value="Š" class="button" onclick="setLetter('Š')">&nbsp;<input type="button" value="š" class="button" onclick="setLetter('ě')">
+	  <input type="button" value="Ž" class="button" onclick="setLetter('Ž')">&nbsp;<input type="button" value="ž" class="button" onclick="setLetter('ž')">
+	</div><div style="margin-top:10px;">
+	  <input type="button" value="Є" class="button" onclick="setLetter('Є')">&nbsp;<input type="button" value="є" class="button" onclick="setLetter('є')">
+	  <input type="button" value="Ы" class="button" onclick="setLetter('Ы')">&nbsp;<input type="button" value="ы" class="button" onclick="setLetter('ы')"><br />
+	  <input type="button" value="Ј" class="button" onclick="setLetter('Ј')">&nbsp;<input type="button" value="ј" class="button" onclick="setLetter('ј')">
+	  <input type="button" value="Ь" class="button" onclick="setLetter('Ь')">&nbsp;<input type="button" value="ь" class="button" onclick="setLetter('ь')">
+	</div></center>
+</td><td width="45%">
+		<table width="100%" cellspacing="1" cellpadding="0" border="0">
+			<tr><td><textarea id="ResultText" rows="10" cols="20"></textarea></td></tr>
+		</table>
+</td></tr><tr><td>&nbsp;</td></tr>
+</td></tr></table></center>
+
+<p><b><i>Notes</i></b>: 
+<ul>
+<li>This transliteration program works on a transliterate-as-you-type base. It transliterates Interslavic text from basic Latin to basic Cyrillic orthography and vice versa. If you need more options, try the <a href="transliterator_extended.html">extended transliterator</a>, which looks almost the same, but can also transcribe Interslavic text into several alternative writing systems (taking the etymological alphabet as a starting point), flavourised versions, national orthographies and IPA.</li>
+<li>If a Latin or Cyrillic letter is missing on your keyboard, you can insert them by clicking the small buttons between the input and the output field.</li>
+<li>Alternatively, you can type either <b>cz</b>/<b>cx</b> for <b>č</b>, <b>sz</b>/<b>sx</b> for <b>š</b>, <b>zs</b>/<b>zx</b>/<b>ż</b> for <b>ž</b>, and <b>ye</b> for <b>ě</b>. If you are typing in Cyrillic, <b>й</b>, <b>я</b>, <b>ль</b> etc. are automatically converted to <b>ј</b>, <b>ја</b>, <b>љ</b>...</li>
+<li>To prevent a fragment of text from being transliterated, place it between <b>{</b> and <b>}</b>. The accolades will automatically be removed afterwards. This feature can be convenient if you want to preserve the original spelling of e.g. a name in the transliterated text.</li>
+<li>Text fragments between <b>&lt;</b> and <b>></b> are left unchanged, too. Useful for transliterating html code without changing the tags.</li>
+</ul></p>
+
+<script type="text/javascript">
+	var lastupdate = "30.03.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

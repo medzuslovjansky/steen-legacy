@@ -1,0 +1,270 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<title>Slavic dictionaries online – Slovjanske slovniky online</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name="description" content="Looking up words in all Slavic languages" />
+</head>
+
+<script type="text/javascript">
+
+function search ()
+{
+var iWord = document.getElementById("input_word").value;
+
+iWord = iWord.toLowerCase ();
+
+if (iWord == "")
+	{
+	document.write('<frameset rows="*,*,*,*">');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="http://smirnitsky.slovaronline.com/"><!---RU--->');
+	document.write('<frame src="http://icecube.berkeley.edu/~dima/stuff/rus/"><!---RU--->');
+	document.write('<frame src="http://www.lingvo-online.ru/en/Translate/en-uk"><!---UK--->');
+	document.write('</frameset>');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="http://www.diki.pl/plen"><!---PL-->');
+	document.write('<frame src="http://www.slovnik.cz/"><!---CZ--->');
+	document.write('<frame src="http://slovnik.azet.sk/"><!---SK--->');
+	document.write('</frameset>');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="http://sl.pons.com/prevod"><!---SL--->');
+	document.write('<frame src="http://www.crodict.de/englisch-kroatisch/"><!---HR-->');
+	document.write('<frame src="http://dictionary.paralink.com/?lang=en/sr"><!---SR--->');
+	document.write('</frameset>');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="http://recnik.off.net.mk/recnik/angliski-makedonski/*"><!---MK--->');
+	document.write('<frame src="http://search.dir.bg/search.php?vid=15"><!---BG--->');
+	document.write('<frame src="http://www.boehmak.de/"><!---HSB--->');
+	document.write('</frameset>');
+	}
+else if ((iWord.indexOf ("а") < 0) && (iWord.indexOf ("е") < 0) && (iWord.indexOf ("и") < 0)
+      && (iWord.indexOf ("о") < 0) && (iWord.indexOf ("у") < 0) && (iWord.indexOf ("ы") < 0)
+      && (iWord.indexOf ("я") < 0) && (iWord.indexOf ("ю") < 0) && (iWord.indexOf ("ё") < 0))
+	{
+	document.write('<frameset rows="*,*,*">');
+	document.write('<frameset cols="34%,33%,33%">');
+	document.write('<frame src="https://en.pons.com/translate?q=' + iWord + '&l=enru&in=&lf=en">');
+/*	document.write('<frame src="http://www.lingvo-online.ru/en/Translate/en-uk/' + iWord + '">'); */
+	document.write('<frame src="http://slovnenya.com/dictionary/' + iWord + '">');
+	document.write('<frame src="http://www.slounik.org/search?dict=&search=' + iWord + '&x=0&y=0">');
+	document.write('</frameset>');
+	document.write('<frameset cols="28%,17%,28%,27%">');
+	document.write('<frame src="https://en.pons.com/translate?q=' + iWord + '&l=enpl&in=&lf=en">');
+/*	document.write('<frame src="https://translatica.pl/szukaj/' + iWord + '.html">'); */
+	document.write('<frame src="http://www.slovnik.cz/bin/mld.fpl?vcb=' + iWord + '&trn=p%C5%99elo%C5%BEit&dictdir=encz.en&lines=30&js=1"><!---PL-->');
+	document.write('<frame src="https://ensk.dict.cc/?s=' + iWord + '">');
+	document.write('<frame src="http://sl.pons.com/prevod?q=' + iWord + '&l=ensl&in=&lf=en&cid=&srt=null">');
+	document.write('</frameset>');
+	document.write('<frameset cols="30%,27%,23%,20%">');
+	document.write('<frame src="http://www.crodict.de/englisch-kroatisch/' + iWord + '.html">');
+	document.write('<frame src="http://www.slavicnet.com/pls/cgi/web3.pre_search?in_word=' + iWord + '&in_smer=1&x=51&y=11">');
+	document.write('<frame src="http://recnik.off.net.mk/recnik/angliski-makedonski/' + iWord + '*">');
+	document.write('<frame src="http://search.dir.bg/search.php?vid=15&textfield=' + iWord + '">');
+	document.write('</frameset>');
+	}
+else
+	{
+	document.write('<frameset rows="*,*,*">');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="https://ru.wiktionary.org/wiki/'+iWord+'#.D0.9F.D0.B5.D1.80.D0.B5.D0.B2.D0.BE.D0.B4">');
+	document.write('<frame src="http://www.lingvozone.com/main.jsp?action=translation&do=dictionary&language_id_from=15&language_id_to=23&word='+iWord+'&t.x=0&t.y=0">');
+	document.write('<frame src="http://sl.pons.com/prevod?q='+iWord+'&l=enru&in=&lf=en&cid=">');
+	document.write('</frameset>');
+	document.write('<frameset cols="*,*,*">');
+	document.write('<frame src="http://www.lingvo-online.ru/ru/Translate/ru-uk/'+iWord+'">');
+	document.write('<frame src="http://www.slounik.org/search?dict=&search='+iWord+'&x=0&y=0">');
+	document.write('<frame src="http://sl.pons.com/prevod?q='+iWord+'&l=plru&in=&lf=ru">');
+	document.write('</frameset>');
+	document.write('<frameset cols="*,*,*,*">');
+	document.write('<frame src="http://www.ixl.ru/index.php?a=term&d=%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE-%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9+%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C+s%C5%82ownik+rosyjsko-polski&t='+iWord+'">');
+	document.write('<frame src="http://www.ixl.ru/index.php?a=term&d=%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE-%D1%87%D0%B5%D1%88%D1%81%D0%BA%D0%B8%D0%B9+%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C+rusko-%C4%8Desk%C3%BD+slovn%C3%ADk&t='+iWord+'">');
+	document.write('<frame src="http://www.slovnik.org/cgi-bin/slovnik.pl?slovo='+iWord+'&interface=RU&action=find&findbtn.x=0&findbtn.y=0">');
+	document.write('<frame src="http://www.dict.com/Rusko-hrvatski/'+iWord+'?">');
+	document.write('</frameset>');
+	}
+} 
+</script>
+
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<h1>Online Slavic dictionaries</h1>
+<h2><i>Slovjanske slovniky online</i></h2>
+
+<p>This page displays a number of Slavic online dictionaries on one page in a frame. It is intended as a tool for quickly finding the right word when a word is missing in the Interslavic dictionary. You have three possibilities:</p>
+
+<ul>
+<li>If you insert an English word, it will look for this word in a number of English-Slavic dictionaries.</li>
+<li>If you insert a Russian word (in Cyrillic), it will look for this word in a number of Russian-English and Russian-Slavic dictionaries.</li>
+<li>If you leave the input field blank, a different set of dictionaries will be shown in a frame.</li>
+</ul>
+
+<table align="center"><tr><td width="25%">&nbsp;</td><td width="50%" style="border:1px solid grey;"><p style="text-align:center;">Insert an English or Russian search term here:<br />Vpišite anglijsko ilo russko slovo sde:<br /><br /><input id="input_word" tabindex="1" class="text" type="text" maxlength="48" value="" onchange="search ()">&nbsp;<input type="button" id="submit" tabindex="2" value="Iskati" class="button" onclick="search ()"></p></td><td width="25%"></td></tr></table>
+
+<p>Tuta stranica pokazuje razne slovniky online v ramkah. Ona jest prěznačena k tomu, da byste legše našli i izbrali slovo, ktorogo nemaje v medžuslovjanskom slovniku. Imajete tri možnosti:</p>
+<ul>
+<li>Ako vpišete anglijsko slovo, pokazane budut prěvody ovogo slova na razne slovjanske jezyky.</li>
+<li>Ako vpišete russko slovo (kiriliceju), pokazane budut prěvody ovogo slova na anglijsky ili na druge slovjanske jezyky.</li>
+<li>Ako ostavite prazdno polje, v ramě pokazany bude iny sostav slovnikov.</li>
+</ul>
+
+<h2>List of online dictionaries</h2>
+
+<ul style="list-style-type:none; margin-left:0px;">
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_ru.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Russian</b>: 
+<a href="http://icecube.berkeley.edu/~dima/stuff/rus/">Dima Chirkin</a> –
+<a href="http://dictionary.reverso.net/english-russian/">Reverso.net</a> – 
+<a href="http://slovari.yandex.ru/">Yandex.ru</a> –
+<a href="http://dic.academic.ru/">Academic.ru</a> –
+<a href="http://sl.pons.com/prevod?q=&l=enru&in=&lf=en&cid=">Pons.com</a> –
+<a href="http://eng-rus.slovaronline.com/">Slovaronline.com (en-ru)</a> –
+<a href="http://smirnitsky.slovaronline.com/">Slovaronline.com (ru-en)</a> –
+<a href="http://en-ru.dict.cc/">Dict.cc (en-ru)</a> –
+<a href="http://ru-en.dict.cc/">Dict.cc (ru-en)</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_ru.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_de.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Russian</b>: 
+<a href="https://de.langenscheidt.com/russisch-deutsch/">Langenscheidt</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_by.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Polish < > Belarusian</b>:
+<a href="http://www.slounik.org/">Slounik.org</a> – 
+<a href="http://www.slovnyk.org/fcgi-bin/dic.fcgi?hn=sel&iw=&translate=T%C5%82umacz&il=pl-pl&ol=be-by&ul=pl-pl">Slovnyk.org</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_by.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Belarusian</b>:
+<a href="http://glosbe.com/en/be/">Glosbe.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_ua.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Ukrainian:</b>
+<a href="http://www.lingvo-online.ru/en/Translate/en-uk">ABBYY</a> –
+<a href="http://slovnenya.com/home">Slovnenya.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_rue.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Polish < > Rusyn (Lemko dialect):</b>
+<a href="http://www.lemslownyk.ugu.pl/">Lemslownyk</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_rue.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_ru.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Russian < > Rusyn (Subcarpathian dialect):</b>
+<a href="http://www.ruwega.com/products/a2012-slovnik-rusko-rusinskyj/">Ruwega.com (ru-rue)</a> (PDF – 2 volumes) –
+<a href="http://www.ruwega.com/products/slovnik-rusinsko-ruskyj-2007/">Ruwega.com (rue-ru)</a> (PDF – 2 volumes)</li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_rue.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_sk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Slovak < > Rusyn (Prešov dialect):</b>
+<a href="http://www.holosy.sk/slovnicok">Holosy.sk</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Polish:</b>
+<a href="http://getionary.pl/">Getionary.pl</a> –
+<a href="http://translatica.pl/slowniki/">Translatica.pl</a> –
+<a href="http://www.dict.pl/">Dict.pl</a> –
+<a href="http://www.diki.pl/">Diki.pl</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_ru.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Russian < > Polish:</b>
+<a href="http://www.babla.ru/%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9/">Bab.la</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_csb.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Polish < > Cashubian:</b>
+<a href="http://www.skarbnicakaszubska.pl/slownik-polsko-kaszubski">Skarbnicakaszubska.pl</a> (PDF)</li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_csb.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Cashubian:</b>
+<a href="http://glosbe.com/en/csb/">Glosbe.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_dsb.gif" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_de.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>German < > Lower Sorbian:</b>
+<a href="http://www.dolnoserbski.de/dnw/index.htm">Dolnoserbski.de</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_dsb.gif" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Lower Sorbian:</b>
+<a href="http://glosbe.com/en/dsb/">Glosbe.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_hsb.gif" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_de.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>German < > Upper Sorbian:</b>
+<a href="http://www.boehmak.de/">Boehmak.de</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_hsb.gif" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Upper Sorbian:</b>
+<a href="http://glosbe.com/en/hsb/">Glosbe.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_cz.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Czech:</b>
+<a href="http://slovnik.seznam.cz/">Seznam.cz</a> –
+<a href="http://www.slovnik.cz/">Slovnik.cz</a> –
+<a href="http://en.bab.la/dictionary/czech-english/">Bab.la</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_sk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Slovak:</b>
+<a href="http://slovnik.azet.sk/">Slovnik.azet.sk</a> –
+<a href="http://webslovnik.zoznam.sk/anglicko-slovensky">Webslovnik.zoznam.sk</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_slo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Slovene:</b>
+<a href="http://sl.pons.com/prevod">Pons.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_slo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_de.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>German < > Slovene:</b>
+<a href="http://www.linguee.de/deutsch-slowenisch">Linguee.de</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_hr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Croatian:</b>
+<a href="http://www.rjecnik.com/">Rjecnik.com</a> –
+<a href="http://www.crodict.de/englisch-kroatisch/">Crodict.de</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_bih.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Bosian:</b>
+<a href="http://www.lingvozone.com/main.jsp?do=dictionary&action=translation&language_id_from=23&language_id_to=58&word=a">Lingvozone.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_sr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Serbian:</b>
+<a href="http://slavicnet.com/home/dictionaries.html">Slavicnet.com)</a> –
+<a href="http://dictionary.paralink.com/?lang=en/sr">Paralink.com</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_mk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Macedonian:</b>
+<a href="http://www.idividi.com.mk/recnik/index.htm">Idividi.com.mk</a> (contains other languages as well) –
+<a href="http://recnik.off.net.mk/recnik/angliski-makedonski/*">Recnik.off.net.mk</a> –
+<a href="http://www.time.mk/?search=dict">Time.mk</a>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_mk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_mk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Macedonian:</b>
+<a href="http://www.makedonski.info/">Makedonski.info</a> (contains English translations)</li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_bg.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Bulgarian:</b>
+<a href="http://search.dir.bg/search.php?vid=15">Diri</a> – 
+<a href="http://www.bulgariandictionary.com/">Eurodict</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_cu.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"><img src="http://steen.free.fr/interslavic/images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>English < > Old Church Slavonic:</b>
+<a href="http://www.orthodoxepubsoc.org/download/SlavonicGlossary.pdf">PDF</a></li>
+
+<li><img src="http://steen.free.fr/interslavic/images/flag_pan.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;">
+<b>Proto-Slavic:</b>
+<a href="https://en.wiktionary.org/wiki/Category:Proto-Slavic_lemmas">Wiktionary.org</a> –
+<a href="http://essja.narod.ru/index.htm">Etymological dictionary of the Slavic languages</a></li>
+
+</ul>
+
+<script>document.getElementById("input_word").focus();</script>
+
+<script type="text/javascript">
+	var lastupdate = "8 IV 2018";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

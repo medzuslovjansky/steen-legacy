@@ -1,0 +1,282 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<script src="../scripts/dictionary.js" language="JavaScript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Eternal calendar — Věčny kalendarj — Вєчны календар" />
+<title>Věčny kalendarj – Eternal calendar – Вєчны календар</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+<!--
+//Author: Michael Gudaitis
+//e-mail: sparrow@erols.com
+//You may use this script free of charge so long as
+//this copyright information stays intact.
+//copyright 1998
+//
+function cala_day(form) {
+	
+	var nDay =  parseInt(form.day.options[form.day.selectedIndex].value);
+	var nMonth = parseInt(form.month.options[form.month.selectedIndex].value);
+	var nYear =  parseInt(form.year.value);
+
+	if ((nDay == 31) && ((nMonth == 2) || (nMonth == 4) || (nMonth == 6) || (nMonth == 9) || (nMonth == 11)))	{	var nDayOfWeek = 8;	}
+	else if ((nDay == 30) && (nMonth == 2))										{	var nDayOfWeek = 8;	}
+	else if ((nDay == 29) && (nMonth == 2) && (((nYear / 4) != parseInt(nYear / 4))
+		|| (((nYear / 100) == parseInt(nYear / 100)) && ((nYear / 400) != parseInt(nYear / 400)))))		{	var nDayOfWeek = 9;	}
+	else 														{	var nDayOfWeek = cala_weekday(nDay, nMonth, nYear) 	}
+
+	day_display(form, nDayOfWeek, nDay, nYear)
+}
+
+function cala_weekday( x_nDay, x_nMonth, x_nYear) {
+
+	if(x_nMonth >= 3){	
+		x_nMonth -= 2;
+	}
+	else {
+		x_nMonth += 10;
+	}
+
+	if( (x_nMonth == 11) || (x_nMonth == 12) ){
+		x_nYear--;
+	}
+
+	var nCentNum = parseInt(x_nYear / 100);
+	var nDYearNum = x_nYear % 100;
+
+	var g = parseInt(2.6 * x_nMonth - .2);
+
+	g +=  parseInt(x_nDay + nDYearNum);
+	g += nDYearNum / 4;	
+	g = parseInt(g);
+	g += parseInt(nCentNum / 4);
+	g -= parseInt(2 * nCentNum);
+	g %= 7;
+	
+	if(x_nYear >= 1700 && x_nYear <= 1751) {
+		g -= 3;
+	}
+	else {
+		if(x_nYear <= 1699) {
+			g -= 4;
+		}
+	}
+	
+	if(g < 0){
+		g += 7;
+	}
+	
+	return g;
+}
+
+function day_display(form, x_nDayOfWeek, nDay, nYear) {
+
+	if(x_nDayOfWeek == 0) {
+		form.birthday.value = "Nedělja";
+		return;
+	}
+	if(x_nDayOfWeek == 1) {
+		form.birthday.value = "Ponedělok";
+		return;
+	}
+	if(x_nDayOfWeek == 2) {
+		form.birthday.value = "Vtorok";
+		return;
+	}
+	if(x_nDayOfWeek == 3) {
+		form.birthday.value = "Srěda";
+		return;
+	}
+	if(x_nDayOfWeek == 4) {
+		form.birthday.value = "Četvrtok";
+		return;
+	}
+	if(x_nDayOfWeek == 5) {
+		form.birthday.value = "Petok";
+		return;
+	}
+	if(x_nDayOfWeek == 6) {
+		form.birthday.value = "Subota";
+		return;
+	}
+	if(x_nDayOfWeek == 8) {
+		form.birthday.value = "Tutoj měsec nikogda ne imaje " + nDay + " dnje.";
+		return;
+	}
+	if(x_nDayOfWeek == 9) {
+		form.birthday.value = nYear + " ne jest prěstupny god.";
+		return;
+	}
+
+	form.birthday.value = "*** Grěška, ne jeste vpisali god ***";
+}
+//-->
+</script>
+
+</head>
+
+<!---------------- Header ------------------->
+
+<body>
+
+<script language="JavaScript">
+	var lang='';
+	var level=0;
+	var page='cal';
+	r_header(lang,level,page);
+</script>
+
+<style>
+INPUT.text
+	{
+	width:				288px;
+	height:				500pt;
+	font-family:			courier new, arial unicode ms;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+TEXTAREA
+	{
+	width:				450px;
+	height:				500px;
+	border:				2pt;
+	background:			none;
+	font-size:			100%;
+	font-weight:			normal;
+	font-family:			ms sans serif, Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
+					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<style type="text/css">.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+</style><body>
+<h1 align="center">Eternal calendar</h1>
+<h2 align="center"><i>Věčny kalendar ~ Вечны календар</i></h2>
+
+<h3 align="center"><font color="red">Pozrite sde v koj denj tydnja jeste se urodili!</font> &nbsp; &nbsp; &nbsp; <font color="blue">Позрите сде в кој дењ тыдња јесте се уродили!</font></h3>
+<br />
+
+<form method=post>
+<table align="center" cellpadding=5 cellspacing=5>
+  <tbody>
+  <tr align=left valign=middle>
+    	<td width=40%>
+		<B>Denj: &nbsp;&nbsp;&nbsp; </B>
+		<SELECT name=day> 
+		<OPTION value=1 selected>1
+		<OPTION value=2>2
+		<OPTION value=3>3
+		<OPTION value=4>4
+		<OPTION value=5>5
+		<OPTION value=6>6
+		<OPTION value=7>7
+		<OPTION value=8>8
+		<OPTION value=9>9
+		<OPTION value=10>10
+		<OPTION value=11>11
+		<OPTION value=12>12
+		<OPTION value=13>13
+		<OPTION value=14>14
+		<OPTION value=15>15
+		<OPTION value=16>16
+		<OPTION value=17>17
+		<OPTION value=18>18
+		<OPTION value=19>19
+		<OPTION value=20>20
+		<OPTION value=21>21
+		<OPTION value=22>22
+		<OPTION value=23>23
+		<OPTION value=24>24
+		<OPTION value=25>25
+		<OPTION value=26>26
+		<OPTION value=27>27
+		<OPTION value=28>28
+		<OPTION value=29>29
+		<OPTION value=30>30
+		<OPTION value=31>31
+		</OPTION>
+		</SELECT> 
+	<BR><BR><B>Měsec: </B>
+		<SELECT size=1 name=month> 
+		<OPTION value=1 selected>januar – sěčenj
+		<OPTION value=2>fevruar – ljuty
+		<OPTION value=3>marec – brězenj
+		<OPTION value=4>aprilj – cvětenj
+		<OPTION value=5>maj – travenj
+		<OPTION value=6>junij – črvenj
+		<OPTION value=7>julij – lipenj
+		<OPTION value=8>avgust – srpenj
+		<OPTION value=9>septembr – vrěsenj
+		<OPTION value=10>oktobr – rujenj
+		<OPTION value=11>novembr – listopad
+		<OPTION value=12>dekembr – sněženj
+		</OPTION>
+		</SELECT> 
+	<BR><BR><B>God: &nbsp;&nbsp;&nbsp;</B> 
+		<INPUT size=4 maxlength=4 name=year> <FONT size=2>(napr. 1970)</FONT> 
+	</TD>
+	<TD width="60%">
+		<b><FONT size=3>Na priměr:</FONT> 
+		<br><FONT size=2><I>7 fevruara/ljutogo 1809 g. (denj rodženja Matije Majara-Ziljskogo) &rarr; Vtorok</I></FONT></b>
+		<BR><BR><B>Denj tydnja, ktory jeste vpisali, byl (jest, bude):</b><br />
+		<br><INPUT size=30 name=birthday> 
+	</TD>
+  </TR>
+  <TR>
+	<TD align=middle><br>
+		<INPUT onclick=cala_day(this.form) type=button class=button value="Kalkulovati">&nbsp;
+		<INPUT type=reset class=button value="Anulovati">  
+  	</TD>
+	<TD></TD>
+  </TR></TBODY>
+</TABLE></FORM>
+
+<p><font color="white">_______________________ _______________________ _______________________ _______________________ _______________________ _______________________ _______________________ _______________________ _______________________ _______________________ _______________________</font></p>
+<script type="text/javascript">
+	var lastupdate = "01.04.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

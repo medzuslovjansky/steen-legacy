@@ -1,0 +1,465 @@
+html, body 
+	{
+	border:				none;
+	}
+
+body 
+	{
+	margin:				0 auto;
+	background:			none;
+	text-align:			center;
+	font-family:			ms sans serif, palatino linotype, book antiqua, times new roman, gentium, thryomanes, arial unicode ms;
+	font-size:			100%;
+	}
+
+h1 	{
+	color:				#00c;
+	font-size:			150%;
+	font-weight:			bold;
+	text-align:			center;
+	text-transform: 		uppercase;
+	}
+
+h2, h3, h4, h5, h6 
+	{
+	color:				black;
+	text-decoration:		none;
+	font-weight:			bold;
+	}
+
+h2 	{
+	font-size:			133%;
+	text-align:			center;
+	}
+
+h3 	{
+	font-size:			120%;
+	text-align:			center;
+	}
+
+h4 	{
+	font-size:			110%;
+	text-align:			left;
+	}
+
+p 	{
+	text-align:			justify;
+	}
+
+p.quote
+	{
+	margin:				1em 4em;
+	font-style:			italic;
+	}
+
+sup	{
+	font-size:			75%;
+	}
+
+img 	{
+	border:				none;
+	margin-left:			5px;
+	margin-right:			5px;
+	}
+
+ul, ol	{
+	text-align:			justify;
+	margin-left:			0em;
+	color:				black;
+	margin-left:			-1em;
+	}
+	
+a:link, a:link.current, a:visited
+	{
+	color:				black;
+	font-weight:			bold;
+	}
+
+pre 	{
+	font-family:			"Lucida Console", "Courier New", Courier, monospace;
+	font-size:			80%;
+	overflow: 			auto;
+	width: 				100%;
+	}
+
+p table	{
+	border:				none;
+	border-collapse:		collapse;
+	vertical-align:			middle;
+	empty-cells:			hide;
+	}
+
+table.border
+	{
+	border-collapse:		collapse;
+	vertical-align:			middle;
+	empty-cells:			hide;
+	font-size:			90%;
+	}
+
+table.border th
+	{
+	border:				1px solid black;
+	background:			gray;
+	text-align:			center;
+	color:				black;
+	padding:			3px 4px;
+	vertical-align:			middle;
+	}
+
+table.border th.leeg
+	{
+	border:				none;
+	background:			none;
+	padding:			0px;
+	vertical-align:			middle;
+	font-size:			200%;
+	}
+
+table.border td	
+	{
+	background:			white;
+	border:				1px solid black;
+	empty-cells:			hide;
+	padding:			4px 10px;
+	vertical-align:			middle;
+	}
+
+table.border td b
+	{
+	color:				black;
+	}
+
+table.border td b.blue
+	{
+	color:				blue;
+	}
+
+b.red
+	{
+	color:				red;
+	}
+
+table.border tr.alf td
+	{
+	font-family:			ms sans serif, tahoma;
+	vertical-align:			top;
+	padding:			2px 4px;
+	text-align:			center;
+	}
+
+table.slov
+	{
+	border-collapse:		collapse;
+	}
+
+table.slov td
+	{
+	border-right:			1px solid black;
+	border-left:			1px solid black;
+	}
+
+table.slov td p
+	{
+	margin-top:			5px;
+	margin-bottom:			5px;
+	font-size:			90%;
+	}
+
+table.prep
+	{
+	color:				black;
+	margin-left:			3em;
+	}
+
+table.prep td
+	{
+	text-align:			left;
+	}
+
+table.toolkop th
+	{
+	color:				black;
+	font-weight:			bold;
+	}
+
+table.toolkop td 
+	{
+	color:				black;
+	}
+
+td
+	{
+	vertical-align:			top;
+	}
+
+td p
+	{
+	font-size:			100%;
+	font-weight:			normal;
+	vertical-align:			top;
+	color:				black;
+	}
+
+table.dict td
+	{
+	padding:			0px 15px;
+	font-size:			80%;
+	border-right:			1px solid blue;
+	border-left:			1px solid blue;
+	}
+
+table.dict hr
+	{
+	width:				70%;
+	text-align:			left;
+	margin-top:			20px;
+	margin-bottom:			-10px;
+	height:				2px;
+	}
+
+table.dict h2
+	{
+	text-align:			left;
+	font-size:			250%;
+	font-weight:			bold;
+	color:				blue;
+	}
+
+table.dict h4
+	{
+	text-align:			right;
+	width:				80%;
+	margin:				-2px 0 0 0;
+	}
+
+table.dict h4 a
+	{
+	text-align:			right;
+	text-decoration:		none;
+	font-size:			70%;
+	}
+
+p.unicode table td
+	{
+	font-family:			Code2000, Thryomanes, Gentium, Lucida Sans Unicode, Arial Unicode;
+	font-size:			90%;
+	}
+
+caption {
+	font-size:			80%;
+	text-align:			center;
+	margin:				1ex auto;
+	caption-side:			bottom;
+	}
+
+hr	{
+	display:			none;
+	}
+
+textarea
+	{
+	width:				100%;
+	height:				100%;
+	border:				0px solid black;
+	overflow:			auto;
+	}
+
+textarea.ns
+	{
+	background:			none; /* #ccf; */
+	font-weight:			normal;
+	color:				blue;
+	font-family:			Gentium, Cambria, Arial Unicode MS, Lucida Sans Unicode, Code2000, MS Reference Sans Serif, Microsoft Sans Serif;
+	font-size:			12pt;
+	border:				0px;
+	text-align:			justify;
+	}
+
+textarea.invoer
+	{
+	background:			white;
+	color:				black;
+	}
+
+textarea.output
+	{
+	color:				blue;
+	}
+
+.ns_button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			10pt;
+	font-weight:			bold;
+	width:				25px;
+	height:				25px;
+	background:			#ccccff; /** #ddb0f0; #e090b0; **/
+	margin:				0px;
+	}
+
+.blue, b.blue
+	{
+	color:				blue;
+	}
+
+#top
+	{
+	display:			none;
+	}
+
+/** DICTIONARY **/
+
+#dict table
+	{
+	width:				91%;
+	margin-left:			3em;
+	}
+
+#dict table col
+	{
+	width:				33%;
+	}
+
+#dict tr
+	{
+	vertical-align:			top;
+	}
+
+#dict td
+	{
+	padding:			0px 15px;
+	font-size:			80%;
+	border-right:			0px solid blue;
+	border-left:			0px solid blue;
+	color:				black;
+	}
+
+#dict .grletter
+	{
+	font-size:			500%;
+	font-weight:			bold;
+	color:				blue;
+	}
+
+#dict .klletter
+	{
+	font-size:			100%;
+	font-weight:			bold;
+	}
+
+#dict a:link, #dict a:visited
+	{
+	color:				black;
+	text-decoration:		none;
+	}
+
+#dict h4
+	{
+	font-size:			8pt;
+	text-align:			right;
+	width:				100%;
+	margin:				-20px 0 -20px 0;
+	}
+
+#dict h4 a:link
+	{
+	text-align:			right;
+	text-decoration:		none;
+	font-size:			70%;
+	}
+
+#dict hr
+	{
+	width:				100%;
+	text-align:			center;
+	margin-top:			2px;
+	margin-bottom:			15px;
+	height:				2px;
+	}
+
+#dict i
+	{
+	color:				black;
+	margin-left:			5px;
+	margin-right:			5px;
+	}
+
+/** TOC, header, menu etc. **/
+
+#toc	{
+	display:			none;
+	}
+
+#header {
+	display:			none;
+	}
+
+#header span
+	{
+	display:			block;
+	}
+
+#menu
+	{
+	display:			none;
+	}
+
+#news
+	{
+	width:				100%;
+	background:			none;
+	border:				0px;
+	text-align:			center;
+	color:				#000;
+	font-family:			tahoma, ms sans serif, arial, times new roman, palatino linotype, gentium, code2000, verdana;
+	font-size:			9pt;
+	}
+
+#news p.quote
+	{
+	margin-left:			6em;
+	margin-right:			6em;
+	font-size:			9pt;
+	}
+
+#news table
+	{
+	text-align:			left;
+	}
+
+#news table.slov
+	{
+	text-align:			center;
+	border-collapse:		collapse;
+	}
+
+#news table.slov td
+	{
+	border-right:			0px;
+	border-left:			0px;
+	}
+
+#news table.slov td p
+	{
+	margin-top:			5px;
+	margin-bottom:			5px;
+	margin-left:			1.5em;
+	margin-right:			1.5em;
+	}
+
+/** Footer Stuff **/
+
+#footer {
+	background:			none;
+	width:				100%;
+	border:				0px;
+	}
+
+#footer p
+	{
+	font-size:			7pt;
+	color:				black;
+	}
+
+/** End **/

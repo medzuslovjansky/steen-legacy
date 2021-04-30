@@ -1,0 +1,209 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Interslavic transliterator, automatic transliteration and transcription — Medžuslovjansky transliterator, avtomatična transliteracija i transkripcija — Меджусловјанскы транслитератор, автоматична транслитерација и транскрипција" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interslavic transliteration and transcription</title>
+
+<script type="text/javascript">
+
+window.onload = function(e) 
+{
+ 	document.getElementById("SourceText").focus(); 
+}
+
+function ops ()
+{
+	if (!type) { var type = document.getElementById("orto").value; if (!type) type = 1; }
+	if (!flaw) { var flaw = document.getElementById("flaw").value; if (!flaw) flaw = "2"; }
+	if (!caps) { var caps = document.getElementById("caps").value; if (!caps) caps = 0; }
+	if (type == 5) 	
+		{ 	document.getElementById("flaw").selectedIndex = "0"; 
+			enable ('flaw',0); enable ('flaw',1); disable ('flaw',2); disable ('flaw',3); enable ('flaw',4); }
+	else if (type == 6) 	
+		{ 	document.getElementById("flaw").selectedIndex = "0"; 
+		 	enable ('flaw',0); disable ('flaw',1); enable ('flaw',2); enable ('flaw',3); disable ('flaw',4); }
+	else if (type == 7)
+		{ 	document.getElementById("flaw").selectedIndex = "0"; 
+		 	enable ('flaw',0); disable ('flaw',1); enable ('flaw',2); disable ('flaw',3); enable ('flaw',4); }
+	else if (type == 2) 	
+		{ 	document.getElementById("flaw").selectedIndex = "1"; 
+			enable ('flaw',0); enable ('flaw',1); disable ('flaw',2); disable ('flaw',3); disable ('flaw',4); }
+	else if (type > 10) 	
+		{ 	document.getElementById("flaw").selectedIndex = "0"; 
+		 	enable ('flaw',0); disable ('flaw',1); enable ('flaw',2); disable ('flaw',3); disable ('flaw',4); }
+	else 	
+		{ 	enable ('flaw',0); enable ('flaw',1); enable ('flaw',2); enable ('flaw',4); }
+
+	trans (flaw, type);
+}
+
+function trans (flaw, type, caps)
+{
+	var iSource = document.getElementById("SourceText").value;
+	if (!type) { var type = document.getElementById("orto").value; if (!type) type = 1; }
+	if (!flaw) { var flaw = document.getElementById("flaw").value; if (!flaw) flaw = "2"; }
+	if (!caps) { var caps = document.getElementById("caps").value; if (!caps) caps = 0; }
+
+	result = transliterate (iSource, type, flaw, caps, 1);	
+
+	if (type == 21)				{ document.getElementById("ResultText").className = 'abur'; }
+	else if ((type == 7) && (flaw == "J"))	{ document.getElementById("ResultText").className = 'uglata'; }
+	else if ((type == 7) && (flaw != "J"))	{ document.getElementById("ResultText").className = 'glago'; }
+	else if (type == 13)			{ document.getElementById("ResultText").className = 'georg'; }
+	else if (type == 22)			{ document.getElementById("ResultText").className = 'katakana'; }
+	else					{ document.getElementById("ResultText").className = ''; }
+
+	document.getElementById("ResultText").value = result;
+}
+
+function setLetter(text)
+{	var txtarea = document.getElementById("SourceText");
+	if (txtarea.createTextRange && txtarea.caretPos)
+		{	var caretPos = txtarea.caretPos;
+			caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+			txtarea.focus();
+		}
+	else	{	txtarea.value += text;
+			txtarea.focus();
+		}
+}
+
+function active(text) 
+{	if (text.createTextRange) 	text.caretPos = document.selection.createRange().duplicate(); 
+}
+
+</script>
+
+<style type="text/css">
+TEXTAREA
+	{
+	width:				97%;
+	height:				450px;
+	background:			#ccf;
+	font-size:			100%;
+	font-weight:			normal;
+	font-family:			Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
+					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
+	font-size:			12pt;
+	overflow:			auto;
+	}
+option:disabled
+	{
+	color:				#ccc;
+	}
+</style>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<h1> Transliteration of Interslavic (extended) </h1>
+<h2> Transliteracija medžuslovjanskogo jezyka (razširjenje)<br> Транслитерација меджусловјанского језыка (разширјенје) </h2>
+
+<center><table class="toolkop" width="100%" cellspacing="2" cellpadding="0" border=" 0" style="text-align:center">
+<tr>
+<th>Insert your source text here:<br>Tu vpiši svoj žrlovy tekst:<br>Ту впиши свој жрловы текст:</th>
+<th>Choose:<br>Izberi:<br>Избери:</th>
+<th>Result:<br>Rezultat:<br>Резултат:</th></tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr valign="middle" height="385px">
+<td width="45%">
+	<table width="100%" height="100%" cellspacing="1" cellpadding="0" border="0"><tr height="100px"><td>
+		<textarea id="SourceText" onkeyup="trans ()" onselect="active(this);" onclick="active(this);" onKeyUp="active(this);" onchange="active (this);"></textarea></td></tr>
+	</table>
+</td><td width="10%"><center>
+	<b>Orthography:<br>Pravopis:<br>Правопис:</b>
+	<select id="orto" onchange="ops ()" style="margin:10px; width:150px;"">
+	  <option value="1" checked>Latinica</option>
+	  <option value="5">Kirilica</option>
+	  <option disabled>--------------------------</option>
+	  <option value="6">Klasična kirilica</option>
+	  <option value="7">Glagolica</option>
+	  <option value="2">ASCII</option>
+	  <option value="10">IPA</option>
+	  <option disabled>--------------------------</option>
+	  <option value="12">Armensky</option>
+	  <option value="18">Devanagari</option>
+	  <option value="17">Etiopsky</option>
+	  <option value="14">Grečsky</option>
+	  <option value="13">Gruzinsky</option>
+	  <option value="22">Katakana</option>
+	  <option value="21">Staropermsky</option>
+	</select>
+	<br><b>Flavourisation:<br>Flavorizacija:<br>Флаворизација:</b><br>
+	<select id="flaw" onchange="trans ()" style="margin:10px; width:150px;">
+	  <option value="3" checked>Standardna</option>
+	  <option value="4">Oproščena</option>
+	  <option value="2">Etimologična</option>
+	  <option value="S">Sěverna</option>
+	  <option value="J">Južna</option>
+	</select>
+	<br><b>Capitals:<br>Velike bukvy:<br>Велике буквы:</b><br>
+	<select id="caps" onchange="trans ()" style="margin:10px; width:150px;"">
+	  <option value="0">Unchanged</option>
+	  <option value="1">All uppercase</option>
+	  <option value="2">All lowercase</option>
+	</select>
+	<br><b>Insert letter:<br>Vstav bukvu:<br>Встав букву:</b><br>
+	<div style="margin-top:10px; text-decoration:none; font-size:130%; font-family:Cambria;"><center><small>
+	  <a href="javascript:setLetter('Č')" style="font-weight:bold; text-decoration:none;">Č</a><a href="javascript:setLetter('č')" style="font-weight:bold; text-decoration:none;">č </a> 
+	  <a href="javascript:setLetter('Ě')" style="font-weight:bold; text-decoration:none;">Ě</a><a href="javascript:setLetter('ě')" style="font-weight:bold; text-decoration:none;">ě </a> 
+	  <a href="javascript:setLetter('Š')" style="font-weight:bold; text-decoration:none;">Š</a><a href="javascript:setLetter('š')" style="font-weight:bold; text-decoration:none;">š </a> 
+	  <a href="javascript:setLetter('Ž')" style="font-weight:bold; text-decoration:none;">Ž</a><a href="javascript:setLetter('ž')" style="font-weight:bold; text-decoration:none;">ž </a>
+	  <a href="javascript:setLetter('Ć')" style="font-weight:bold; text-decoration:none;">Ć</a><a href="javascript:setLetter('ć')" style="font-weight:bold; text-decoration:none;">ć </a> 
+	  <a href="javascript:setLetter('Đ')" style="font-weight:bold; text-decoration:none;">Đ</a><a href="javascript:setLetter('đ')" style="font-weight:bold; text-decoration:none;">đ </a><br />
+	  <a href="javascript:setLetter('Å')" style="font-weight:bold; text-decoration:none;">Å</a><a href="javascript:setLetter('å')" style="font-weight:bold; text-decoration:none;">å </a> 
+	  <a href="javascript:setLetter('Ę')" style="font-weight:bold; text-decoration:none;">Ę</a><a href="javascript:setLetter('ę')" style="font-weight:bold; text-decoration:none;">ę </a> 
+	  <a href="javascript:setLetter('Ė')" style="font-weight:bold; text-decoration:none;">Ė</a><a href="javascript:setLetter('ė')" style="font-weight:bold; text-decoration:none;">ė </a> 
+	  <a href="javascript:setLetter('Ȯ')" style="font-weight:bold; text-decoration:none;">Ȯ</a><a href="javascript:setLetter('ȯ')" style="font-weight:bold; text-decoration:none;">ȯ </a> 
+	  <a href="javascript:setLetter('Ų')" style="font-weight:bold; text-decoration:none;">Ų</a><a href="javascript:setLetter('ų')" style="font-weight:bold; text-decoration:none;">ų </a><br />
+	  <a href="javascript:setLetter('D́')" style="font-weight:bold; text-decoration:none;">D́</a><a href="javascript:setLetter('d́')" style="font-weight:bold; text-decoration:none;">d́ </a> 
+	  <a href="javascript:setLetter('Ĺ')" style="font-weight:bold; text-decoration:none;">Ĺ</a><a href="javascript:setLetter('ĺ')" style="font-weight:bold; text-decoration:none;">ĺ </a> 
+	  <a href="javascript:setLetter('Ń')" style="font-weight:bold; text-decoration:none;">Ń</a><a href="javascript:setLetter('ń')" style="font-weight:bold; text-decoration:none;">ń </a> 
+	  <a href="javascript:setLetter('Ŕ')" style="font-weight:bold; text-decoration:none;">Ŕ</a><a href="javascript:setLetter('ŕ')" style="font-weight:bold; text-decoration:none;">ŕ </a> 
+	  <a href="javascript:setLetter('Ś')" style="font-weight:bold; text-decoration:none;">Ś</a><a href="javascript:setLetter('ś')" style="font-weight:bold; text-decoration:none;">ś </a> 
+	  <a href="javascript:setLetter('T́')" style="font-weight:bold; text-decoration:none;">T́</a><a href="javascript:setLetter('t́')" style="font-weight:bold; text-decoration:none;">t́ </a> 
+	  <a href="javascript:setLetter('Ź')" style="font-weight:bold; text-decoration:none;">Ź</a><a href="javascript:setLetter('ź')" style="font-weight:bold; text-decoration:none;">ź </a><br /> 
+	  <a href="javascript:setLetter('Є')" style="font-weight:bold; text-decoration:none;">Є</a><a href="javascript:setLetter('є')" style="font-weight:bold; text-decoration:none;">є </a>
+	  <a href="javascript:setLetter('Ы')" style="font-weight:bold; text-decoration:none;">Ы</a><a href="javascript:setLetter('ы')" style="font-weight:bold; text-decoration:none;">ы </a>
+	  <a href="javascript:setLetter('Ј')" style="font-weight:bold; text-decoration:none;">Ј</a><a href="javascript:setLetter('ј')" style="font-weight:bold; text-decoration:none;">ј </a>
+	  <a href="javascript:setLetter('Љ')" style="font-weight:bold; text-decoration:none;">Љ</a><a href="javascript:setLetter('љ')" style="font-weight:bold; text-decoration:none;">љ </a>
+	  <a href="javascript:setLetter('Њ')" style="font-weight:bold; text-decoration:none;">Њ</a><a href="javascript:setLetter('њ')" style="font-weight:bold; text-decoration:none;">њ </a>
+	  <a href="javascript:setLetter('Ь')" style="font-weight:bold; text-decoration:none;">Ь</a><a href="javascript:setLetter('ь')" style="font-weight:bold; text-decoration:none;">ь </a>
+	</small></center></div>
+</td><td width="45%">
+		<table width="100%" height="100%" cellspacing="1" cellpadding="0" border="0">
+			<tr height="100px"><td align="right"><textarea id="ResultText"></textarea></td></tr>
+		</table>
+</td></tr><tr><td>&nbsp;</td></tr>
+</td></tr></table></center>
+
+<p><b><i>Notes</i></b>: 
+<ul>
+<li>This transliteration program works on a transliterate-as-you-type base. It is an extension of the <a href="transliterator.html">transliterator for standard Interslavic</a>. It can do exactly the same as the latter, but it can also transcribe text from the scientific alphabet into various non-standard orthographies, including language-specific national orthographies, non-Slavic orthographies, and IPA.</li>
+<li>To write non-ASCII characters, you can select them from the list between the input and the output box.
+<li>If you want to prevent a fragment of text from being altered, place it between <b>{</b> and <b>}</b>. The accolades will automatically be removed afterwards. This feature can be convenient if you want to preserve the original spelling of e.g. a name in the transliterated text.</li>
+<li>Text fragments between <b>&lt;</b> and <b>></b> are left unchanged, too. Useful for transliterating html code without changing the tags.</li>
+</ul>
+
+<script type="text/javascript">
+	var lastupdate = "10.04.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

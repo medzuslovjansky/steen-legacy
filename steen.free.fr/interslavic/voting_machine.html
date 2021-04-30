@@ -1,0 +1,1258 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="The Interslavic voting machine — Medžuslovjanska mašina glasovanja — Меджусловјанска машина гласованја">
+<title>Voting Machine</title>
+
+<script type="text/javascript">
+
+function display ()
+{
+	var type = votetype ();
+	if (document.getElementById ("oldies").checked == true) {old = 1;} else {old = 0;}
+
+	if (old == 0) { document.getElementById("CU").style.display = "none"; document.getElementById("check_cu").checked = false; }  else { document.getElementById("CU").style.display = ""; }
+	if (type > 3) { document.getElementById("UA").style.display = "none";  document.getElementById("check_ua").checked = false; }  else { document.getElementById("UA").style.display = ""; }
+	if (type > 3) { document.getElementById("CZ").style.display = "none";  document.getElementById("check_cz").checked = false; }  else { document.getElementById("CZ").style.display = ""; }
+	if (type > 3) { document.getElementById("BG").style.display = "none";  document.getElementById("check_bg").checked = false; }  else { document.getElementById("BG").style.display = ""; }
+	if (type > 2) { document.getElementById("BY").style.display = "none";  document.getElementById("check_by").checked = false; }  else { document.getElementById("BY").style.display = ""; }
+	if (type > 2) { document.getElementById("SK").style.display = "none";  document.getElementById("check_sk").checked = false; }  else { document.getElementById("SK").style.display = ""; }
+	if (type > 2) { document.getElementById("SL").style.display = "none";  document.getElementById("check_sl").checked = false; }  else { document.getElementById("SL").style.display = ""; }
+	if (type > 2) { document.getElementById("HR").style.display = "none";  document.getElementById("check_hr").checked = false; }  else { document.getElementById("HR").style.display = ""; }
+	if (type > 2) { document.getElementById("BS").style.display = "none";  document.getElementById("check_bs").checked = false; }  else { document.getElementById("BS").style.display = ""; }
+	if (type > 2) { document.getElementById("SR").style.display = "none";  document.getElementById("check_sr").checked = false; }  else { document.getElementById("SR").style.display = ""; }
+	if (type < 3) { document.getElementById("SH").style.display = "none";  document.getElementById("check_sh").checked = false; }  else { document.getElementById("SH").style.display = ""; }
+	if (type > 2) { document.getElementById("MK").style.display = "none";  document.getElementById("check_mk").checked = false; }  else { document.getElementById("MK").style.display = ""; }
+	if (type > 1) { document.getElementById("RUE").style.display = "none"; document.getElementById("check_rue").checked = false; } else { document.getElementById("RUE").style.display = ""; }
+	if (type > 1) { document.getElementById("CSB").style.display = "none"; document.getElementById("check_csb").checked = false; } else { document.getElementById("CSB").style.display = ""; }
+	if (type > 1) { document.getElementById("DSB").style.display = "none"; document.getElementById("check_dsb").checked = false; } else { document.getElementById("DSB").style.display = ""; }
+	if (type > 1) { document.getElementById("HSB").style.display = "none"; document.getElementById("check_hsb").checked = false; } else { document.getElementById("HSB").style.display = ""; }
+
+	var word_hr = document.getElementById("input_hr").value;
+	var word_bs = document.getElementById("input_bs").value;
+	var word_sr = document.getElementById("input_sr").value;
+	var word_sh = document.getElementById("input_sh").value;
+	var result_hr = document.getElementById("output_hr").value;
+	var result_bs = document.getElementById("output_bs").value;
+	var result_sr = document.getElementById("output_sr").value;
+	var result_sh = document.getElementById("output_sh").value;
+
+	if (type > 2)
+	{
+		if (word_hr != "") 
+		{ 	word_sh = word_hr;
+			if ((word_bs != "") && (word_bs != word_hr))
+			{	word_sh = word_sh + ", " + word_bs;
+			}
+		}
+		else if (word_bs != "")
+		{	word_sh = word_bs;
+		}
+		if ((word_sr != "") && (word_sr != word_hr) && (word_sr != word_bs))
+		{	word_sh = word_sh + ", " + word_sr;
+		}
+		document.getElementById("input_sh").value = word_sh;
+
+		if (result_hr != "") 
+		{ 	result_sh = result_hr;
+			if ((result_bs != "") && (result_bs != result_hr))
+			{	result_sh = result_sh + ", " + result_bs;
+			}
+		}
+		else if (result_bs != "")
+		{	result_sh = result_bs;
+		}
+		if ((result_sr != "") && (result_sr != result_hr) && (result_sr != result_bs))
+		{	result_sh = result_sh + ", " + result_sr;
+		}
+		if (result_sh != "")
+		{
+			document.getElementById("check_sh").checked = true;
+			document.getElementById("output_sh").value = result_sh;
+		}
+	}
+	else if ((result_hr == "") && (result_bs == "") && (result_sr == "") && (result_sh != ""))
+	{
+		document.getElementById("input_hr").value = word_sh;
+		document.getElementById("input_bs").value = word_sh;
+		document.getElementById("input_sr").value = word_sh;
+		document.getElementById("output_hr").value = result_sh;
+		document.getElementById("output_bs").value = result_sh;
+		document.getElementById("output_sr").value = result_sh;
+		document.getElementById("check_hr").checked = true;
+		document.getElementById("check_bs").checked = true;
+		document.getElementById("check_sr").checked = true;
+	}
+	else
+	{ 
+		if (result_hr != "")	{ document.getElementById("check_hr").checked = true; } else { document.getElementById("check_hr").checked = false; }
+		if (result_bs != "")	{ document.getElementById("check_bs").checked = true; } else { document.getElementById("check_bs").checked = false; }
+		if (result_sr != "")	{ document.getElementById("check_sr").checked = true; } else { document.getElementById("check_sr").checked = false; }
+	}
+
+
+	document.getElementById("resfield").innerHTML	= "";
+}
+
+function ru_slo ()
+{
+	var word_ru	= document.getElementById("input_ru").value;
+	if (document.getElementById ("modif").checked == true)	{ var result = cyr_lat (word_ru, "ru"); } else { result = word_ru; }
+	document.getElementById("output_ru").value = result;
+	document.getElementById("check_ru").checked = true;
+	type = votetype();
+	if (type == 1)				{	document.getElementById("input_by").focus(); }
+	else if (type == 2)			{	document.getElementById("input_by").focus(); }
+	else if (type == 3)			{	document.getElementById("input_ua").focus(); }
+	else 					{	document.getElementById("input_pl").focus(); }
+}
+
+function by_slo ()
+{
+	var word_by	= document.getElementById("input_by").value;
+	if (document.getElementById ("modif").checked == true)	{ result = cyr_lat (word_by, "by"); } else { result = word_by; }
+	document.getElementById("output_by").value = result;
+	document.getElementById("check_by").checked = true;
+	document.getElementById("input_ua").focus();
+}
+
+function ua_slo ()
+{
+	var word_ua	= document.getElementById("input_ua").value;
+	if (document.getElementById ("modif").checked == true)	{ result = cyr_lat (word_ua, "ua"); } else { result = word_ua; }
+	document.getElementById("output_ua").value = result;
+	document.getElementById("check_ua").checked = true;
+	type = votetype();
+	if (type == 1)				{	document.getElementById("input_rue").focus(); }
+	else 					{	document.getElementById("input_pl").focus(); }
+}
+
+function rue_slo ()
+{
+	var word_rue	= document.getElementById("input_rue").value;
+	if (document.getElementById ("modif").checked == true)	{ result = cyr_lat (word_rue, "rue"); } else { result = word_rue; }
+	document.getElementById("output_rue").value = result;
+	document.getElementById("check_rue").checked = true;
+	document.getElementById("input_pl").focus();
+}
+
+function pl_slo ()
+{
+	var word_pl	= document.getElementById("input_pl").value;
+	var result	= word_pl.toLowerCase ();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/cz/g,"č#")); result = (result.replace(/sz/g,"š#")); result = (result.replace(/ż/g,"ž#"));
+		result = (result.replace(/rz/g,"r#")); result = (result.replace(/j/g,"j#")); 
+		result = (result.replace(/r#a/g,"rja")); result = (result.replace(/r#o/g,"rjo")); result = (result.replace(/r#u/g,"rju")); 
+		result = (result.replace(/#y/g,"i")); result = (result.replace(/#ę/g,"e")); result = (result.replace(/#ą/g,"e")); result = (result.replace(/#/g,"")); 
+		result = (result.replace(/ci/g,"ti")); result = (result.replace(/dzi/g,"di"));
+		result = (result.replace(/ia/g,"ja")); result = (result.replace(/ie/g,"e")); 
+		result = (result.replace(/io/g,"jo")); result = (result.replace(/iu/g,"ju")); 
+		result = (result.replace(/ią/g,"e")); result = (result.replace(/ię/g,"e")); 
+		result = (result.replace(/[ąę]/g,"u")); 
+
+		result = (result.replace(/l/g,"lj")); result = (result.replace(/ł/g,"l"));
+		result = (result.replace(/x/g,"ks")); result = (result.replace(/ch/g,"h")); result = (result.replace(/w/g,"v"));	
+		result = (result.replace(/ć/g,"t")); result = (result.replace(/dź/g,"d")); 
+		result = (result.replace(/ś/g,"s")); result = (result.replace(/ź/g,"z")); 
+		result = (result.replace(/ń/g,"nj")); result = (result.replace(/njs/g,"ns")); result = (result.replace (/jj/g,"j"));
+		result = (result.replace(/ó/g,"o")); result = (result.replace(/y/g,"i")); 
+	}
+
+	document.getElementById("check_pl").checked = true;
+	document.getElementById("output_pl").value = result;
+	type = votetype();
+	if (type == 1)				{	document.getElementById("input_csb").focus(); }
+	else if (type == 2)			{	document.getElementById("input_cz").focus(); }
+	else if (type == 3)			{	document.getElementById("input_cz").focus(); }
+	else 					{	document.getElementById("input_sh").focus(); }
+}
+
+function csb_slo ()
+{
+	var word_csb	= document.getElementById("input_csb").value;
+	var result	= word_csb.toLowerCase ();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/cz/g,"č#")); result = (result.replace(/sz/g,"š#")); result = (result.replace(/ż/g,"ž#"));
+		result = (result.replace(/rz/g,"r#")); result = (result.replace(/j/g,"j#")); 
+		result = (result.replace(/#[ãą]/g,"e")); 
+		result = (result.replace(/r#a/g,"rja")); result = (result.replace(/r#o/g,"rjo")); result = (result.replace(/r#u/g,"rju")); result = (result.replace(/#/g,"")); 
+		result = (result.replace(/ci/g,"ti")); result = (result.replace(/dzi/g,"di"));
+
+		result = (result.replace(/[ëé]/g,"e")); result = (result.replace(/ô/g,"a")); 
+		result = (result.replace(/[óò]/g,"o")); result = (result.replace(/ù/g,"u")); 
+
+		result = (result.replace(/ia/g,"ja")); result = (result.replace(/ie/g,"e")); 
+		result = (result.replace(/io/g,"jo")); result = (result.replace(/iu/g,"ju")); 
+		result = (result.replace(/i[ąã]/g,"e")); 
+		result = (result.replace(/[ąã]/g,"u")); 
+
+		result = (result.replace(/l/g,"lj")); result = (result.replace(/ł/g,"l"));
+		result = (result.replace(/x/g,"ks")); result = (result.replace(/ch/g,"h")); result = (result.replace(/w/g,"v"));	
+		result = (result.replace(/scz/g,"sk")); result = (result.replace(/sc/g,"st")); 
+		result = (result.replace(/ń/g,"nj")); result = (result.replace(/njs/g,"ns")); result = (result.replace (/jj/g,"j"));
+		result = (result.replace(/y/g,"i")); 
+	}
+
+	document.getElementById("check_csb").checked = true;
+	document.getElementById("output_csb").value = result;
+	document.getElementById("input_dsb").focus();
+}
+
+function dsb_slo ()
+{
+	var word_dsb	= document.getElementById("input_dsb").value;
+	var result	= word_dsb.toLowerCase ();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/ě/g,"e")); result = (result.replace(/je/g,"e"));  
+		result = (result.replace(/ó/g,"o")); result = (result.replace(/y/g,"i"));
+		result = (result.replace(/w/g,"v")); result = (result.replace(/ch/g,"h"));
+
+		result = (result.replace(/l/g,"lj")); result = (result.replace(/ł/g,"l"));
+		result = (result.replace(/ń/g,"nj"));
+		result = (result.replace(/[řŕ]([aou])/g,"rj$1")); result = (result.replace(/[řŕ]/g,"r"));
+		result = (result.replace(/[ść]([aou])/g,"tj$1")); result = (result.replace(/[ść]/g,"t"));
+		result = (result.replace(/dź([aou])/g,"dj$1")); result = (result.replace(/dź/g,"d"));
+		result = (result.replace(/ź([aou])/g,"dj$1")); result = (result.replace(/ź/g,"d"));
+	}
+	document.getElementById("check_dsb").checked = true;
+	document.getElementById("output_dsb").value = result;
+	document.getElementById("input_hsb").focus();
+}
+
+function hsb_slo ()
+{
+	var word_hsb	= document.getElementById("input_hsb").value;
+	var result	= word_hsb.toLowerCase ();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/ě/g,"e")); result = (result.replace(/je/g,"e"));  
+		result = (result.replace(/ó/g,"o")); result = (result.replace(/y/g,"i"));
+		result = (result.replace(/w/g,"v")); result = (result.replace(/ch/g,"h"));
+
+		result = (result.replace(/l/g,"lj")); result = (result.replace(/ł/g,"l"));
+		result = (result.replace(/ń/g,"nj"));
+		result = (result.replace(/[řŕ]([aou])/g,"rj$1")); result = (result.replace(/[řŕ]/g,"r"));
+		result = (result.replace(/[ść]([aou])/g,"tj$1")); result = (result.replace(/[ść]/g,"t"));
+		result = (result.replace(/dź([aou])/g,"dj$1")); result = (result.replace(/dź/g,"d"));
+		result = (result.replace(/ź([aou])/g,"dj$1")); result = (result.replace(/ź/g,"d"));
+	}
+
+	document.getElementById("check_hsb").checked = true;
+	document.getElementById("output_hsb").value = result;
+	document.getElementById("input_cz").focus();
+}
+
+function cz_slo ()
+{
+	var word_cz	= document.getElementById("input_cz").value;
+	result 		= (word_cz.toLowerCase ());
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/á/g,"a")); result = (result.replace(/[ěé]/g,"e")); result = (result.replace(/[ýyí]/g,"i"));
+		result = (result.replace(/[óů]/g,"o")); result = (result.replace(/ú/g,"u")); result = (result.replace(/ou/g,"u")); 
+		result = (result.replace(/w/g,"v")); result = (result.replace(/ch/g,"h"));
+		result = (result.replace(/ľ/g,"lj")); result = (result.replace(/ň/g,"nj"));
+		result = (result.replace(/ř([aou])/g,"rj$1")); result = (result.replace(/ř/g,"r"));
+		result = (result.replace(/ť([aou])/g,"tj$1")); result = (result.replace(/ť/g,"t"));
+		result = (result.replace(/ď([aou])/g,"dj$1")); result = (result.replace(/ď/g,"d"));
+	}
+
+	document.getElementById("check_cz").checked = true;
+	document.getElementById("output_cz").value = result;
+	type = votetype();
+	if (type == 1)				{	document.getElementById("input_sk").focus(); }
+	else if (type == 2)			{	document.getElementById("input_sk").focus(); }
+	else 					{	document.getElementById("input_sh").focus(); }
+}
+
+function sk_slo ()
+{
+	var word_sk	= document.getElementById("input_sk").value;
+	var result 	= (word_sk.toLowerCase ());
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result = (result.replace(/á/g,"a")); result = (result.replace(/[éä]/g,"e")); result = (result.replace(/[íýy]/g,"i"));
+		result = (result.replace(/[óô]/g,"o")); result = (result.replace(/ú/g,"u")); 
+		result = (result.replace(/ĺ/g,"l")); result = (result.replace(/ŕ/g,"r"));
+		result = (result.replace(/w/g,"v")); result = (result.replace(/ch/g,"h"));
+		result = (result.replace(/ľ/g,"lj")); result = (result.replace(/ň/g,"nj"));
+		result = (result.replace(/ť([aou])/g,"tj$1")); result = (result.replace(/ť/g,"t"));
+		result = (result.replace(/ď([aou])/g,"dj$1")); result = (result.replace(/ď/g,"d"));
+		result = (result.replace(/i([aeou])/g,"j$1"));
+	}
+
+	document.getElementById("check_sk").checked = true;
+	document.getElementById("output_sk").value = result;
+	document.getElementById("input_sl").focus();
+}
+
+function sl_slo ()
+{
+	var word_sl	= document.getElementById("input_sl").value;
+	var result	= word_sl.toLowerCase();
+	document.getElementById("check_sl").checked = true;
+	document.getElementById("output_sl").value = result;
+	document.getElementById("input_hr").focus();
+}
+
+function hr_slo ()
+{
+	var word_hr	= document.getElementById("input_hr").value;
+	var result_hr	= word_hr.toLowerCase();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result_hr 		= (result_hr.replace(/đ/g,"dž"));
+		result_hr 		= (result_hr.replace(/ć/g,"č"));
+	}
+	document.getElementById("output_hr").value = result_hr;
+	document.getElementById("check_hr").checked = true;
+	if (document.getElementById("input_bs").value == "")
+	{	document.getElementById("output_bs").value = result_hr;
+		document.getElementById("input_bs").value = word_hr;
+		document.getElementById("check_bs").checked = true;
+	}
+	if (document.getElementById("input_sr").value == "")
+	{	document.getElementById("output_sr").value = result_hr;
+		document.getElementById("input_sr").value = word_hr;
+		document.getElementById("check_sr").checked = true;
+	}
+
+	document.getElementById("input_mk").focus();
+}
+
+function bs_slo ()
+{
+	var word_bs	= document.getElementById("input_bs").value;
+	var result_bs	= word_bs.toLowerCase();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result_bs 		= (result_bs.replace(/đ/g,"dž"));
+		result_bs 		= (result_bs.replace(/ć/g,"č"));
+	}
+	document.getElementById("output_bs").value = result_bs;
+	document.getElementById("check_bs").checked = true;
+	if (document.getElementById("input_hr").value == "")
+	{	document.getElementById("output_hr").value = result_bs;
+		document.getElementById("input_hr").value = word_bs;
+		document.getElementById("check_hr").checked = true;
+	}
+	if (document.getElementById("input_sr").value == "")
+	{	document.getElementById("output_sr").value = result_bs;
+		document.getElementById("input_sr").value = word_bs;
+		document.getElementById("check_sr").checked = true;
+	}
+
+	document.getElementById("input_sr").focus();
+}
+
+function sr_slo ()
+{
+	var word_sr	= document.getElementById("input_sr").value;
+	var result_sr	= word_sr.toLowerCase();
+
+	if (document.getElementById ("modif").checked == true)
+	{
+		result_sr		= cyr_lat (word_sr, "sr");
+		result_sr 		= (result_sr.replace(/đ/g,"dž"));
+		result_sr 		= (result_sr.replace(/ć/g,"č"));
+	}
+	document.getElementById("output_sr").value = result_sr;
+	document.getElementById("check_sr").checked = true;
+	if (document.getElementById("input_hr").value == "")
+	{	document.getElementById("output_hr").value = result_sr;
+		document.getElementById("input_hr").value = word_sr;
+		document.getElementById("check_hr").checked = true;
+	}
+	if (document.getElementById("input_bs").value == "")
+	{	document.getElementById("output_bs").value = result_sr;
+		document.getElementById("input_bs").value = word_sr;
+		document.getElementById("check_bs").checked = true;
+	}
+	document.getElementById("input_mk").focus();
+}
+
+
+function sh_slo ()
+{
+	var word_sh	= document.getElementById("input_sh").value;
+	var result	= word_sh.toLowerCase();
+	if (document.getElementById ("modif").checked == true)
+	{
+		result		= cyr_lat (word_sh, "sr");
+		result 		= (result.replace(/đ/g,"dž"));
+		result 		= (result.replace(/ć/g,"č"));
+	}
+	document.getElementById("output_sh").value = result;
+	document.getElementById("check_sh").checked = true;
+	type = votetype();
+	if (type == 3)				{	document.getElementById("input_bg").focus(); }
+	else 					{	document.getElementById("submit").focus(); }
+}
+
+function mk_slo ()
+{
+	var word_mk	= document.getElementById("input_mk").value;
+	if (document.getElementById ("modif").checked == true)	{ result = cyr_lat (word_mk, "mk"); }  else { result = word_mk; }
+	document.getElementById("check_mk").checked = true;
+	document.getElementById("output_mk").value = result;
+	document.getElementById("input_bg").focus();
+}
+
+function bg_slo ()
+{
+	var word_bg	= document.getElementById("input_bg").value;
+	if (document.getElementById ("modif").checked == true)	{ result = cyr_lat (word_bg, "bg"); } else { result = word_bg; }
+	document.getElementById("check_bg").checked = true;
+	document.getElementById("output_bg").value = result;
+	if (old == 1)				{	document.getElementById("input_cu").focus();	}
+	else 					{	document.getElementById("submit").focus(); }
+}
+
+function cu_slo ()
+{
+	var word_cu	= document.getElementById("input_cu").value;
+	if (document.getElementById ("modif").checked == true)	{ var result = cyr_lat (word_cu, "cu"); } else { result = word_cu; }
+	type = votetype();
+	document.getElementById("output_cu").value = result;
+	document.getElementById("check_cu").checked = true;
+	document.getElementById("submit").focus();
+}
+
+function vote ()
+{
+	var used_word = new Array();
+	var votes = new Array();
+	var speakers = new Array();
+	var perc = new Array();
+	var x = 0;
+
+	word_ru = ""; word_by = ""; word_ua = ""; word_rue = ""; 
+	word_pl = ""; word_csb = ""; word_dsb = ""; word_hsb = ""; word_cz = ""; word_sk = ""; 
+	word_sl = ""; word_hr = ""; word_bs = ""; word_sr = ""; word_sh = ""; word_mk = ""; word_bg = "";
+	word_cu = ""; 
+
+	type = votetype();
+
+	/*** uitlezen input ***/
+
+	if (document.getElementById("check_ru").checked == true)
+	{
+		if (document.getElementById("output_ru").value != "")	
+		{	word_ru		= document.getElementById("input_ru").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_ru").value; 
+			speakers[x]	= 143.6;
+			votes[x]	= 1;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_ru").checked = false;	
+		}
+	}
+	if (document.getElementById("check_by").checked == true)
+	{
+		if (document.getElementById("output_by").value != "")	
+		{	word_by		= document.getElementById("input_by").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_by").value; 
+			speakers[x]	= 8.6;
+			if (type == 2)				{	votes[x] = 0.5; }
+			else if (type == 1)			{	votes[x] = 0.4; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_by").checked = false;	
+		}
+	}
+	if (document.getElementById("check_ua").checked == true)
+	{
+		if (document.getElementById("output_ua").value != "")	
+		{	word_ua		= document.getElementById("input_ua").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_ua").value; 
+			speakers[x]	= 37;
+			if ((type == 1)	|| (type == 2))		{	votes[x] = 0.5; }
+			else if (type == 3)			{	votes[x] = 1; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_ua").checked = false;	
+		}
+	}
+	if (document.getElementById("check_rue").checked == true)
+	{
+		if (document.getElementById("output_rue").value != "")	
+		{	word_rue	= document.getElementById("input_rue").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_rue").value; 
+			speakers[x]	= 0.6;
+			if (type == 1)				{	votes[x] = 0.1; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_rue").checked = false;	
+		}
+	}
+	if (document.getElementById("check_pl").checked == true)
+	{
+		if (document.getElementById("output_pl").value != "")	
+		{	word_pl		= document.getElementById("input_pl").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_pl").value; 
+			speakers[x]	= 40;
+			if (type == 1)				{	votes[x] = 0.9; }
+			else 					{	votes[x] = 1; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_pl").checked = false;	
+		}
+	}
+	if (document.getElementById("check_csb").checked == true)
+	{
+		if (document.getElementById("output_csb").value != "")	
+		{	word_csb	= document.getElementById("input_csb").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_csb").value; 
+			speakers[x]	= 0.1;
+			if (type == 1)				{	votes[x] = 0.1; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_csb").checked = false;	
+		}
+	}
+	if (document.getElementById("check_dsb").checked == true)
+	{
+		if (document.getElementById("output_dsb").value != "")	
+		{	word_dsb	= document.getElementById("input_dsb").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_dsb").value; 
+			speakers[x]	= 0.1;
+			if (type == 1)				{	votes[x] = 0.1; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_dsb").checked = false;	
+		}
+	}
+	if (document.getElementById("check_hsb").checked == true)
+	{
+		if (document.getElementById("output_hsb").value != "")	
+		{	word_hsb	= document.getElementById("input_hsb").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_hsb").value; 
+			speakers[x]	= 0.1;
+			if (type == 1)				{	votes[x] = 0.1; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_hsb").checked = false;	
+		}
+	}
+	if (document.getElementById("check_cz").checked == true)
+	{
+		if (document.getElementById("output_cz").value != "")	
+		{	word_cz		= document.getElementById("input_cz").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_cz").value; 
+			speakers[x]	= 9.5;
+			if (type == 1)				{	votes[x] = 0.4; }
+			else if (type == 3)			{	votes[x] = 1; }
+			else if (type == 4)			{	votes[x] = 0; }
+			else 					{	votes[x] = 0.5; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_cz").checked = false;	
+		}
+	}
+	if (document.getElementById("check_sk").checked == true)
+	{
+		if (document.getElementById("output_sk").value != "")	
+		{	word_sk		= document.getElementById("input_sk").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_sk").value; 
+			speakers[x]	= 5.0;
+			if (type == 1)				{	votes[x] = 0.4; }
+			else if (type == 2)			{	votes[x] = 0.5; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_sk").checked = false;	
+		}
+	}
+	if (document.getElementById("check_sl").checked == true)
+	{
+		if (document.getElementById("output_sl").value != "")	
+		{	word_sl		= document.getElementById("input_sl").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_sl").value; 
+			speakers[x]	= 1.9;
+			if ((type == 1) || (type == 2))		{	votes[x] = 0.5; }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_sl").checked = false;	
+		}
+	}
+	if (document.getElementById("check_hr").checked == true)
+	{
+		if (document.getElementById("output_hr").value != "")	
+		{	word_hr		= document.getElementById("input_hr").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_hr").value; 
+			speakers[x]	= 5.5;
+			votes[x]	= 0.2;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_hr").checked = false;	
+		}
+	}
+	if (document.getElementById("check_bs").checked == true)
+	{
+		if (document.getElementById("output_bs").value != "")	
+		{	word_bs		= document.getElementById("input_bs").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_bs").value; 
+			speakers[x]	= 2.2;
+			votes[x]	= 0.1;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_bs").checked = false;	
+		}
+	}
+	if (document.getElementById("check_sr").checked == true)
+	{
+		if (document.getElementById("output_sr").value != "")	
+		{	word_sr		= document.getElementById("input_sr").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_sr").value; 
+			speakers[x]	= 7;
+			votes[x]	= 0.2;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_sr").checked = false;	
+		}
+	}
+	if (document.getElementById("check_sh").checked == true)
+	{
+		if (document.getElementById("output_sh").value != "")	
+		{	word_sh		= document.getElementById("input_sh").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_sh").value; 
+			speakers[x]	= 14.7;
+			votes[x]	= 1;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_sh").checked = false;	
+		}
+	}
+
+	if (document.getElementById("check_mk").checked == true)
+	{
+		if (document.getElementById("output_mk").value != "")	
+		{	word_mk		= document.getElementById("input_mk").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_mk").value; 
+			speakers[x]	= 2.1;
+			if ((type == 1) || (type == 2))		{	votes[x] = (1 / 2); }
+			else 					{	votes[x] = 0; }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_mk").checked = false;	
+		}
+	}
+	if (document.getElementById("check_bg").checked == true)
+	{
+		if (document.getElementById("output_bg").value != "")	
+		{	word_bg		= document.getElementById("input_bg").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_bg").value; 
+			speakers[x]	= 9.1;
+			if (type == 3)				{	votes[x] = 1; }
+			else if (type == 4)			{	votes[x] = 0; }
+			else 					{	votes[x] = (1 / 2); }
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_bg").checked = false;	
+		}
+	}
+	if (document.getElementById("check_cu").checked == true)
+	{
+		if (document.getElementById("output_cu").value != "")	
+		{	word_cu		= document.getElementById("input_cu").value.toLowerCase();
+			used_word[x] 	= document.getElementById("output_cu").value; 
+			speakers[x]	= 0;
+			votes[x] 	= 1;
+			x += 1;	
+		}
+		else
+		{	document.getElementById("check_cu").checked = false;	
+		}
+	}
+
+	/*** splitsen dubbele entry's ***/
+
+		var temptot = x;
+
+	var i;
+	for (i = 0; i < 2; i++)
+	{
+
+		for (x in used_word)
+		{
+			if (used_word[x].indexOf(",") != -1)
+			{
+				komma = used_word[x].indexOf(",");
+				word1 = used_word[x].substring(0, komma);
+				word2 = used_word[x].substring(komma + 1, used_word[x].length); if (word2.charAt(0) == " ") { word2 = word2.substring (1, word2.length); }
+				used_word[x] = word1; 
+				used_word[temptot] = word2; votes[temptot] = votes[x]; speakers[temptot] = speakers[x];
+				temptot += 1;
+			}
+		}
+	}
+
+	/*** inventariseren input ***/
+
+	var totspeakers = 0;
+
+	for (x in used_word)
+	{
+		var y = 0;
+		totspeakers += speakers[x];
+
+		while (y < x)
+		{
+			if (used_word[x] == used_word[y])
+			{
+				votes[y] += votes[x]; speakers[y] += speakers[x];
+				used_word[x]=""; votes[x]=0; speakers[x]=0;
+			}
+			y++;
+		}
+	}
+
+	/*** sorteren input ***/
+
+	var x = 0;
+	for (x = 0; x < y; x++)
+	{
+		for (i = x + 1; i < y + 1; i++)
+		{
+			if ((votes[i] > votes[x]) || ((votes[i] == votes[x]) && (speakers[i] > speakers[x])))
+			{
+				pused = used_word[x]; pvotes = votes[x]; pspeakers = speakers[x];
+				used_word[x] = used_word[i]; votes[x] = votes[i]; speakers[x] = speakers[i];
+				used_word[i] = pused; votes[i] = pvotes; speakers[i] = pspeakers;
+			}
+		}
+	}
+
+	/*** vullen output ***/
+
+	result = "<p>";
+	if (word_ru != "")	{	result	= result + "RU: <b>" + word_ru + "</b><br>";	}
+	if (word_by != "")	{	result	= result + "BY: <b> " + word_by + "</b><br>";	}
+	if (word_ua != "")	{	result	= result + "UA: <b> " + word_ua + "</b><br>";	}
+	if (word_rue != "")	{	result	= result + "RUE: <b> " + word_rue + "</b><br>";	}
+	if (word_pl != "")	{	result	= result + "PL: <b> " + word_pl + "</b><br>";	}
+	if (word_csb != "")	{	result	= result + "CSB: <b> " + word_csb + "</b><br>";	}
+	if (word_dsb != "")	{	result	= result + "DSB: <b> " + word_dsb + "</b><br>";	}
+	if (word_hsb != "")	{	result	= result + "HSB: <b> " + word_hsb + "</b><br>";	}
+	if (word_cz != "")	{	result	= result + "CZ: <b> " + word_cz + "</b><br>";	}
+	if (word_sk != "")	{	result	= result + "SK: <b> " + word_sk + "</b><br>";	}
+	if (word_sl != "")	{	result	= result + "SL: <b> " + word_sl + "</b><br>";	}
+	if (word_hr != "")	{	result	= result + "HR: <b> " + word_hr + "</b><br>";	}
+	if (word_bs != "")	{	result	= result + "BS: <b> " + word_bs + "</b><br>";	}
+	if (word_sr != "")	{	result	= result + "SR: <b> " + word_sr + "</b><br>";	}
+	if (word_sh != "")	{	result	= result + "SH: <b> " + word_sh + "</b><br>";	}
+	if (word_mk != "")	{	result	= result + "MK: <b> " + word_mk + "</b><br>";	}
+	if (word_bg != "")	{	result	= result + "BG: <b> " + word_bg + "</b><br>";	}
+	if (word_cu != "")	{	result	= result + "CU: <b>" + word_cu + "</b><br>";	}
+			
+	result = result + "<br>";
+
+	for (x in used_word)
+	{
+		if (used_word[x] != "")
+		{ 	votes[x] = (Math.round (votes[x] * 1000) / 1000);
+			speakers[x] = (Math.round (speakers[x] * 10) / 10);
+			perc[x] = (Math.round (speakers[x] * 100) / totspeakers).toFixed (1);
+			result = result + "– <b>" + used_word[x] + "</b>: " + votes[x] + " votes (" + speakers[x] + " mln. speakers = " + perc[x] + " %)<br>"; }
+	}
+	
+	result = result + "</b></p>";
+	document.getElementById('resfield').innerHTML = result;
+}
+
+function cyr_lat (word, lang)
+{
+	var result	= word.toLowerCase();
+
+	result = (result.replace(/а/g,"a"));
+	result = (result.replace(/б/g,"b"));
+	result = (result.replace(/[вў]/g,"v"));
+	result = (result.replace(/[гґ]/g,"g"));
+	result = (result.replace(/д/g,"d"));
+	result = (result.replace(/ж/g,"ž"));
+	result = (result.replace(/з/g,"z"));
+	result = (result.replace(/[иіы]/g,"i"));
+	result = (result.replace(/[йј]/g,"j"));
+	result = (result.replace(/к/g,"k"));
+	result = (result.replace(/ль/g,"lj"));
+	result = (result.replace(/љ/g,"lj"));
+	result = (result.replace(/л/g,"l"));
+	result = (result.replace(/м/g,"m"));
+	result = (result.replace(/нь/g,"nj"));
+	result = (result.replace(/њ/g,"nj"));
+	result = (result.replace(/н/g,"n"));
+	result = (result.replace(/о/g,"o"));
+	result = (result.replace(/п/g,"p"));
+	result = (result.replace(/р/g,"r"));
+	result = (result.replace(/с/g,"s"));
+	result = (result.replace(/т/g,"t"));
+	result = (result.replace(/[уѫȣѹ]/g,"u"));
+	result = (result.replace(/ф/g,"f"));
+	result = (result.replace(/х/g,"h"));
+	result = (result.replace(/ц/g,"c"));
+	result = (result.replace(/ч/g,"č"));
+	result = (result.replace(/ш/g,"š"));
+
+	result = (result.replace(/[юѭ]/g,"ju"));
+	result = (result.replace(/[яꙗ]/g,"ja"));
+	result = (result.replace(/[эѣѧ]/g,"e"));
+	result = (result.replace(/ё/g,"jo"));
+	result = (result.replace(/ьo/g,"jo"));
+	result = (result.replace(/ье/g,"je"));
+	result = (result.replace(/[єѩѥ]/g,"je"));
+	result = (result.replace(/ї/g,"ji"));
+
+	result = (result.replace(/[ђѓџ]/g,"dž"));
+	result = (result.replace(/[ћќ]/g,"č"));
+	result = (result.replace(/ѕ/g,"dz"));
+
+	result = (result.replace(/jj/g,"j"));
+
+	if (lang == "ru" || lang == "by")
+	{	if (result.charAt (0) == "е")	{ result = result.replace (/е/,"je");	}
+		result = (result.replace(/aе/g,"aje"));
+		result = (result.replace(/eе/g,"eje"));
+		result = (result.replace(/iе/g,"ije"));
+		result = (result.replace(/oе/g,"oje"));
+		result = (result.replace(/uе/g,"uje"));
+		result = (result.replace(/е/g,"e"));
+	}
+	else
+	{	result = (result.replace(/е/g,"e"));
+	}
+	if (lang == "ru" || lang == "ua")
+	{ 	if (result.substring (result.length - 2, result.length) == "ij") { result = result.substring (0, result.length - 1); }
+		result = result.replace (/ij,/g,"i,");
+	}
+	if (lang == "by")
+	{	result = (result.replace(/cь/g,"t"));
+		result = (result.replace(/dzь/g,"d"));
+		result = (result.replace(/ci/g,"ti"));
+		result = (result.replace(/dzi/g,"di"));
+	}
+	if (lang == "ua")
+	{	result = (result.replace(/['’]/g,""));
+	}
+	if ((lang == "bg") || (lang == "cu"))
+	{	result = (result.replace(/щ/g,"št"));
+		result = (result.replace(/ъ/g,"o"));
+	}
+	else
+	{	result = (result.replace(/щ/g,"šč"));
+		result = (result.replace(/ъ/g,""));
+	}
+
+	result = (result.replace(/ь/g,""));
+
+	return result;
+}
+
+function reset ()
+{
+	document.getElementById("input_ru").value	= "";
+	document.getElementById("input_by").value	= "";
+	document.getElementById("input_ua").value	= "";
+	document.getElementById("input_rue").value	= "";
+	document.getElementById("input_pl").value	= "";
+	document.getElementById("input_csb").value	= "";
+	document.getElementById("input_dsb").value	= "";
+	document.getElementById("input_hsb").value	= "";
+	document.getElementById("input_cz").value	= "";
+	document.getElementById("input_sk").value	= "";
+	document.getElementById("input_sl").value	= "";
+	document.getElementById("input_hr").value	= "";
+	document.getElementById("input_bs").value	= "";
+	document.getElementById("input_sr").value	= "";
+	document.getElementById("input_sh").value	= "";
+	document.getElementById("input_mk").value	= "";
+	document.getElementById("input_bg").value	= "";
+	document.getElementById("input_cu").value	= "";
+	document.getElementById("output_ru").value	= "";
+	document.getElementById("output_by").value	= "";
+	document.getElementById("output_ua").value	= "";
+	document.getElementById("output_rue").value	= "";
+	document.getElementById("output_pl").value	= "";
+	document.getElementById("output_csb").value	= "";
+	document.getElementById("output_dsb").value	= "";
+	document.getElementById("output_hsb").value	= "";
+	document.getElementById("output_cz").value	= "";
+	document.getElementById("output_sk").value	= "";
+	document.getElementById("output_sl").value	= "";
+	document.getElementById("output_hr").value	= "";
+	document.getElementById("output_bs").value	= "";
+	document.getElementById("output_sr").value	= "";
+	document.getElementById("output_sh").value	= "";
+	document.getElementById("output_mk").value	= "";
+	document.getElementById("output_bg").value	= "";
+	document.getElementById("output_cu").value	= "";
+	document.getElementById("check_ru").checked	= false;
+	document.getElementById("check_by").checked	= false;
+	document.getElementById("check_ua").checked	= false;
+	document.getElementById("check_rue").checked	= false;
+	document.getElementById("check_pl").checked	= false;
+	document.getElementById("check_csb").checked	= false;
+	document.getElementById("check_dsb").checked	= false;
+	document.getElementById("check_hsb").checked	= false;
+	document.getElementById("check_cz").checked	= false;
+	document.getElementById("check_sk").checked	= false;
+	document.getElementById("check_sl").checked	= false;
+	document.getElementById("check_hr").checked	= false;
+	document.getElementById("check_bs").checked	= false;
+	document.getElementById("check_sr").checked	= false;
+	document.getElementById("check_sh").checked	= false;
+	document.getElementById("check_mk").checked	= false;
+	document.getElementById("check_bg").checked	= false;
+	document.getElementById("check_cu").checked	= false;
+	document.getElementById("resfield").value	= "";
+	document.getElementById("input_ru").focus();
+}
+
+function votetype ()
+{
+	var type = document.getElementById ("votetype").value;
+
+	if ((type == 1) || (type == 2) || (type == 3))
+	{	document.getElementById("input_ua").disabled = false; 
+		document.getElementById("output_ua").disabled = false; 
+		document.getElementById("check_ua").disabled = false;
+		document.getElementById("input_cz").disabled = false; 
+		document.getElementById("output_cz").disabled = false; 
+		document.getElementById("check_cz").disabled = false;
+		document.getElementById("input_bg").disabled = false; 
+		document.getElementById("output_bg").disabled = false; 
+		document.getElementById("check_bg").disabled = false;
+	}
+	else 	
+	{	document.getElementById("input_ua").disabled = true; 
+		document.getElementById("output_ua").disabled = true; 
+		document.getElementById("check_ua").disabled = true;
+		document.getElementById("input_cz").disabled = true; 
+		document.getElementById("output_cz").disabled = true; 
+		document.getElementById("check_cz").disabled = true;
+		document.getElementById("input_bg").disabled = true; 
+		document.getElementById("output_bg").disabled = true; 
+		document.getElementById("check_bg").disabled = true;
+	}
+	if ((type == 1) || (type == 2))
+	{	document.getElementById("input_by").disabled = false; 
+		document.getElementById("output_by").disabled = false; 
+		document.getElementById("check_by").disabled = false;
+		document.getElementById("input_sk").disabled = false; 
+		document.getElementById("output_sk").disabled = false; 
+		document.getElementById("check_sk").disabled = false;
+		document.getElementById("input_sl").disabled = false; 
+		document.getElementById("output_sl").disabled = false; 
+		document.getElementById("check_sl").disabled = false;
+		document.getElementById("input_hr").disabled = false; 
+		document.getElementById("output_hr").disabled = false; 
+		document.getElementById("check_hr").disabled = false;
+		document.getElementById("input_bs").disabled = false; 
+		document.getElementById("output_bs").disabled = false; 
+		document.getElementById("check_bs").disabled = false;
+		document.getElementById("input_sr").disabled = false; 
+		document.getElementById("output_sr").disabled = false; 
+		document.getElementById("check_sr").disabled = false;
+		document.getElementById("input_mk").disabled = false; 
+		document.getElementById("output_mk").disabled = false; 
+		document.getElementById("check_mk").disabled = false;
+		document.getElementById("input_sh").disabled = true;
+		document.getElementById("output_sh").disabled = true;
+		document.getElementById("check_sh").disabled = true;
+
+	}
+	else 	
+	{	document.getElementById("input_by").disabled = true; 
+		document.getElementById("output_by").disabled = true; 
+		document.getElementById("check_by").disabled = true;
+		document.getElementById("input_sk").disabled = true; 
+		document.getElementById("output_sk").disabled = true; 
+		document.getElementById("check_sk").disabled = true;
+		document.getElementById("input_sl").disabled = true; 
+		document.getElementById("output_sl").disabled = true; 
+		document.getElementById("check_sl").disabled = true;
+		document.getElementById("input_hr").disabled = true;
+		document.getElementById("output_hr").disabled = true;
+		document.getElementById("check_hr").disabled = true;
+		document.getElementById("input_bs").disabled = true;
+		document.getElementById("output_bs").disabled = true;
+		document.getElementById("check_bs").disabled = true;
+		document.getElementById("input_sr").disabled = true;
+		document.getElementById("output_sr").disabled = true;
+		document.getElementById("check_sr").disabled = true;
+		document.getElementById("input_mk").disabled = true; 
+		document.getElementById("output_mk").disabled = true; 
+		document.getElementById("check_mk").disabled = true;
+		document.getElementById("input_sh").disabled = false; 
+		document.getElementById("output_sh").disabled = false; 
+		document.getElementById("check_sh").disabled = false;
+	}
+	if (type == 1)
+	{	document.getElementById("input_csb").disabled = false; 
+		document.getElementById("output_csb").disabled = false; 
+		document.getElementById("check_csb").disabled = false;
+		document.getElementById("input_dsb").disabled = false; 
+		document.getElementById("output_dsb").disabled = false; 
+		document.getElementById("check_dsb").disabled = false;
+		document.getElementById("input_hsb").disabled = false; 
+		document.getElementById("output_hsb").disabled = false; 
+		document.getElementById("check_hsb").disabled = false;
+		document.getElementById("input_rue").disabled = false; 
+		document.getElementById("output_rue").disabled = false; 
+		document.getElementById("check_rue").disabled = false;
+
+	}
+	else 	
+	{	document.getElementById("input_csb").disabled = true; 
+		document.getElementById("output_csb").disabled = true; 
+		document.getElementById("check_csb").disabled = true;
+		document.getElementById("input_dsb").disabled = true; 
+		document.getElementById("output_dsb").disabled = true; 
+		document.getElementById("check_dsb").disabled = true;
+		document.getElementById("input_hsb").disabled = true; 
+		document.getElementById("output_hsb").disabled = true; 
+		document.getElementById("check_hsb").disabled = true;
+		document.getElementById("input_rue").disabled = true; 
+		document.getElementById("output_rue").disabled = true; 
+		document.getElementById("check_rue").disabled = true;
+	}
+
+	if (document.getElementById ("oldies").checked == false)
+	{
+		document.getElementById("input_cu").disabled = true; 
+		document.getElementById("output_cu").disabled = true; 
+		document.getElementById("check_cu").disabled = true;
+	}
+	else
+	{
+		document.getElementById("input_cu").disabled = false; 
+		document.getElementById("output_cu").disabled = false; 
+		document.getElementById("check_cu").disabled = false;
+	}
+
+	return type;
+}
+
+</script>
+
+<style type="text/css">
+INPUT.TEXT
+	{
+	width:				160px;
+	height:				18pt;
+	font-family:			courier new, arial unicode ms;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+.output
+	{
+	font-family:			ms sans serif, verdana, times new roman, arial unicode ms;
+	font-size:			10pt;
+	}
+
+.narrow
+	{
+	font-family:			Arial Narrow;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+</style>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<body>
+<h1>Voting Machine</h1>
+
+<p>The <b>Voting Machine</b> is a tool that can be helpful for establishing new words in Interslavic. It applies the rules for word creation as explained in the <a href="design_criteria.html#roots">design principles for vocabulary creation</a>, including the voting system. In the first column, you can add words in the twelve Slavic languages we work with, by typing them, or by copying and pasting them from an online dictionary. The second column displays a representation of the word you have entered in a simplified Interslavic orthography. If you want to enter words directly in Interslavic orthography, then deselect the second checkbox ("Convert into simplified Interslavic") first.</p>
+
+<p>The checkboxes next to the second column make it possible to select or deselect the language in question; if you deselect it, it will not be taken into account during the vote. Once you push the <b><tt>&lt;SUBMIT&gt;</tt></b> button, a script will calculate the number of votes and the number of speakers (Ethnologue, 2012) for each option.</p>
+<p>It is possible to enter two or three words for one language. In that case, make sure that they are separated by a comma.</p>
+<p>Because in most cases Croatian, Serbian and Bosnian do not differ from each other, it is sufficient to fill in one of them, although you always have the possibility of entering something else for the other one as well; in the final outcome, they are listed together as „Serbo-Croat”, which is not a political decision but a practical one.</p>
+<p>In addition to the standard voting system, this page offers a few alternative systems as well, all based on the principle that West, East and South Slavic languages are weighed equally:</p>
+<ul>
+<li>A „maxi vote”, which also counts the votes of Upper and Lower Sorbian, Rusyn and Cashubian (based on <a href="zalozsenija.html">this proposal</a>)</li>
+<li>A „mini vote”, taking into account only the biggest member of each of the six subgroups (Russian, Ukrainian, Polish, Czech, Serbo-Croat and Bulgarian)</li>
+<li>A „micro vote”, taking into account only the biggest language of each subfamily (Russian, Polish, Serbo-Croat)</li>
+<li>It is also possible to include Old Church Slavonic in the vote, in which case it is given one vote.</li></ul>
+
+<p>For the record, the Voting Machine is not an actual word building tool. All it does is counting votes and speakers as a means of inventarising the support among speakers of the Slavic languages for a certain solution, but it doesn't generate any actual words, nor does it take any decisions. Also, one should be aware that for example Polish <b>miasto</b>, Ukrainian <b>місто</b> and Russian <b>место</b> should not be treated as separate words, because they all derive from the same Proto-Slavic word <b>město</b>. This should be taken into account while entering data.</p>
+
+<p><select id="votetype" onchange="display ()">
+  <option value="1">Maxi vote</option>
+  <option value="2" selected>Standard vote</option>
+  <option value="3">Mini vote</option>
+  <option value="4">Micro vote</option>
+</select>
+&nbsp;&nbsp;<input id="oldies" type="checkbox" onchange="display ()"> Include Old Church Slavonic
+&nbsp;&nbsp;<input id="modif" type="checkbox" checked> Convert into simplified Interslavic
+</p>
+
+<table style="margin-left:3em;"><tr><td>
+
+<table width="100%" class="toolkop">
+<tr id="RU"><td align="right" class="narrow">Русский&nbsp;(Russian):		</td>
+	<td> <input id="input_ru" tabindex="1" class="text" type="text" maxlength="24" value="" onchange="ru_slo ()"> </td> 
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_ru.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Русский язык "> </td>
+	<td> <input id="output_ru" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_ru" type="checkbox"> </td>
+<tr id="BY"><td align="right" class="narrow">Беларуская&nbsp;(Belarusian):		</td>
+	<td> <input id="input_by" tabindex="2" class="text" type="text" maxlength="24" value="" onchange="by_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_by.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Беларуская мова "> </td>
+	<td> <input id="output_by" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_by" type="checkbox">	</td>
+<tr id="UA"><td align="right" class="narrow">Українська&nbsp;(Ukrainian):		</td>
+	<td> <input id="input_ua" tabindex="3" class="text" type="text" maxlength="24" value="" onchange="ua_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_ua.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Українська мова "> </td>
+	<td> <input id="output_ua" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_ua" type="checkbox">	</td>
+<tr id="RUE" style="display:none;"><td align="right" class="narrow">Русиньскый&nbsp;(Rusyn):		</td>
+	<td> <input id="input_rue" tabindex="3" class="text" type="text" maxlength="24" value="" onchange="rue_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_rue.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Русиньскый язык "> </td>
+	<td> <input id="output_rue" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_rue" type="checkbox">	</td>
+<tr id="PL"><td align="right" class="narrow">Polski&nbsp;(Polish):			</td>
+	<td> <input id="input_pl" tabindex="4" class="text" type="text" maxlength="24" value="" onchange="pl_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_pl.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Język polski "> </td>
+	<td> <input id="output_pl" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_pl" type="checkbox">	</td>
+<tr id="CSB" style="display:none;"><td align="right" class="narrow">Kaszëbsczi&nbsp;(Cashubian):			</td>
+	<td> <input id="input_csb" tabindex="4" class="text" type="text" maxlength="24" value="" onchange="csb_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_csb.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Kaszëbsczi jãzëk "> </td>
+	<td> <input id="output_csb" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_csb" type="checkbox">	</td>
+<tr id="DSB" style="display:none;"><td align="right" class="narrow">Dolnoserbšćina&nbsp;(Lower Sorbian):			</td>
+	<td> <input id="input_dsb" tabindex="4" class="text" type="text" maxlength="24" value="" onchange="dsb_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_dsb.gif" 	height="18" style="border:1px solid black; margin:1px;" title=" Dolnoserbska rěc "> </td>
+	<td> <input id="output_dsb" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_dsb" type="checkbox">	</td>
+<tr id="HSB" style="display:none;"><td align="right" class="narrow">Hornjoserbšćina&nbsp;(Upper Sorbian):			</td>
+	<td> <input id="input_hsb" tabindex="4" class="text" type="text" maxlength="24" value="" onchange="hsb_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_hsb.gif" 	height="18" style="border:1px solid black; margin:1px;" title=" Hornjoserbska rěč "> </td>
+	<td> <input id="output_hsb" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_hsb" type="checkbox">	</td>
+<tr id="CZ"><td align="right" class="narrow">Česky&nbsp;(Czech):			</td>
+	<td> <input id="input_cz" tabindex="5" class="text" type="text" maxlength="24" value="" onchange="cz_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_cz.png"	height="18" style="border:1px solid black; margin:1px;" title=" Český jazyk "> </td>
+	<td> <input id="output_cz" class="text" type="text" maxlength="24" readonly>  </td>
+	<td> <input id="check_cz" type="checkbox">	</td>
+<tr id="SK"><td align="right" class="narrow">Slovenčina&nbsp;(Slovak):		</td>
+	<td> <input id="input_sk" tabindex="6" class="text" type="text" maxlength="24" value="" onchange="sk_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_sk.png"	height="18" style="border:1px solid black; margin:1px;" title=" Slovenský jazyk "> </td>
+	<td> <input id="output_sk" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_sk" type="checkbox">	</td>
+<tr id="SL"><td align="right" class="narrow">Slovenščina&nbsp;(Slovene):		</td>
+	<td> <input id="input_sl" tabindex="7" class="text" type="text" maxlength="24" value="" onchange="sl_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_slo.png"	height="18" style="border:1px solid black; margin:1px;" title=" Slovenski jezik "> </td>
+	<td> <input id="output_sl" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_sl" type="checkbox">	</td>
+<tr id="HR"><td align="right" class="narrow">Hrvatski&nbsp;(Croat): </td>
+	<td> <input id="input_hr" tabindex="8" class="text" type="text" maxlength="24" value="" onchange="hr_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_hr.png"	height="18" style="border:1px solid black; margin:1px;" title=" Hrvatski jezik "> </td>
+	<td> <input id="output_hr" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_hr" type="checkbox">	</td>
+<tr id="BS"><td align="right" class="narrow">Bosanski&nbsp;(Bosnian): </td>
+	<td> <input id="input_bs" tabindex="8" class="text" type="text" maxlength="24" value="" onchange="bs_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_bih.png"	height="18" style="border:1px solid black; margin:1px;" title=" Bosanski jezik "> </td>
+	<td> <input id="output_bs" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_bs" type="checkbox">	</td>
+<tr id="SR"><td align="right" class="narrow">Српски&nbsp;(Serbian): </td>
+	<td> <input id="input_sr" tabindex="10" class="text" type="text" maxlength="24" value="" onchange="sr_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_sr.png"	height="18" style="border:1px solid black; margin:1px;" title=" Српски језик "> </td>
+	<td> <input id="output_sr" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_sr" type="checkbox">	</td>
+<tr id="SH" style="display:none;"><td align="right" class="narrow">Srpskhrvatski&nbsp;(Serbo-Croatian): </td>
+	<td> <input id="input_sh" tabindex="10" class="text" type="text" maxlength="24" value="" onchange="sh_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_pan.png"	height="18" style="border:1px solid black; margin:1px;" title=" Српскохрватски језик "> </td>
+	<td> <input id="output_sh" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_sh" type="checkbox">	</td>
+<tr id="MK"><td align="right" class="narrow">Македонски&nbsp;(Macedonian):		</td>
+	<td> <input id="input_mk" tabindex="11" class="text" type="text" maxlength="24" value="" onchange="mk_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_mk.png"	height="18" style="border:1px solid black; margin:1px;" title=" Македонски јазик "> </td>
+	<td> <input id="output_mk" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_mk" type="checkbox">	</td>
+<tr id="BG"><td align="right" class="narrow">Български&nbsp;(Bulgarian):		</td>
+	<td> <input id="input_bg" tabindex="12" class="text" type="text" maxlength="24" value="" onchange="bg_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_bg.png"	height="18" style="border:1px solid black; margin:1px;" title=" Български език "> </td>
+	<td> <input id="output_bg" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_bg" type="checkbox">	</td>
+<tr id="CU" style="display:none;"><td align="right" class="narrow">Словѣньскъ&nbsp;(Old Church Slavonic):		</td>
+	<td> <input id="input_cu" tabindex="1" class="text" type="text" maxlength="24" value="" onchange="cu_slo ()"> </td>
+	<td> <img src="http://steen.free.fr/interslavic/images/flag_ocs.png" 	height="18" style="border:1px solid black; margin:1px;" title=" Словѣньскъи ѩзъік "> </td>
+	<td> <input id="output_cu" class="text" type="text" maxlength="24" readonly> </td>
+	<td> <input id="check_cu" type="checkbox"> </td>
+<tr><td>&nbsp;</td></tr>
+<tr>	<td></td>
+	<td align="center"> <input type="button" id="submit" tabindex="13" value="Submit" class="button" onclick="vote ()">	</td>
+	<td></td>
+	<td align="center"> <input type="button" id="reset" tabindex="14" value="Reset" class="button" onclick="reset ()">	</td>
+</tr>
+</table>
+
+</td><td align="center"><div id='resfield' class="output"></div></td></tr></table>
+
+<script type="text/javascript">
+	var lastupdate = "10 X 2017";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

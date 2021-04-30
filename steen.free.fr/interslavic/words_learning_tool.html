@@ -1,0 +1,272 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>      
+<script src="../scripts/ms_learning_vocabulary.js" type="text/javascript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Lernu interslavajn vortojn" />
+<title>Interslavic – Word learning tool</title>
+
+<script type="text/javascript">
+
+function start ()
+{
+	var vlageo = '<img src="http://steen.free.fr/interslavic/images/flag_en.png" height="30pt" style="border:1px solid black; margin:1px 5px 0 0;">';
+	var vlagms = '<img src="http://steen.free.fr/interslavic/images/flag_slovianski_209.svg" height="30pt" width="50pt" style="border:1px solid black; margin:1px 5px 0 0;">';
+
+	if (document.radiobutton.smer[0].checked == true)		{ var type = 2; document.getElementById ("qWord").style.color = "blue"; 
+											document.getElementById ("aWord").style.color = "red";
+											document.getElementById ("qmark").style.color = "red";
+											var vlaggen = '<center>' + vlagms + ' ' + vlageo + '</center>'; }
+	else								{ var type = 1; document.getElementById ("qWord").style.color = "red"; 
+											document.getElementById ("aWord").style.color = "blue";
+											document.getElementById ("qmark").style.color = "blue";
+											var vlaggen = '<center>' + vlageo + ' ' + vlagms + '</center>'; }
+
+	if (document.getElementById ("tabel3").value != "")		{ document.getElementById ("izbor").value += 1; }
+
+	if (document.getElementById ("selex").value == "")
+	{ document.getElementById ("selex").value = document.getElementById ("izbor").value; }
+	else
+	{ document.getElementById ("selex").value = Number(document.getElementById ("selex").value) + 1; }
+
+	var selekcija = document.getElementById ("selex").value * 75;
+
+	var dictArray = new Array(); dict = dictionary(); result = "";
+
+	for (x in dict)
+	{
+		if (((x > selekcija) && (x < selekcija + 76)) || (selekcija == 9900))
+		{
+			if (type == 1)
+			{
+				result += dict[x].substring (dict[x].indexOf ("\t") + 1, dict[x].length) + "\t" + dict[x].substring (0, dict[x].indexOf ("\t")) + "|";
+			}
+			else if (type == 2)
+			{
+				result += dict[x] + "|"; 
+			}
+		}
+	}
+
+	if (document.getElementById ("tabel3").value != "")	{ result += document.getElementById ("tabel3").value; }
+
+	if (result != "")
+	{
+		document.getElementById ("tabel1").value = result;
+		document.getElementById ("tabel2").value = "";
+
+		fWord = selectWord ();
+		eWord = fWord.substring (0, fWord.indexOf ("\t"));
+		mWord = fWord.substring (fWord.indexOf ("\t") + 1, fWord.length);
+
+		document.getElementById ("vvod").innerHTML = vlaggen;
+		document.getElementById ("qWord").style.display = "";
+		document.getElementById ("qWord").value = eWord;
+		document.getElementById ("aWord").value = mWord; 
+		document.getElementById ("smer").style.display = "none";
+		document.getElementById ("qmark").value = "?";
+		document.getElementById ("qmark").style.display = "";
+		document.getElementById ("button1").style.display = "none";
+		document.getElementById ("button2").style.display = "";
+		document.getElementById ("button3").style.display = "none";
+		document.getElementById ("button4").style.display = "none";
+		document.getElementById ("button6").style.display = "none";
+		document.getElementById ("button2").focus();
+		document.getElementById ("aWord").style.display = "none";
+	}
+	else
+	{	location.reload()
+	}
+}
+
+function show ()
+{
+	document.getElementById ("qmark").style.display = "none";
+	document.getElementById ("aWord").style.display = "";
+	document.getElementById ("button2").style.display = "none";
+	document.getElementById ("button3").style.display = "";
+	document.getElementById ("button4").style.display = "";
+	document.getElementById ("leeg").style.display = "none";
+	document.getElementById ("button3").focus();
+}
+
+function conti (nextstep)
+{
+	var dict = document.getElementById ("tabel1").value; 
+	var hWord = document.getElementById ("qWord").value + "\t" + document.getElementById ("aWord").value + "|"; 
+	document.getElementById ("tabel1").value = dict.replace (hWord,"");
+
+	if (nextstep == '2')
+	{
+		document.getElementById ("tabel2").value += hWord;
+	}
+
+	fWord = selectWord ();
+	if (fWord != "")
+	{
+		eWord = fWord.substring (0, fWord.indexOf ("\t"));
+		mWord = fWord.substring (fWord.indexOf ("\t") + 1, fWord.length);
+
+		document.getElementById ("button2").style.display = "";
+		document.getElementById ("button3").style.display = "none";
+		document.getElementById ("button4").style.display = "none";
+		document.getElementById ("qWord").style.display = "";
+		document.getElementById ("qmark").value = "?";
+		document.getElementById ("qmark").style.display = "";
+		document.getElementById ("aWord").style.display = "none";
+		document.getElementById ("leeg").style.display = "";
+		document.getElementById ("button2").focus();
+
+		document.getElementById ("qWord").value = eWord;
+		document.getElementById ("aWord").value = mWord; 
+	}
+	else
+	{
+		document.getElementById ("qWord").value = "Uže znaješ vse slova!";
+		document.getElementById ("aWord").value = "You already know all the words!";
+		document.getElementById ("qWord").style.display = "";
+		document.getElementById ("aWord").style.display = "";
+		document.getElementById ("button1").value = "Slědne 100 slov / Next 100 words";
+		document.getElementById ("button1").style.display = "";
+		document.getElementById ("button2").style.display = "none";
+		document.getElementById ("button3").style.display = "none";
+		document.getElementById ("button4").style.display = "none";
+		document.getElementById ("button6").style.display = "";
+		document.getElementById ("leeg").style.display = "";
+		document.getElementById ("aWord").focus();
+	}
+
+}
+
+function selectWord ()
+{
+	if (document.getElementById ("tabel1").value == "")
+	{
+		if (document.getElementById ("tabel2").value != "")
+		{
+			document.getElementById ("tabel1").value = document.getElementById ("tabel2").value;
+			document.getElementById ("tabel3").value = document.getElementById ("tabel2").value;
+			document.getElementById ("tabel2").value = "";
+		}
+		else 
+		{
+			return "";
+		}
+	}
+	
+	var dict = document.getElementById ("tabel1").value; 
+	var fWord = new Array(); dictArray = new Array (); 
+	dictArray = dict.split("|"); 
+		
+	for (x in dictArray)
+	{
+		fWord[x] = dictArray[x]; 
+	}
+	var rn = Math.floor((Math.random() * x) + 0);
+	return fWord[rn]; 
+}
+
+
+</script>
+
+<style type="text/css">
+INPUT.text
+	{
+	width:				550px;
+	border:				none;
+	background:			none;
+	font-family:			cambria, times new roman;
+	font-size:			25pt;
+	text-align:			center;
+	vertical-align:			center;
+	font-weight:			bold;
+	margin-bottom:			20px;
+	overflow:			auto;
+	}
+
+TEXTAREA
+	{
+	width:				200px;
+	height:				50px;
+	font-family:			ms sans serif, verdana, times new roman, arial unicode ms;
+	font-weight:			bold;
+	font-size:			20pt;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				320px;
+	height:				30px;
+	background:			#ccf;
+	margin-top:			0px;
+	margin-bottom:			30px;
+	}
+
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<body>
+<div id="vvod"><h1>Learn Interslavic words</h1>
+<h2><i>Učite se medžuslovjanskym slovam</i></h2>
+<p>This program allows you to practice your knowledge of basic Interslavic vocabulary. First, the program will ask you for a word. You don't have to type anything: all you need to do is to picture the translation mentally and then push the button to see the correct answer. If you had it right, you can go on to the next word by pushing the left button. If you didn't, press the right button. In that case, the same word will be repeated at the end of the series.</p></div>
+
+<input id="tabel1" type="text" style="display:none;">
+<input id="tabel2" type="text" style="display:none;">
+<input id="tabel3" type="text" style="display:none;">
+<input id="selex" type="number" value="" style="display:none;">
+
+<br /><br /><table width="100%" height="200px" class="toolkop" style="vertical-align:top;"><tr>
+<tr id="smer" height="20px"><td align="center"><u>Choose a direction</u>:
+	<form action="words_learning_tool.html" name="radiobutton" method="get">
+		<input name="smer" type="radio" checked="checked"> <b>Interslavic &rarr; English</b><br />
+		<input name="smer" type="radio"> <b>English &rarr; Interslavic</b>
+	</form><br />
+	<u>Select a group of words</u>:<br />
+	<select id="izbor">
+	  <option value="0">1-75</option>
+	  <option value="1">76-150</option>
+	  <option value="2">151-217</option>
+	  <option value="99">all</option>
+	</select>
+	</td></tr>
+<tr height="20px" valign="top"><td align="center"><input id="qWord" class="text" type="text" maxlength="100" style="color:blue; display:none;" readonly></td></tr>
+<tr height="20px" valign="top"><td align="center">
+	<input id="aWord" class="text" type="text" maxlength="100" style="color:red; display:none;" readonly>
+	<input id="qmark" class="text" type="text" maxlength="100" style="color:red; display:none;" value="?" readonly></td></tr>
+<tr height="20px" valign="top"><td align="center">
+	<input id="button1" type="button" value="Načinaj / Start" class="button" onclick="start ()">
+	<input id="button2" type="button" value="Pokaži odgovor / Show the answer" class="button" onclick="show ()" style="display:none;">
+	<input id="button3" type="button" value="Znaju / I know it" class="button" onclick="conti ('1')" style="display:none;">&nbsp;
+	<input id="button4" type="button" value="Povtori pozdněje / Repeat later" class="button" onclick="conti ('2')" style="display:none;">
+	<input id="button6" type="button" value="Načinaj odnova / Start again" class="button" onclick="location.reload ()" style="display:none;"></td></tr>
+<tr height="250px"><td align="center"><input id="leeg" class="text" type="text" readonly></td></tr>
+</table>
+<br>
+
+<center>
+<div id='output'></div>
+</center>
+
+<script type="text/javascript">
+	/* initial version: 12 IV 2018 */
+	var lastupdate = "27 V 2018";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,987 @@
+﻿@font-face {
+    font-family: 'HilandarskiUstavS';
+    src: url('http://steen.free.fr/css/HilandarskiUstavS.eot');
+    src: url('http://steen.free.fr/css/HilandarskiUstavS.eot?') format('embedded-opentype'),
+         url('http://steen.free.fr/css/HilandarskiUstavS.woff') format('woff'),
+         url('http://steen.free.fr/css/HilandarskiUstavS.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: oldstandardg;
+    src: url('http://steen.free.fr/css/oldstandardg.eot');
+    src: url('http://steen.free.fr/css/oldstandardg.eot?') format('embedded-opentype'),
+        url('http://steen.free.fr/css/oldstandardg.woff') format('woff'),
+        url('http://steen.free.fr/css/oldstandardg.ttf') format('truetype'),
+        url('http://steen.free.fr/css/oldstandardg.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'HirmosPonomarS';
+    src: url('http://steen.free.fr/css/HirmosPonomarS.eot');
+    src: url('http://steen.free.fr/css/HirmosPonomarS.eot?') format('embedded-opentype'),
+         url('http://steen.free.fr/css/HirmosPonomarS.woff') format('woff'),
+         url('http://steen.free.fr/css/HirmosPonomarS.ttf') format('truetype');
+         url('http://steen.free.fr/css/HirmosPonomarS.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'OldStandardJug';
+    src: url('http://steen.free.fr/css/OldStandardJug.eot');
+    src: url('http://steen.free.fr/css/OldStandardJug.eot?') format('embedded-opentype'),
+         url('http://steen.free.fr/css/OldStandardJug.woff') format('woff'),
+         url('http://steen.free.fr/css/OldStandardJug.ttf') format('truetype');
+         url('http://steen.free.fr/css/OldStandardJug.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'VozgianAbur';
+    src: url('http://steen.free.fr/css/Vozgian_Abur.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vinodolski Zakon';
+    src: url('http://steen.free.fr/css/Vinodolski Zakon_23112015_signiert.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EpistulaCroatica';
+    src: url('http://steen.free.fr/css/EpistulaCroatica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ArvaticaCroatica';
+    src: url('http://steen.free.fr/css/ArvaticafraDivkovic_TT 20112015 signiert.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FreeSerif';
+    src: url('http://steen.free.fr/css/FreeSerif.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BukyVede';
+    src: url('http://steen.free.fr/css/BukyVede-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body 
+	{
+	border:				none;
+	}
+
+body 
+	{
+	margin:				0 auto;
+	background:			#127 url("http://steen.free.fr/interslavic/images/background_interslavic_dark.jpg") !important; /*i.imgur.com/QEHf4.png and P8pWn.png*/
+	text-align:			center;
+	font-family:			ms sans serif, palatino linotype, book antiqua, times new roman, gentium, thryomanes, arial unicode ms;
+	font-size:			100%;
+	}
+
+h1, h2, h3, h4, h5, b, i, hr, #toc, #top, #news, #news p, #news p > b {color: #111 !important;}
+
+h1 	{
+	font-family: 			DejaVu Serif, Georgia !important;
+	font-size:			200%;
+	text-shadow: 			0px 2px 3px #999 !important;
+	width:				100%;
+	margin:				20px auto 20px auto;
+	padding:			0;
+	color:				#00c;
+	text-align:			center;
+	text-transform: 		uppercase;
+	font-weight:			bold;
+	}
+
+h2 	{
+	color:				#00c;
+	font-size:			18pt !important; /* 150% */
+	font-weight:			bold;
+	font-family: 			DejaVu Serif, Georgia, Serif !important;
+	text-shadow: 			0px 1px 3px #ccc !important;
+	text-align:			center;
+	}
+
+h3, h4, h5, h6 
+	{
+	color:				#00c;
+	margin:				0.5em 0 0 0;
+	text-decoration:		none;
+	}
+
+h3 	{
+	font-size:			120%;
+	font-weight:			bold;
+	text-align:			center;
+	}
+
+h4 	{
+	font-size:			110%;
+	font-weight:			bold;
+	text-align:			left;
+	}
+
+h5 	{
+	font-size:			100%;
+	font-weight:			bold;
+	text-align:			left;
+	}
+
+p 	{
+	margin:				1em 0;
+	text-align:			justify;
+	letter-spacing:-.04em !important;
+	font-family:			Cambria;
+	}
+
+p.quote
+	{
+	margin:				1em 4em;
+	font-style:			italic;
+	}
+
+p.quote em
+	{
+	font-style:			normal;
+	}
+
+b	{
+	color:				#00c;
+	}
+
+i	{
+	color:				#00c;
+	}
+
+sup	{
+	font-size:			75%;
+	}
+
+img 	{
+	border:				none;
+	margin-left:			5px;
+	margin-right:			5px;
+	}
+
+ul li	{
+	text-align:			justify;
+	margin-left:			27px; /** 1em **/
+	color:				black;
+	}
+	
+ol li	{
+	text-align:			justify;
+	margin-left:			22px; /** 25px **/
+	color:				black;
+	}
+
+
+a
+	{
+	target:				_top;
+	}
+
+a:link {
+	color:				#00c;
+	font-weight:			bold;
+	}
+
+a:link.current, a:link.current	{ color: #66f; }
+
+a:visited 
+	{
+	color:				#009;
+	font-weight:			bold;
+	}
+
+a:hover
+	{
+	color:				#f00;
+	}
+
+pre 	{
+	font-family:			"Lucida Console", "Courier New", Courier, monospace;
+	font-size:			80%;
+	overflow: 			auto;
+	width: 				100%;
+	}
+
+p table	{
+	background:			none;
+	border:				none;
+	border-collapse:		collapse;
+	vertical-align:			middle;
+	empty-cells:			hide;
+	}
+
+table 	{border-spacing: 0 !important;}
+
+table.border
+	{
+	background:			none;
+	border-collapse:		collapse;
+	vertical-align:			middle;
+	empty-cells:			hide;
+	font-size:			90%;
+	}
+
+table.border th
+	{
+	border:				1px solid #111;
+	background:			#cedeee;
+	text-align:			center;
+	color:				black;
+	padding:			3px 4px;
+	vertical-align:			middle;
+	}
+
+table.border th.leeg
+	{
+	border:				none;
+	background:			none;
+	padding:			0px;
+	vertical-align:			middle;
+	color:				orange;
+	font-size:			200%;
+	}
+
+table.border td	
+	{
+	background:			white;
+	border:				1px solid #111;
+	empty-cells:			hide;
+	padding:			4px 10px;
+	vertical-align:			middle;
+	}
+
+table.border td b
+	{
+	color:				black;
+	}
+
+table.border td b.blue
+	{
+	color:				blue;
+	}
+
+b.red
+	{
+	color:				red;
+	}
+
+table.border tr.alf td
+	{
+	font-family:			tahoma;
+	vertical-align:			top;
+	padding:			2px 4px;
+	text-align:			center;
+	}
+
+table.slov
+	{
+	border-collapse:		collapse;
+	}
+
+table.slov td
+	{
+	border-right:			1px solid blue;
+	border-left:			1px solid blue;
+	}
+
+table.slov td p
+	{
+	margin-top:			5px;
+	margin-bottom:			5px;
+	font-size:			90%;
+	}
+
+table.slov td li
+	{
+	font-size:			90%;
+	letter-spacing:-.04em !important;
+	margin-left:			0em;
+	margin-right:			2em;
+	text-align:			justify;
+	}
+
+table.prep
+	{
+	color:				black;
+	margin-left:			3em;
+	}
+
+table.prep td
+	{
+	text-align:			left;
+	}
+
+table.toolkop th
+	{
+	color:				blue;
+	font-weight:			bold;
+	}
+
+table.toolkop td 
+	{
+	color:				black;
+	}
+
+td
+	{
+	vertical-align:			top;
+	}
+
+td p
+	{
+	font-size:			100%;
+	font-weight:			normal;
+	vertical-align:			top;
+	color:				black;
+	}
+
+table.dict td
+	{
+	padding:			0px 15px;
+	font-size:			80%;
+	border-right:			1px solid blue;
+	border-left:			1px solid blue;
+	}
+
+table.dict hr
+	{
+	width:				70%;
+	text-align:			left;
+	margin-top:			20px;
+	margin-bottom:			-10px;
+	height:				2px;
+	}
+
+table.dict h2
+	{
+	text-align:			left;
+	font-size:			250%;
+	font-weight:			bold;
+	color:				blue;
+	}
+
+table.dict h4
+	{
+	text-align:			right;
+	width:				80%;
+	margin:				-2px 0 0 0;
+	}
+
+table.dict h4 a
+	{
+	text-align:			right;
+	text-decoration:		none;
+	font-size:			70%;
+	}
+
+p.unicode table td
+	{
+	font-family:			Code2000, Thryomanes, Gentium, Lucida Sans Unicode, Arial Unicode;
+	font-size:			90%;
+	}
+
+caption {
+	font-size:			80%;
+	text-align:			center;
+	margin:				1ex auto;
+	caption-side:			bottom;
+	}
+
+hr	{
+	color:				#00f;
+	width:				95%;
+	height:				1px;
+	margin:				0 3em;
+	}
+
+textarea
+	{
+	width:				100%;
+	height:				100%;
+	border:				1px solid black;
+	overflow:			auto;
+	}
+
+textarea.ns
+	{
+	background:			none; /* #ccf; */
+	font-weight:			normal;
+	color:				blue;
+	font-family:			Gentium, Cambria, Arial Unicode MS, Lucida Sans Unicode, Code2000, MS Reference Sans Serif, Microsoft Sans Serif;
+	font-size:			12pt;
+	border:				0px;
+	text-align:			justify;
+	}
+
+textarea.invoer
+	{
+	background:			#ccf;
+	color:				black;
+	}
+
+textarea.output
+	{
+	color:				blue;
+	}
+
+.ns_button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			10pt;
+	font-weight:			bold;
+	width:				25px;
+	height:				25px;
+	background:			#ccccff; /** #ddb0f0; #e090b0; **/
+	margin:				0px;
+	}
+
+.blue, b.blue
+	{
+	color:				blue;
+	}
+
+.aut
+	{
+	font-variant:			small-caps;
+	}
+
+.uglata, .uglata p
+	{
+	font-family:			EpistulaCroatica !important;
+	}
+
+.glago, .glago p
+	{
+	font-family:			BukyVede !important;
+	font-size:			13pt;
+	}
+
+.abur, .abur p
+	{
+	font-family:			VozgianAbur !important;
+	font-size:			13pt;
+	}
+
+.abur h3
+	{
+	font-size:			120%;
+	}
+
+.georg, .georg p
+	{
+	font-size:			11pt;
+	}
+
+.katakana, .katakana p
+	{
+	font-size:			11pt;
+	line-height:			1.4;
+	}
+
+#top
+	{
+	float:				right;
+	margin-left:			10px;
+	color:				blue;
+	font-size:			90%;
+	}
+
+#top a:link
+	{
+	text-decoration:		none;
+	}
+
+/** DICTIONARY **/
+
+#dict table
+	{
+	width:				91%;
+	margin-left:			2em;
+	}
+
+#dict table col
+	{
+	width:				33%;
+	}
+
+#dict tr
+	{
+	vertical-align:			top;
+	}
+
+#dict td
+	{
+	padding:			0px 15px;
+	font-size:			80%;
+	border-right:			0px solid blue;
+	border-left:			0px solid blue;
+	color:				black;
+	}
+
+#dict .grletter
+	{
+	font-family: 			Serif !important;
+	font-size:			500%;
+	font-weight:			bold;
+	color:				#11b;
+	}
+
+#dict .klletter
+	{
+	font-size:			100%;
+	font-weight:			bold;
+	}
+
+#dict a:link, #dict a:visited
+	{
+	color:				black;
+	text-decoration:		none;
+	}
+
+#dict a:hover
+	{
+	color:				orange;
+	}
+
+#dict h4
+	{
+	font-size:			8pt;
+	text-align:			right;
+	width:				100%;
+	margin:				-20px 0 -20px 0;
+	}
+
+#dict h4 a:link
+	{
+	text-align:			right;
+	text-decoration:		none;
+	font-size:			70%;
+	}
+
+#dict hr
+	{
+	width:				100%;
+	text-align:			center;
+	margin-top:			2px;
+	margin-bottom:			15px;
+	height:				2px;
+	}
+
+#dict p
+	{
+	margin:				1.5pt 0;
+	text-align:			justify;
+	text-indent:			-1.5em;
+	}
+
+#dict b
+	{
+	letter-spacing:			0.15pt;
+	font-size:			103%;
+	margin-right:			2px;
+	}
+#dict i
+	{
+	color:				black;
+	margin-left:			5px;
+	margin-right:			5px;
+	}
+
+/** TOC **/
+
+#toc	{
+	text-align:			center;
+	font-size:			90%;
+	color:				blue;
+	font-weight:			bold;
+	font-style:			normal;
+	margin-bottom:			12px;
+	}
+
+#toc a:link, #toc a:visited, #toc a:hover
+	{
+	font-weight:			bold;
+	}
+
+#toc a:link, #toc a:visited
+	{
+	color:				blue;
+	font-weight:			normal;
+	text-decoration:		none;
+	}
+
+#toc a:hover
+	{
+	color:				red;
+	}
+
+#toc ul
+	{
+	list-style-type:		none;
+	}
+
+#toc ul li
+	{
+	font-size:			90%;
+	font-weight:			normal;
+	font-style:			normal;
+	text-align:			left;
+	margin-left:			0em;
+	}
+
+#toc ul ul li, ul ul ul li
+	{
+	font-size:			90%;
+	font-style:			italic;
+	}
+
+#toc table ul li
+	{
+	text-align:			left;
+	}
+
+#toc ul li a:link, #toc ul li a:visited
+	{
+	text-decoration:		none;
+	}
+
+/** Header **/
+
+#header {
+	background:			none;
+	width:				100%;
+	text-align:			center;
+	clear:				both;
+	margin-top:			0.5em;
+	padding:			0;
+	}
+
+#header img
+	{
+	background:			transparent;
+	box-shadow: 			1px 2px 10px #777 !important;
+	margin: 			5px !important;
+	margin-right: 			4px !important;
+	height:				60px;
+	}
+
+#header table, #menu table	 
+	{
+	background:			none;
+	border:				0px;
+	color:				black;
+	width:				100%;
+	vertical-align:			top;
+	}
+
+#header tr 
+	{
+	width: 				98% !important;
+	height: 			auto !important;
+	margin-top: 			5px !important;
+	margin-bottom: 			-2px !important;
+	padding: 			5px !important;
+	background: 			#ed0 !important;
+	display: 			inline-block !important;
+	position: 			relative !important;
+	z-index: 			2 !important;
+	-moz-box-shadow: 		0 3px 4px rgba(0,0,0,0.5)!important;
+	-webkit-box-shadow: 		0 3px 4px rgb(0,0,0,0.5)!important;
+	box-shadow: 			0 3px 4px rgba(0,0,0,0.5)!important;
+	border-left: 			6px solid #c10 !important;
+	border-right: 			6px solid #ed0 !important;
+	}
+
+#header span 
+	{
+	font-size: 			0 !important;
+	text-shadow: 			none !important;
+	line-height: 			2000% !important;
+	}
+
+#header div.is
+	{
+	color: 				#337;
+	font-family: 			Serif, Times New Roman, Georgia;
+	font-size: 			37pt;
+	font-weight: 			normal;
+	text-shadow: 			1px 1px 2px #669;
+	letter-spacing:			-.05em;
+	text-align: 			left;
+	margin: 			0px 10px;
+	margin-top:			-5px;
+	display: 			block;
+	}
+
+#header div.ms
+	{
+	color: 				#920 !important;
+	font-size: 			13pt !important;
+	font-weight: 			bold !important;
+	font-family: 			Georgia, Serif!important;
+	letter-spacing:			-.04em !important;
+	font-variant: 			small-caps !important;
+	text-align: 			left !important;
+	margin-top: 			-2px /* 25px */ !important;
+	margin-bottom: 			0px !important;
+	margin-left: 			10px !important;
+	display: 			block !important;
+	text-shadow: 			-1px 1px 2px #ff5 !important;
+	}
+
+#menu
+	{
+	width:				auto !important; /* 180px */
+	background:			#139 !important; /* #06b */
+	background: 			-moz-linear-gradient(top, #b11, #600);
+	background: 			-webkit-gradient(linear, right top, left bottom, color-stop(0%,#b11), color-stop(100%,#600));
+	background: 			-webkit-linear-gradient(top right, bottom left, #b11, #600);
+	background: 			-o-linear-gradient(top, #b11, #600);
+	background: 			-ms-linear-gradient(top, #b11, #600);
+	background: 			linear-gradient(top, #b11, #600);
+	-moz-border-radius: 		0 0 10px 10px !important;
+	-webkit-border-radius: 		0 0 10px 10px !important;
+	border-radius: 			0 0 10px 10px !important;
+	cursor: 			pointer;
+	padding: 			10px !important;
+	padding-top: 			25px !important;
+	-moz-box-shadow: 		0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 		0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 			0 0 10px rgba(0,0,0,0.5);
+	text-align:			left;
+	margin-top:			0;
+	margin-bottom:			25px;
+	margin-left: 			20px !important;
+	font-family:			century gothic, arial narrow, ms sans serif;
+	position:			relative;
+	z-index:			1;
+	}
+
+#menu table.knop td
+	{
+	border:				none; /** 2px outset #06f; was: #9cc, 0f9 **/ 
+	background:			transparent !important; /* #0000a0; */
+	font-size:			12pt;
+	font-weight:			bold;
+	font-variant: 			small-caps !important;
+	font-family: 			DejaVu Sans, Sans, Verdana, Tahoma !important;
+	vertical-align:			middle;
+	text-align:			left;
+	padding:			1px;
+	height:				18px;
+	width:				300px;
+	}
+
+#menu a, #menu b
+	{
+	color: 				#ed1; /** fada03 **/
+	text-align: 			left !important;
+	text-shadow: 			1px 1px 2px #662 !important;
+	font-size:			100%;
+	font-weight:			bold;
+	text-decoration:		none;
+	}
+
+#menu a div 
+	{
+	margin-left: 			5px !important;
+	}
+
+#menu a:hover div, #menu b:hover div
+	{
+	color:				#fff;
+	background:			transparent !important; /* #008; */
+	text-shadow: 			1px 1px 2px #c52525 !important;
+	padding: 			10 !important;
+	text-shadow: 			1px 1px 2px #333 !important;
+	}
+
+#menu a:hover div:first-letter 
+	{
+	color: 				#ed1 !important;
+	}
+
+div[onmouseover~="klapuit"] 
+	{
+	position: 			relative !important;
+	padding-left: 			0px !important;
+	}
+
+/* div[onmouseover~="klapuit"] > a > div { display: list-item !important; list-item-style: none; } */
+
+.clLevel0, .clLevel1, .clLevel2
+	{ 				
+	font-weight: 			bold; 
+	font-size: 			16px; 
+	color: #111 !important;
+	width: 120% !important;
+	position: absolute !important;
+	left: 150px !important;
+	top: -5px !important;
+	padding: 5px !important;
+	margin: 0 !important;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #049;
+	background: -moz-linear-gradient(top, #026, #149);
+	background: -webkit-gradient(linear, right top, left bottom, color-stop(0%,#026), color-stop(100%,#149));
+	background: -webkit-linear-gradient(top right, bottom left, #026, #149);
+	background: -o-linear-gradient(top, #026, #149);
+	background: -ms-linear-gradient(top, #026, #149);
+	background: linear-gradient(top, #026, #149);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	z-index:			2;
+	}
+
+#news
+	{
+	width:				90%;
+	padding:			50px 25px;
+	background:			#ffffff; /* url('../interslavic/images/background_interslavic.jpg') left top */
+	border:				none !important; /* 1px solid black; */
+	text-align:			center;
+	color:				#000;
+	font-family:			cambria, tahoma, ms sans serif, arial, times new roman, palatino linotype, gentium, code2000, verdana;
+	font-size:			12pt;
+	position:			relative;
+	z-index:			auto;
+	margin-top: 			20px !important;
+	margin-left: 			auto !important;
+	margin-right: 			auto !important;
+	-moz-box-shadow: 		2px 0 4px rgba(0,0,0,0.6) !important;
+	-webkit-box-shadow: 		2px 0 4px rgba(0,0,0,0.6) !important;
+	box-shadow: 			2px 0 4px rgba(0,0,0,0.6) !important;
+	}
+
+#news p, li
+	{
+	margin-left:			3em;
+	margin-right:			3em;
+	}
+
+#news li
+	{
+	letter-spacing:-.04em !important;
+	}
+
+#news h4, #news h5
+	{
+	margin-left:			2.75em;
+	}
+
+#news a:link 
+	{
+	color: 				#228 !important;
+	}
+
+#news a > i 
+	{
+	color: 				inherit !important;
+	font-size: 			12pt !important;
+	font-style: 			normal !important;
+	font-variant: 			small-caps !important;
+	}
+
+#news a:hover {color: #d22 !important;}
+#news a:visited {color: #88a !important;}
+
+#news p.quote
+	{
+	margin-left:			6em;
+	margin-right:			6em;
+	font-size:			11pt;
+	}
+
+#news table
+	{
+	text-align:			left;
+	}
+
+#news table.slov
+	{
+	text-align:			center;
+	border-collapse:		collapse;
+	}
+
+#news table.slov td
+	{
+	border-right:			0px;
+	border-left:			0px;
+	}
+
+#news table.slov td p
+	{
+	margin-top:			5px;
+	margin-bottom:			5px;
+	margin-left:			1.5em;
+	margin-right:			1.5em;
+	}
+
+h2 + b {
+	line-height: 60% !important;
+	font-style: normal !important;
+	font-variant: small-caps !important;
+	font-size: 12pt !important;
+	text-shadow: 0px 1px 3px #ccc !important;
+	}
+
+
+
+/** Footer Stuff **/
+
+#footer {
+	background:			none;
+	width:				100%;
+	border:				0px;
+	margin-left:			-2em;
+	margin-bottom:			1em;
+	}
+
+#footer td
+	{
+	vertical-align:			middle;
+	font-size:			90%;
+	color:				yellow;
+	}
+
+#footer p, #footer a
+	{
+	color:				#ccf !important;
+	text-decoration:		none;
+	}
+
+#footer a:hover
+	{
+	color:				white !important;
+	}
+
+
+
+/** End **/

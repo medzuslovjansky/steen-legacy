@@ -1,0 +1,474 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Declension of Interslavic nouns — Sklanjanje medžuslovjanskyh imennikov — Склањанје меджусловјанскых именников" />
+<title>Interslavic – Noun declension tool</title>
+
+<script type="text/javascript">
+
+function declension ()
+{
+	var gender	= document.getElementById("genderList").value;
+	var noun	= document.getElementById("noun").value;
+	var type 	= 3;
+	if (document.radiobutton.orth[0].checked == true)		{ var type = 1; flav = 3; }
+	else if (document.radiobutton.orth[1].checked == true)		{ var type = 5; flav = 3; }
+	else								{ var type = 1; flav = 2; }
+
+	noun = (noun.replace(/ /g,""));
+	if (noun.length == 0)
+	{
+		result = "<h1>ERROR: no input</h1>";
+	}
+	else
+	{
+		noun	= noun.replace("ė","(e)"); noun.replace("è","(e)"); noun = noun.replace("ȯ","(o)"); noun = noun.replace("ò","(o)"); 
+		noun	= transliterate (noun, 1, "2", 0, 1); noun = noun.replace (/t́/g,"ť"); noun = noun.replace (/d́/g,"ď"); noun = noun.replace (/ĺ/g,"ľ");
+
+		n1	= noun.substring (0, noun.length - 2);
+		n2	= noun.substring (noun.length - 2, noun.length);
+		n2 	= n2.replace(/([cšžčćđńľŕťďśźj])/g,"$1ь"); 
+		noun	= n1 + n2; 
+
+		noun 	= noun.replace((String.fromCharCode(40)) + "e" + (String.fromCharCode(41)),"ė");
+		noun 	= noun.replace((String.fromCharCode(40)) + "o" + (String.fromCharCode(41)),"ȯ");
+ 
+		gender	= establish_gender (noun, gender);
+		root	= establish_root (noun, gender);
+		plroot	= establish_plural_root (root);
+		plgen	= establish_plural_gender (root, plroot, gender);
+		nom_sg	= nominative_sg (noun, root, gender, type);
+		gen_sg	= genitive_sg (root, gender, type);
+		dat_sg	= dative_sg (root, gender, type);
+		acc_sg	= accusative_sg (nom_sg, root, gender, type);
+		ins_sg	= instrumental_sg (root, gender, type, flav);
+		loc_sg	= locative_sg (root, gender, type);
+		voc_sg	= vocative_sg (nom_sg, root, gender, type);
+		nom_pl	= nominative_pl (plroot, plgen, type);
+		gen_pl	= genitive_pl (plroot, plgen, type);
+		dat_pl	= dative_pl (plroot, gender, type);
+		acc_pl	= accusative_pl (nom_pl, gen_pl, plgen);
+		ins_pl	= instrumental_pl (plroot, gender, type);
+		loc_pl	= locative_pl (plroot, gender, type);
+
+		result = '<center><table class="border">';
+		result += '<tr valign="top"><th class="leeg"> </th><th> singular </th><th> plural </th></tr>';
+		result += '<tr><th> Nom. </th><td>' + nom_sg + '</td><td>' + nom_pl + '</td></tr>';
+		result += '<tr><th> Acc. </th><td>' + acc_sg + '</td><td>' + acc_pl + '</td></tr>';
+		result += '<tr><th> Gen. </th><td>' + gen_sg + '</td><td>' + gen_pl + '</td></tr>';
+		result += '<tr><th> Dat. </th><td>' + dat_sg + '</td><td>' + dat_pl + '</td></tr>';
+		result += '<tr><th> Inst. </th><td>' + ins_sg + '</td><td>' + ins_pl + '</td></tr>';
+		result += '<tr><th> Loc. </th><td>' + loc_sg + '</td><td>' + loc_pl + '</td></tr>';
+		result += '<tr><th> Voc. </th><td>' + voc_sg + '</td><th class="leeg"></th></tr>';
+		result += '</table></center>';
+	}
+
+	document.getElementById('output').innerHTML = result;
+
+}
+
+function establish_gender (noun, gender)
+{
+	var result = "";
+	if (noun.length == 0)
+		{ result = "ERROR-1"; }
+
+	else if ((noun == "den") || (noun == "dėn") || (noun == "denjь") || (noun == "dėnjь"))
+		{ result = "m3"; }
+	else if ((gender.charAt (0) == "m") && ((noun.lastIndexOf("en") == noun.length - 2) || (noun.lastIndexOf("enjь") == noun.length - 4)) 
+		&& ((noun.substring (0,5) == "kamen") || (noun.substring (0,5) == "jelen") || (noun.substring (0,6) == "jęčmen") || (noun.substring (0,6) == "ječmen")
+		|| (noun.substring (0,5) == "koren") || (noun.substring (0,6) == "kremen") || (noun.substring (0,6) == "plåmen") || (noun.substring (0,6) == "plamen") 
+		|| (noun.substring (0,6) == "pŕsten") || (noun.substring (0,6) == "prsten") || (noun.substring (0,7) == "strumen") || (noun.substring (0,6) == "greben") 
+		|| (noun.substring (0,6) == "stępen") || (noun.substring (0,6) == "stepen") || (noun.substring (0,6) == "stųpen") || (noun.substring (0,6) == "stupen")
+		|| (noun.substring (0,5) == "šršen") || (noun.substring (0,5) == "šŕšen") || (noun.substring (0,5) == "sršen") || (noun.substring (0,5) == "sŕšen")))
+		{ result = "m3"; } <!--- kamenj, jelenj, grebenj, jęčmenj, korenj, kremenj, plåmenj, pŕstenj, remenj, stępenj/stųpeń, strumenj, šršenj --->
+	else if ((gender == "f") && (noun.lastIndexOf("v") == noun.length - 1))
+		{ result = "f3"; }
+	else if ((noun == "mati") || (noun == "dočьi") || (noun == "doćьi"))
+		{ result = "f3"; }
+	else if ((noun.lastIndexOf("a") == (noun.length - 1)) || (noun.lastIndexOf("i") == (noun.length - 1)))
+		{ result = "f1"; }
+	else if (noun.lastIndexOf("ę") == (noun.length - 1))
+		{ result = "n2"; }
+	else if ((noun.lastIndexOf("ь") != (noun.length - 2)) && (noun.lastIndexOf("e") == (noun.length - 1)))
+		{ result = "n2"; }
+	else if ((noun.lastIndexOf("o") == (noun.length - 1)) || (noun.lastIndexOf("e") == (noun.length - 1)))
+		{ result = "n1"; }
+	else if ((noun.lastIndexOf("u") == (noun.length - 2)) && (noun.lastIndexOf("m") == (noun.length - 1)))
+		{ result = "n1"; }
+	else if (gender == "m1")
+		{ result = "m1"; }
+	else if (gender == "f")
+		{ result = "f2" }
+	else	{ result = "m2"; } 
+	return result;
+}
+
+function establish_root (noun, gender)
+{ 
+	var result = ""; 
+	if ((noun == "den") || (noun == "dėn") || (noun == "denjь") || (noun == "dėnjь"))
+		{ result = "dn"; }
+	else if (gender == "m3")
+		{ result = noun + "%"; result = result.replace ("jь%","%"); result = result.replace ("%",""); }
+	else if ((noun == "mati") || (noun == "dočьi") || (noun == "doćьi"))
+		{ result = noun.substring (0, noun.length - 1) + "er"; }
+	else if ((gender == "f3") && ((noun.lastIndexOf("o") == noun.length - 2) || (noun.lastIndexOf("ȯ") == noun.length - 2)) && (noun.lastIndexOf("v") == noun.length - 1))
+		{ result = noun.substring (0, noun.length - 2) + "v"; }
+	else if (gender == "f3")
+		{ result = noun; }
+	else if ((gender == "n2") && (noun.lastIndexOf("m") == noun.length - 2))
+		{ result = noun.substring (0, noun.length - 1) + "en"; }
+	else if (gender == "n2")
+		{ result = noun.substring (0, noun.length - 1) + "ęt"; }
+	else if (noun.lastIndexOf("i") == noun.length - 1)
+		{ result = (noun.substring (0, noun.length - 1) + "ь"); }
+	else if ((noun.lastIndexOf("a") == (noun.length - 1)) || (noun.lastIndexOf("e") == (noun.length - 1)) || 
+		 (noun.lastIndexOf("o") == (noun.length - 1)))
+		{ result = (noun.substring (0, noun.length - 1)); }
+	else if ((noun.lastIndexOf("u") == (noun.length - 2)) && (noun.lastIndexOf("m") == (noun.length - 1)))
+		{ result = (noun.substring (0, noun.length - 2)); }
+/*	else if ((gender == "f2") && (noun.lastIndexOf("ь") == noun.length - 1))
+		{ result = (noun.substring (0, noun.length - 1)); } */
+	else if ((gender == "f2") && (noun.lastIndexOf("ь") != noun.length - 1))
+		{ result = noun + "ь"; } 
+	else
+		{ result = noun; }
+
+	filler_e = result.lastIndexOf("ė");
+	filler_o = result.lastIndexOf("ȯ");
+	if ((filler_e != -1) || (filler_o != -1))
+	{
+		if (filler_o > filler_e) 	{ filler = filler_o; }
+		else				{ filler = filler_e; }
+		if (filler > result.length - 5)	{ result = (result.substring (0, filler)) + (result.substring (filler + 1, result.length)); }
+	}
+	return result;
+}
+
+function establish_plural_root (root)
+{
+	var result = "";
+	if ((root == "dětęt") || (root == "detet") || (root == "dětet") || (root == "detęt"))
+		{ result = "dětь"; }
+	else if ((root == "človek") || (root == "člověk"))
+		{ result = "ljudь"; }
+	else if (root == "ok")
+		{ result = "očь"; }
+	else if (root == "uh")
+		{ result = "ušь"; }
+	else if (root.substring (root.length - 4, root.length) == "anin")
+		{ result = root.substring (0, root.length - 2); }
+	else
+		{ result = root; }
+	return result;
+}
+
+function establish_plural_gender (root, plroot, gender)
+{
+	var result = "";
+	if ((root != plroot) && (plroot.indexOf ("n") == -1))
+		{ result = "f2"; }
+	else if ((gender == "f1") && (document.getElementById("genderList").value == "m1"))	
+		{ result = "m1"; }
+	else
+		{ result = gender; }
+	return result;
+}
+
+function nominative_sg (noun, root, gender, type)
+{
+	var result = "";
+	if (gender == "f2")
+		{ result = root; }
+	if (gender == "f3")
+		{ result = root.substring (0, root.length - 1) + "ȯv"; }
+	else if ((gender == "m3") && (root == "dn"))
+		{ result = "dėn / dėnj"; }
+	else if (gender == "m3")
+		{ result = root + " / " + root + "j"; }
+	else
+		{ result = noun; } 
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function accusative_sg (noun, root, gender, type)
+{
+	var result = "";
+	if (gender == "m1")							{	result = root + "a";	}
+	else if (gender == "f1")						{	result = root + "ų";	}
+	else									{	result = noun;	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function genitive_sg (root, gender, type)
+{
+	var result = "";
+	if ((gender == "m1") || (gender == "m2") || (gender == "n1"))		{	result = root + "a";	}
+	else if (gender == "f1")						{	result = root + "y";	}
+	else if (gender == "f2")						{	result = root + "i"; 	}
+	else if (gender == "f3")						{	result = root + "e / " + root + "i"; 	}
+	else if (gender == "m3")						{	result = root + "e / " + root + "ja"; 	}
+	else if (gender == "n2")						{	result = root + "e / " + root + "a"; 	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function dative_sg (root, gender, type)
+{
+	var result = "";
+	if ((gender == "m1") || (gender == "m2") || (gender == "n1"))		{	result = root + "u";	}
+	else if (gender == "f1")						{	result = root + "ě";	}
+	else if (gender == "f2")						{	result = root + "i"; 	}
+	else if (gender == "f3")						{	result = root + "i"; 	}
+	else if (gender == "m3")						{	result = root + "i / " + root + "ju"; 	}
+	else if (gender == "n2")						{	result = root + "i / " + root + "u"; 	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function instrumental_sg (root, gender, type, flav)
+{
+	var result = ""; 
+	if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ťь") == root.length - 2) && (flav != 2))				{	result = root + "#om / " + root + "om";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ďь") == root.length - 2) && (flav != 2))			{	result = root + "#om / " + root + "om";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ŕь") == root.length - 2) && (flav != 2))			{	result = root + "#om / " + root + "om";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("śь") == root.length - 2) && (flav != 2))			{	result = root + "#om / " + root + "om";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("źь") == root.length - 2) && (flav != 2))			{	result = root + "#om / " + root + "om";	}
+	else if ((gender == "m1") || (gender == "m2") || (gender == "n1"))	{	result = root + "om";	}
+	else if (gender == "f1")						{	result = root + "ojų";	}
+	else if (gender == "f2")						{	result = root + "jų"; 	}
+	else if ((gender == "f3") && (root.lastIndexOf ("v") == root.length - 1))
+										{	result = root.substring (0, root.length - 1) + "ȯvjų"; 	}
+	else if (gender == "f3")						{	result = root + "jų"; 	}
+	else if (gender == "m3")						{	result = root + "em / " + root + "jem"; 	}
+	else if (gender == "n2")						{	result = root + "em / " + root + "om"; 	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function locative_sg (root, gender, type)
+{
+	var result = "";
+	if ((gender == "m1") || (gender == "m2") || (gender == "n1"))		{	result = root + "u";	}
+	else if (gender == "f1")						{	result = root + "ě";	}
+	else if (gender == "f2")						{	result = root + "i"; 	}
+	else if (gender == "f3")						{	result = root + "i"; 	}
+	else if (gender == "m3")						{	result = root + "i / " + root + "ju"; 	}
+	else if (gender == "n2")						{	result = root + "i / " + root + "u"; 	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function vocative_sg (nom_sg, root, gender, type)
+{ 
+	var result = "";
+	if ((gender == "m1") || (gender == "m2"))
+	{	if ( nom_sg.lastIndexOf ("ėc") == nom_sg.length - 2)		{	result = root.substring (0, root.length - 2) + "če";	}
+		else if ( nom_sg.lastIndexOf ("ec") == nom_sg.length - 2)	{	result = root.substring (0, root.length - 2) + "če";	}
+		else if ( root.lastIndexOf ("ь") == root.length - 1)		{	result = root + "u";	}
+		else if ( root.lastIndexOf ("k") == root.length - 1)		{	result = root.substring (0, root.length - 1) + "če";	}
+		else if ( root.lastIndexOf ("g") == root.length - 1)		{	result = root.substring (0, root.length - 1) + "že";	}
+		else if ( root.lastIndexOf ("h") == root.length - 1)		{	result = root.substring (0, root.length - 1) + "še";	}
+		else								{	result = root + "e";	}
+	}
+	else if (gender == "f1")						{	result = root + "#o";	}
+	else if (gender == "f2")						{	result = root + "#i";	}
+	else if (root == "dn")							{	result = "den / dnju";	}
+	else if (gender == "m3")						{	result = root + " / " + root + "ju";	}
+	else									{	result = nom_sg; return result;	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function nominative_pl (root, gender, type)
+{
+	var result = "";
+	if (gender.charAt (0) == "n")						{	result = root + "a";	}
+	else if (gender == "m1")						{	result = root + "i";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ťь") == root.length - 2) && (flav != 2))			{	result = root + "#y / " + root + "y";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ďь") == root.length - 2) && (flav != 2))			{	result = root + "#y / " + root + "y";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ŕь") == root.length - 2) && (flav != 2))			{	result = root + "#y / " + root + "y";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("śь") == root.length - 2) && (flav != 2))			{	result = root + "#y / " + root + "y";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("źь") == root.length - 2) && (flav != 2))			{	result = root + "#y / " + root + "y";	}
+	else if ((gender == "f1") || (gender == "m2"))				{	result = root + "y";	}
+	else if (gender == "m3")						{	result = root + "i / " + root + "je";	}
+	else									{	result = root + "i";	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function accusative_pl (nom_pl, gen_pl, gender)
+{
+	var result = "";
+	if (gender == "m1")							{	result = gen_pl;	}
+	else									{	result = nom_pl;	}
+	return result;
+}
+
+function genitive_pl (root, gender, type)
+{
+	var result = ""; 
+	if ((gender == "f1") || (root == "morjь") || (root == "poljь"))		{ 	result = root.replace ("ь","%"); 
+											result = result.replace (/([pbvfmlnr])j%/, "$1ej");
+											result = result + "%"; }
+	else if (gender.charAt (0) == "n")					{	result = root.replace ("ь","%"); 
+											result = result.replace (/([pbvfmlnrszńľŕťďśźščž])j%/, "$1ij");
+											result = result + "%"; }
+	else if (gender == "m3")						{	result = root + "ev / " + root + "jev"; }
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ťь") == root.length - 2) && (flav != 2))			{	result = root + "#ov / " + root + "ov";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ďь") == root.length - 2) && (flav != 2))			{	result = root + "#ov / " + root + "ov";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("ŕь") == root.length - 2) && (flav != 2))			{	result = root + "#ov / " + root + "ov";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("śь") == root.length - 2) && (flav != 2))			{	result = root + "#ov / " + root + "ov";	}
+	else if ((gender.charAt (0) == "m") && (root.lastIndexOf ("źь") == root.length - 2) && (flav != 2))			{	result = root + "#ov / " + root + "ov";	}
+	else if (gender.charAt (0) == "m")					{	result = root + "ov";	}
+	else 									{	result = root + "ij"; }
+	result = result.replace ("jsk%","jsk"); result = result.replace ("bomb%","bomb"); result = result.replace ("porn%","porn"); result = result.replace ("mš%","meš");
+	result = result.replace ("zl%", "zȯl"); result = result.replace ("tl%", "tȯl"); result = result.replace ("mgl%", "mgȯl");
+	result = result.replace (/([pbfvmlnrtdszkgh])([kn])%/,"$1ȯ$2"); result = result.replace (/([jńľŕťďścšžč])([kn])%/,"$1e$2");
+	result = result.replace (/([pbfvmlnrtdszkghjńľŕťďścšžč])([bvmn])%/,"$1e$2"); 
+	result = result.replace (/%/g,"");
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function dative_pl (root, gender, type)
+{
+	var result = "";
+	if (gender == "m3")							{	result = root + "am / " + root + "jam"; }
+	else									{	result = root + "am";	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function instrumental_pl (root, gender, type)
+{
+	var result = "";
+	if (gender == "m3")							{	result = root + "ami / " + root + "jami"; }
+	else									{	result = root + "ami";	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function locative_pl (root, gender, type)
+{
+	var result = "";
+	if (gender == "m3")							{	result = root + "ah / " + root + "jah"; }
+	else									{	result = root + "ah";	}
+	result = rules (result); result = transliterate (result, type, flav, 0, 1);
+	return result;
+}
+
+function rules (word)
+{ 
+	word = word.replace ("ьo", "ьe");
+	word = word.replace ("ьy", "ьe");
+	word = word.replace ("ьě", "i");
+	word = word.replace ("#", "");
+	word = word.replace ("tь", "ť"); word = word.replace ("dь", "ď"); word = word.replace ("sь", "ś"); word = word.replace ("zь", "ź");
+	word = word.replace (/ь/g, "");
+	word = word.replace ("ťi", "ti"); word = word.replace ("ďi", "di"); word = word.replace ("śi", "si"); word = word.replace ("źi", "zi");
+	word = word.replace (/ľi/g, "li"); word = word.replace ("ńi", "ni"); word = word.replace ("ŕi", "ri"); 
+	word = word.replace ("jy", "ji");
+	word = word.replace ("cy", "ci");
+	return word;
+}
+
+</script>
+
+<style type="text/css">
+INPUT.TEXT
+	{
+	width:				150px;
+	height:				18pt;
+	font-family:			courier new, arial unicode ms;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+TEXTAREA.OUTPUT
+	{
+	width:				180px;
+	height:				150px;
+	border:				none;
+	background:			none;
+	font-family:			ms sans serif, verdana, times new roman, arial unicode ms;
+	font-weight:			bold;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<body>
+<h1>Declension of nouns in Interslavic</h1>
+<h2><i>Sklanjanje medžuslovjanskyh imennikov<br>Склањанје меджусловјанскых именников</i></h2>
+
+<p>This program shows how nouns are declined in Interslavic. Enter a noun (in the nominative) in the box, then select its gender. If a noun loses its last vowel in declension, like in the case of <b><i>pes</i></b> (gen. <b><i>psa</i></b>), you either use the letter <b>ė</b> or <b>ȯ</b> from the etymological alphabet or place this vowel between brackets: <b><i>p(e)s</i></b> and <b><i>dostat(o)k</i></b> will generate the desired output, too. Input is accepted in both standard orthographies and in etymological orthography. Because there are very few irregular nouns in Interslavic, this program should work for every noun.</p>
+
+<p>Tutoj program pokazyvaje sklanjanje medžuslovjanskyh imennikov. V lěvo polje vpiši imennik (v imeniteljniku), potom izberi rod. Ako imennik v sklanjanju trati poslědnju samoglasku, napr. v padu slova <b><i>pes</i></b> (rod. <b><i>psa</i></b>), možno jest uptrěbiti bukvu <b>ė</b> ili <b>ȯ</b> iz etimologičnogo alfabeta abo pisati ovu samoglasku medžu zatvorkami: <b><i>p(e)s</i></b> i <b><i>dostat(o)k</i></b> takože davajut pravilny rezultat. Vvod može byti v standardnom ili etimologičnom pravopisanju. Tomu že v medžuslovjanskom jest velmi malo neregularnyh imennikov, tutoj program povinen jest obslužiti vse imenniky.</p>
+
+<table width="100%" class="toolkop"><tr>
+<th width="25%" align="center">Insert a noun:</th>
+<th width="25%" align="center">Gender:</th>
+<th width="25%" align="center">Result in:</th>
+<th width="25%" align="center">Done?<br>&nbsp;</th>
+</tr><tr>
+<td align="center">
+	<input id="noun" class="text" type="text" maxlength="18" value="">
+</td><td align="center">
+	<select id="genderList">
+	  <option value="m2">Masculine (inanimate)</option>
+	  <option value="m1">Masculine (animate)</option>
+	  <option value="f">Feminine</option>
+	  <option value="n">Neuter</option>
+	</select>
+</td><td align="center">
+	<form action="declinator.html" name="radiobutton" method="get">
+		<input name="orth" type="radio" value="1" checked="checked"> Latin alphabet<br />
+		<input name="orth" type="radio" value="2"> Cyrillic alphabet<br />
+		<input name="orth" type="radio" value="3"> Etymological alphabet
+	</form></td>
+<td align="center">
+	<input type="button" value="Decline" class="button" onclick="declension ()"></td>
+</tr></table>
+<br>
+
+<center>
+<div id='output'></div>
+</center>
+
+<script type="text/javascript">
+	var lastupdate = "30.03.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

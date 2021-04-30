@@ -1,0 +1,316 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<script src="../scripts/thesaurus.js" language="JavaScript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Interslavic spell-checker">
+<meta name="author" content="Jan van Steenbergen">
+<meta name="keywords" content="interslavic, inter-slavic, medžuslovjanski, меджусловјански, slovianski, slovjanski, slovijanski, словиански, словянски, словјански, словиянски, словијански, novoslovienskij, slavic, slavonic, panslavic">
+<title>Interslavic spell-checker</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+window.onload = function(e) 
+{
+ 	document.getElementById("inputtext").focus();
+}
+
+function display ()
+{
+	orthografie = document.getElementById ("ort").value;
+	if (orthografie == "latin")		{ document.getElementById("lat").style.display = ""; document.getElementById("cyr").style.display = "none"; }
+	else if (orthografie == "kiril")	{ document.getElementById("lat").style.display = "none"; document.getElementById("cyr").style.display = ""; }
+	
+}
+
+function search ()
+{
+	var priet = thesaurus(); 
+	orthografie = document.getElementById ("ort").value;
+
+	if (orthografie == "latin")
+	{	priet = priet.replace (/([čšžjČŠŽJ])ě/g,"$1e");
+		priet = priet.replace (/([ŕťďśź])e/g,"$1œ"); priet = priet.replace (/([ŕťďśź])u/g,"$1ů"); priet = priet.replace (/([ŕťďśź])i/g,"$1î");
+		if (document.getElementById ("check_a").checked == false)	{ priet = priet.replace (/å/g, "a"); }
+		if (document.getElementById ("check_je").checked == false)	{ priet = priet.replace (/ě/g, "e"); }
+		if (document.getElementById ("check_eu").checked == false)	{ priet = priet.replace (/ę/g, "e"); priet = priet.replace (/ų/g, "u"); }
+		if (document.getElementById ("check_o").checked == false)	{ priet = priet.replace (/ȯ/g, "o"); }
+		if (document.getElementById ("check_y").checked == false)	{ priet = priet.replace (/y/g, "i"); }
+		if (document.getElementById ("check_n").checked == false)	{ priet = priet.replace (/ń/g, "n"); priet = priet.replace (/ľ/g, "l"); }
+		if (document.getElementById ("check_r").checked == false)	{ priet = priet.replace (/ŕ/g, "r"); }
+		if (document.getElementById ("check_t").checked == false)	{ priet = priet.replace (/ť/g, "t"); priet = priet.replace (/ď/g, "d"); }
+		if (document.getElementById ("check_s").checked == false)	{ priet = priet.replace (/ś/g, "s"); priet = priet.replace (/ź/g, "z"); }
+		if (document.getElementById ("check_c").checked == false)	{ priet = priet.replace (/ć/g, "č"); }
+		if (document.getElementById ("check_d").checked == false)	{ priet = priet.replace (/đ/g, "dž"); }
+	}
+	else
+	{	if (document.getElementById ("check_jat").checked == true)	{ priet = priet.replace (/ě/g, "є"); } else { priet = priet.replace (/ě/g, "е"); }
+		if (document.getElementById ("check_jery").checked == true)	{ priet = priet.replace (/y/g, "ы"); } else { priet = priet.replace (/y/g, "и"); }
+		priet = priet.replace (/đ/g, "дж");
+		priet = priet.replace (/nj/g, "њ"); 	priet = priet.replace (/N[Jj]/g, "Њ");
+		priet = priet.replace (/lj/g, "љ"); 	priet = priet.replace (/L[Jj]/g, "Љ");
+		priet = priet.replace (/[aå]/g, "а"); 	priet = priet.replace (/[AÅ]/g, "А");
+		priet = priet.replace (/b/g, "б"); 	priet = priet.replace (/B/g, "Б");
+		priet = priet.replace (/c/g, "ц"); 	priet = priet.replace (/C/g, "Ц");
+		priet = priet.replace (/[čć]/g, "ч"); 	priet = priet.replace (/[ČĆ]/g, "Ч");
+		priet = priet.replace (/[dď]/g, "д"); 	priet = priet.replace (/[DĎ]/g, "Д");
+		priet = priet.replace (/[eęė]/g, "е"); 	priet = priet.replace (/[EĘĖ]/g, "Е");
+		priet = priet.replace (/f/g, "ф"); 	priet = priet.replace (/F/g, "Ф");
+		priet = priet.replace (/g/g, "г"); 	priet = priet.replace (/G/g, "Г");
+		priet = priet.replace (/h/g, "х"); 	priet = priet.replace (/H/g, "Х");
+		priet = priet.replace (/i/g, "и"); 	priet = priet.replace (/I/g, "И");
+		priet = priet.replace (/j/g, "ј"); 	priet = priet.replace (/J/g, "Ј");
+		priet = priet.replace (/k/g, "к"); 	priet = priet.replace (/K/g, "К");
+		priet = priet.replace (/[lľ]/g, "л"); 	priet = priet.replace (/[LĽ]/g, "Л");
+		priet = priet.replace (/m/g, "м"); 	priet = priet.replace (/M/g, "М");
+		priet = priet.replace (/[nń]/g, "н"); 	priet = priet.replace (/[NŃ]/g, "Н");
+		priet = priet.replace (/[oȯ]/g, "о"); 	priet = priet.replace (/[OȮ]/g, "О");
+		priet = priet.replace (/p/g, "п"); 	priet = priet.replace (/P/g, "П");
+		priet = priet.replace (/[rŕ]/g, "р"); 	priet = priet.replace (/[RŔ]/g, "Р");
+		priet = priet.replace (/[sś]/g, "с"); 	priet = priet.replace (/[SŚ]/g, "С");
+		priet = priet.replace (/š/g, "ш"); 	priet = priet.replace (/Š/g, "Ш");
+		priet = priet.replace (/[tť]/g, "т"); 	priet = priet.replace (/[TŤ]/g, "Т");
+		priet = priet.replace (/[uų]/g, "у"); 	priet = priet.replace (/[UŲ]/g, "У");
+		priet = priet.replace (/[vw]/g, "в"); 	priet = priet.replace (/[VW]/g, "В");
+		priet = priet.replace (/y/g, "ы"); 	priet = priet.replace (/Y]/g, "Ы");
+		priet = priet.replace (/[zź]/g, "з"); 	priet = priet.replace (/[ZŹ]/g, "З");
+		priet = priet.replace (/ž/g, "ж"); 	priet = priet.replace (/Ž/g, "Ж");
+	}
+
+	if (document.radiobutton.srt[0].checked == true)		{ var type = "high"; }
+	else 								{ var type = "list"; }
+
+	var iText = document.getElementById("inputtext").value + " "; if (!iText) { iText = ""; } 
+	iText = iText.replace (/t́/g,"ť"); iText = iText.replace (/d́/g,"ď"); iText = iText.replace (/ĺ/g,"ľ"); 
+	var iTextLength = iText.length;
+	var woord = ""; var result = ""; var lijst = ""; var i = 0;
+
+	var teken = new Array(); teken = ["\t", "\n", "\r", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ",", ":", ";", "!", "?", "$", "€", "#", "@", "%", "&", "^", "*", "=", "≈", "+", "±", "−", "-", "–", "—", '"', "'", "‘", "‛", '“', '”', '„', '‟', "«", "»", "(", ")", "<", ">", "{", "}", "[", "]", "/", "←", "→", "|", "•"];
+
+	while (i < iTextLength + 1)
+	{ 
+		var iTeken = "";
+		p = 0; for (p in teken)				{ if (iText.charAt(i) == teken[p]) { iTeken = iText.charAt(i); } }
+
+		if (iTeken == "")				{ woord = woord + iText.charAt(i); }
+		else if (woord == "") 				{ result = result + iTeken; }
+		else
+		{ 
+			woordgr = " " + woord + " "; if (woordgr == woordgr.toUpperCase ()) { woordgr = woordgr.substring (0, 2) + woordgr.substring (2, woordgr.length).toLowerCase (); }
+			woordkl = woordgr.toLowerCase (); 
+			if ((priet.indexOf (woordgr) < 0) && (priet.indexOf (woordkl) < 0))
+			{ 
+				if ((woordkl.indexOf ("e ") > 0) || (woordkl.indexOf ("u ") > 0))
+				{	woordkl = woordkl.replace (/([eu]) /,"ů ");
+					if (priet.indexOf (woordkl) < 0)
+					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+				}
+				else if ((woordkl.indexOf ("i ") > 0) || (woordkl.indexOf ("ě ") > 0))
+				{	woordkl = woordkl.replace (/([iě]) /,"î ");
+					if (priet.indexOf (woordkl) < 0)
+					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+				}
+				else if ((woordkl.indexOf ("ev ") > 0) || (woordkl.indexOf ("ov ") > 0) || (woordkl.indexOf ("em ") > 0) || (woordkl.indexOf ("om ") > 0))
+				{	woordkl = woordkl.replace (/([eo])([vm]) /,"œ$2 ");
+					if (priet.indexOf (woordkl) < 0)
+					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+				}
+	
+				else if (woordkl.indexOf (" vy") == 0)
+				{
+					woordkl = woordkl.replace (/vy/,"iz"); 
+					if (priet.indexOf (woordkl) < 0)
+					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+				}
+				else if ((woordkl.indexOf (" so") == 0) || (woordkl.indexOf (" sò") == 0))
+				{
+					woordkl = woordkl.replace (/so/,"su"); woordkl.replace (/sò/,"sų");
+					if (priet.indexOf (woordkl) < 0)
+					{
+						woordkl = woordkl.replace (/su/,"s"); woordkl.replace (/sų/,"s");
+						if (priet.indexOf (woordkl) < 0)
+						{  woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+					}
+				}
+				else 	{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
+			}
+			result = result + woord + iTeken;
+			woord = "";
+		}
+		i++;
+	}
+
+	if (type == "high")
+	{
+	}
+	else
+	{
+		lijst = lijst.replace (/ž/g,"zż"); lijst = lijst.replace (/č/g,"cż"); lijst = lijst.replace (/š/g,"sż"); lijst = lijst.replace (/ě/g,"eż"); 
+		result = sorteren (lijst);
+		result = result.replace (/zż/g,"ž"); result = result.replace (/sż/g,"š"); result = result.replace (/cż/g,"č"); result = result.replace (/eż/g,"ě");
+	}
+	result = result.replace (/\n/g,"<br />");			
+	document.getElementById("output_words").innerHTML = result; document.getElementById("inputtext").focus();
+
+}
+
+function bewerk (woord, type)
+{
+	if (type == "high") { woord = '<span class="hl">' + woord + '</span>'; }
+	return woord;
+}
+
+function sorteren (lijst)
+{
+	var lijstArray = lijst.split(" ");
+
+	lijstArray.sort(sortTextReal);
+	
+	var i = lijstArray.length-1;
+	while(i > -1){
+		if(lijstArray[i] == " "){
+			lijstArray.splice (i, 1);
+		}
+	i--;
+	}
+
+	/* doublures */
+
+	var i = 1; var j = 0; char = new Array ();
+	while(i < lijstArray.length)
+	{
+		woord1 = lijstArray[i].toLowerCase (); woord2 = lijstArray[i-1].toLowerCase ();
+		if (woord1 == woord2)						{ }
+		else								{ char[j] = lijstArray[i]; j++;}
+		i++;
+	}	
+
+	/*** Sorteercriteria weghalen ***/
+
+	lijst = char.join ("\n");
+	return lijst;
+}
+
+function sortTextReal(a,b)
+{
+	var aa;var bb;
+	aa = a.toLowerCase(); bb = b.toLowerCase();
+	if(aa>bb){
+		return 1;
+	}
+	if(aa<bb){
+		return -1;
+	}
+	return 0;
+}
+
+</script>
+
+<style type="text/css">
+INPUT.text
+	{
+	width:				288px;
+	height:				500pt;
+	font-family:			courier new, arial unicode ms;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+TEXTAREA, .output_words
+	{
+	width:				450px;
+	height:				500px;
+	border:				2pt;
+	background:			none;
+	font-size:			100%;
+	font-weight:			normal;
+	font-family:			ms sans serif, Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
+					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+.hl 
+	{
+	background-color: 		yellow;
+	}
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<body>
+<h1>Interslavic spell checker</h1>
+<h2><i>Kontrola medžuslovjanskogo pravopisanja<br />Контрола меджусловјанского правописанја</i></h2>
+
+<p>This program allows you to check a text for spelling errors by inserting it into the left box. After pushing the button, the same text will be replicated in the right box, with all words highlighted that either do not occur in the dictionary or do not comply with the grammar rules. You also have the option to generate a list of these words instead. If your text uses characters from the etymological alphabet, you can check them using the checkboxes below. <i>Note: <b>ť</b>, <b>ď</b> and <b>ľ</b> are accepted as spelling variations of <b>t́</b>, <b>d́</b> and <b>ĺ</b>.</i></p>
+
+<table width="100%" class="toolkop">
+	<tr><td width="40%">
+		<textarea id="inputtext" rows="10" cols="20"></textarea>
+	</td><td width="20%">
+		<center><form action="spell_checker.html" name="radiobutton" method="get">
+		<input name="srt" type="radio" value="0" checked="checked"> Highlight
+		<input name="srt" type="radio" value="1"> List
+		</form></center><br>
+
+		<center><input type="button" id="submit" value="Go!" class="button" onclick="search ()"><br>
+
+		<br><b><center>Alphabet:</center></b><br>
+		<select id="ort" onchange="display ()">
+		  <option value="latin" selected>Latinica</option>
+		  <option value="kiril">Kirilica</option>
+		</select></center>
+		<br><b><center>Letters:</center></b><br>
+		<div id="lat"><table width="100%">
+		<tr><td width="48%" style="text-align:right;"><input id="check_a" type="checkbox"></td><td><b>å</b></td></tr>	
+		<tr><td align="right"><input id="check_je" type="checkbox" checked></td><td><b>ě</b></td></tr>	
+		<tr><td align="right"><input id="check_eu" type="checkbox"></td><td><b>ę ų</b></td></tr>	
+		<tr><td align="right"><input id="check_o" type="checkbox"></td><td><b>ȯ</b></td></tr>	
+		<tr><td align="right"><input id="check_y" type="checkbox" checked></td><td><b>y</b></td></tr>	
+		<tr><td align="right"><input id="check_r" type="checkbox"></td><td><b>ŕ</b></td></tr>	
+		<tr><td align="right"><input id="check_n" type="checkbox"></td><td><b>ĺ ń</b></td></tr>	
+		<tr><td align="right"><input id="check_t" type="checkbox"></td><td><b>t́ d́</b></td></tr>	
+		<tr><td align="right"><input id="check_s" type="checkbox"></td><td><b>ś ź</b></td></tr>	
+		<tr><td align="right"><input id="check_c" type="checkbox"></td><td><b>ć</b></td></tr>	
+		<tr><td align="right"><input id="check_d" type="checkbox"></td><td><b>đ</b></td></tr>	
+		</table></div>
+		<div id="cyr" style="display:none;"><table width="100%">
+		<tr><td width="48%" style="text-align:right;"><input id="check_jat" type="checkbox"></td><td><b>є</b></td></tr>	
+		<tr><td align="right"><input id="check_jery" type="checkbox"></td><td><b>ы</b></td></tr>	
+		</table></div>
+	</td><td width="40%">
+		<div id="output_words" class="output_words">
+	</td></tr></table>
+</td></tr></table>
+
+<script type="text/javascript">
+	var lastupdate = "30.03.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>

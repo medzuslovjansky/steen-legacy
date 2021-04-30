@@ -1,0 +1,538 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="screen" href="../css/ms.css" title="Slovianski">
+<link rel="stylesheet" type="text/css" media="print"  href="../css/msprint.css">
+<link rel="shortcut icon" href="http://steen.free.fr/interslavic/slovianski.ico">
+<script src="../scripts/ms_layout.js" type="text/javascript"></script>               
+<script src="../scripts/transliteration.js" type="text/javascript"></script>            
+<script src="../scripts/slownik.js" language="JavaScript"></script>            
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="Dynamiczny słownik polsko-międzysłowiański">
+<title>Dynamiczny słownik polsko-międzysłowiański – Dinamičny poljsko-medžuslovjansky slovnik - динамичны польско-меджусловјанскы словник</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+window.onload = function(e) 
+{
+ 	document.getElementById("input_word").focus();
+}
+
+function entr ()
+{
+	var x;
+	if(window.event)
+	{	x=event.keyCode;	}
+	else if(event.which)
+	{	x=event.which;		}
+	if (x == "13")
+	{	document.getElementById("submit").focus(); search ();		}
+}
+
+function search ()
+{
+	/*** uitlezen input ***/
+
+	var iWord = document.getElementById("input_word").value; 	if (!iWord) 	iWord = "";
+	    iWord = iWord.toLowerCase();
+	var orth  = document.getElementById("orth").value; 		if (!orth) 	orth = 1;
+	var flaw  = document.getElementById("flaw").value; 		if (!flaw) 	flaw = "2";
+	var dirc  = document.getElementById("dirc").value; 		if (!dirc) 	dirc = "ME";
+	if ((orth == 5) && (flaw == "S")) { orth = 6; }
+
+	if (document.radiobutton.sopt[0].checked == true)		var sopt = "W";
+	else if (document.radiobutton.sopt[1].checked == true)		var sopt = "P";
+	else if (document.radiobutton.sopt[2].checked == true)		var sopt = "I";
+	else if (document.radiobutton.sopt[3].checked == true)		var sopt = "E";
+	else								var sopt = "N";
+
+	if (document.getElementById ("hide_ipa").checked == true)	var cIPA = false;	else	var cIPA = true;
+
+	if (document.getElementById ("check_ocs").checked == true)	var cOCS = true;	else	var cOCS = false;
+	if (document.getElementById ("check_neo").checked == true)	var cNEO = true;	else	var cNEO = false;
+	if (document.getElementById ("check_sla").checked == true)	var cSLA = true;	else	var cSLA = false;
+
+	if (document.getElementById ("check_ru").checked == true)	var cRU = true;		else	var cRU = false;
+	if (document.getElementById ("check_be_uk").checked == true)	var cUB = true;		else	var cUB = false;
+	if (document.getElementById ("check_pl").checked == true)	var cPL = true;		else	var cPL = false;
+	if (document.getElementById ("check_cz_sk").checked == true)	var cCS = true;		else	var cCS = false;
+	if (document.getElementById ("check_sl_sh").checked == true)	var cSS = true;		else	var cSS = false;
+	if (document.getElementById ("check_mk_bg").checked == true)	var cBM = true;		else	var cBM = false;
+
+	var dict = dictionary(); 
+	var fWord = new Array(); var fWordArray = new Array(); 
+	var fSlo = new Array(); var fAdd = new Array(); var fCem = new Array(); var fEng = new Array(); var fIPA = new Array(); 
+	var fLev = new Array(); var fLex = new Array(); var fEty = new Array(); 
+
+	var x = 0; var i = 0;
+	var result = "<p>";
+
+	/*** zoeken ***/
+
+	for (x in dict)
+	{
+		var dictry = dict[x];
+
+		if (dirc == "ME" || dirc == "MEM")
+		{	var word_nms = dictry.substring (0, dictry.indexOf ("\t")); 
+			var doubleword = new Array(); var p = 0;
+			if (word_nms.indexOf (",") != -1) 
+			{	do
+				{	
+					doubleword[p] = word_nms.substring (0, word_nms.indexOf (",")) + dictry.substring (dictry.indexOf ("\t"), dictry.length); 
+					word_nms = word_nms.substring (word_nms.indexOf (",") + 2, word_nms.length);
+					p++;
+				}
+				while (word_nms.indexOf (",") != -1)
+				doubleword[p] = word_nms + dictry.substring (dictry.indexOf ("\t"), dictry.length);
+			}
+			else
+			{	doubleword[p] = dictry;
+			}
+		} 
+		if (dirc == "MEM")
+		{ var q = 0; for (q in doubleword)
+		   {
+			var word_nms = doubleword[q].substring (0, doubleword[q].indexOf ("\t")); 
+			var word_trl = transliterate (word_nms, orth, flaw, 0, 2); 
+			var y = 0; var vis = doubleword[q]; while (y < 2) { vis = vis.substring (0, vis.lastIndexOf ("\t")); y++; }
+			var words_eng = vis.substring (vis.lastIndexOf ("\t") + 1, vis.length); 
+			var engWordArray = words_eng.split(","); var p = 0;
+			/* while (p < engWordArray.length) */ 
+			for (p in engWordArray)
+			{	if (engWordArray[p].indexOf ("(") != -1) { var word_eng = engWordArray[p].substring (0, engWordArray[p].indexOf ("(") - 1); } 
+				else { var word_eng = engWordArray[p]; }
+				if (word_eng.indexOf (" ") == 0) { word_eng = word_eng.substring (1, word_eng.length); }
+	
+				if (sopt == "W")
+				{ if ((word_nms.toLowerCase() == iWord)  || (word_trl.toLowerCase() == iWord) || (word_eng.toLowerCase() == iWord))	{ fWord[i] = doubleword[q]; i++; }
+				}
+				else if (sopt == "I")
+				{ if ((word_nms.toLowerCase().indexOf(iWord) == 0)  || (word_trl.toLowerCase().indexOf(iWord) == 0) || (word_eng.toLowerCase().indexOf(iWord) == 0))		
+				  { fWord[i] = doubleword[q]; i++; }
+				}
+				else if (sopt == "E")
+				{ if (word_nms.indexOf ("(") != -1) { word_nms = word_nms.substring (0, word_nms.indexOf ("(")); }
+				  if (word_nms.indexOf (" ") == word_nms.length - 1) { word_nms = word_nms.substring (0, word_nms.length - 1); }
+				  if (word_nms.indexOf (" sę") == word_nms.length - 3) { word_nms = word_nms.substring (0, word_nms.length - 3); }
+				  if (word_eng.indexOf (" (") != -1) { word_eng = word_eng.substring (0, word_eng.indexOf (" (")); }
+				  word_trl = transliterate (word_nms, orth, flaw, 0, 2);
+				  if (((word_nms.length - word_nms.toLowerCase().lastIndexOf(iWord) == iWord.length) && (word_nms.toLowerCase().indexOf(iWord) != -1))
+				   || ((word_trl.length - word_trl.toLowerCase().lastIndexOf(iWord) == iWord.length) && (word_trl.toLowerCase().indexOf(iWord) != -1)))	
+				   { fWord[i] = doubleword[q]; i++; }
+				  else if ((word_eng.length - word_eng.toLowerCase().lastIndexOf(iWord) == iWord.length) && (word_eng.toLowerCase().indexOf(iWord) != -1))	
+				   { fWord[i] = doubleword[q]; i++; }
+				}
+				else if (sopt == "N")
+				{ if ((word_nms.toLowerCase().indexOf(iWord) == -1)  && (word_trl.toLowerCase().indexOf(iWord) == -1) && (word_eng.toLowerCase().indexOf(iWord) == -1))		
+				  { fWord[i] = doubleword[q]; i++; }
+				}
+				else 
+				{	dictry = dictry.substring (dictry.indexOf ("\t") + 1, dictry.length); 
+					var add_nms = dictry.substring (0, dictry.indexOf ("\t")); 
+					var add_trl = transliterate (add_nms, orth, flaw, 0, 2);
+					if ((word_nms.toLowerCase().indexOf(iWord) != -1)  || (word_trl.toLowerCase().indexOf(iWord) != -1) ||
+					 (add_nms.toLowerCase().indexOf(iWord) != -1)  || (add_trl.toLowerCase().indexOf(iWord) != -1) || 
+					 (word_eng.toLowerCase().indexOf(iWord) != -1))									{ fWord[i] = doubleword[q]; i++; }
+				}
+				if (fWord[i-1] == doubleword[q]) { engWordArray.length = 0; }
+				p++; 
+			}	
+		   }
+		}
+
+		else if (dirc == "ME")
+		{ var q = 0; for (q in doubleword)
+			{	var word_nms = doubleword[q].substring (0, doubleword[q].indexOf ("\t"));
+				var word_trl = transliterate (word_nms, orth, flaw, 0, 2);
+	
+				if (sopt == "W")
+				{	if ((word_nms.toLowerCase() == iWord)  || (word_trl.toLowerCase() == iWord))				{	fWord[i] = doubleword[q]; i++;	}}
+				else if (sopt == "I")
+				{	if ((word_nms.toLowerCase().indexOf(iWord) == 0)  || (word_trl.toLowerCase().indexOf(iWord) == 0))	{	fWord[i] = doubleword[q]; i++;	}}
+				else if (sopt == "E")
+				{	if (word_nms.indexOf ("(") != -1) { word_nms = word_nms.substring (0, word_nms.indexOf ("(")); }
+					if (word_nms.indexOf (" ") == word_nms.length - 1) { word_nms = word_nms.substring (0, word_nms.length - 1); }
+					if (word_nms.indexOf (" sę") == word_nms.length - 3) { word_nms = word_nms.substring (0, word_nms.length - 3); }
+					if (((word_nms.length - word_nms.toLowerCase().lastIndexOf(iWord) == iWord.length)
+					   && (word_nms.toLowerCase().indexOf(iWord) != -1)) 
+					   || ((word_trl.length - word_trl.toLowerCase().lastIndexOf(iWord) == iWord.length)
+					   && (word_trl.toLowerCase().indexOf(iWord) != -1)))							{	fWord[i] = doubleword[q]; i++;	}}
+				else if (sopt == "N")
+				{ if ((word_nms.toLowerCase().indexOf(iWord) == -1)  && (word_trl.toLowerCase().indexOf(iWord) == -1))		{ 	fWord[i] = doubleword[q]; i++; 	}}
+				else 
+				{	dictry = dictry.substring (dictry.indexOf ("\t") + 1, dictry.length); 
+					var add_nms = dictry.substring (0, dictry.indexOf ("\t")); 
+					var add_trl = transliterate (add_nms, orth, flaw, 0, 2);
+					if ((word_nms.toLowerCase().indexOf(iWord) != -1)  || (word_trl.toLowerCase().indexOf(iWord) != -1) ||
+					 (add_nms.toLowerCase().indexOf(iWord) != -1)  || (add_trl.toLowerCase().indexOf(iWord) != -1))		{	fWord[i] = doubleword[q]; i++;	}}
+			}
+		}
+		
+		else if (dirc == "EM")
+		{ 	var y = 0; var vis = dictry; while (y < 2) { vis = vis.substring (0, vis.lastIndexOf ("\t")); y++; }
+			var words_eng = vis.substring (vis.lastIndexOf ("\t") + 1, vis.length); 
+			var engWordArray = words_eng.split(","); var p = 0;
+			for (p in engWordArray)
+			{	if (engWordArray[p].indexOf ("(") != -1) { var word_eng = engWordArray[p].substring (0, engWordArray[p].indexOf ("(") - 1); } 
+				else { var word_eng = engWordArray[p]; } 
+				if (word_eng.indexOf (" ") == 0) { word_eng = word_eng.substring (1, word_eng.length); }
+
+				if (sopt == "W") 	{ if (word_eng.toLowerCase() == iWord)								{	fWord[i] = dictry; i++;	} }
+				else if (sopt == "I") 	{ if (word_eng.toLowerCase().indexOf(iWord) == 0)						{	fWord[i] = dictry; i++;	} }
+				else if (sopt == "E")	{ if ((word_eng.length - word_eng.toLowerCase().lastIndexOf(iWord) == iWord.length) && 
+							      (word_eng.toLowerCase().indexOf(iWord) != -1))						{	fWord[i] = dictry; i++;	} }
+				else if (sopt == "N") 	{ if (word_eng.toLowerCase().indexOf(iWord) == -1)						{	fWord[i] = dictry; i++;	} }
+				else if (word_eng.toLowerCase().indexOf(iWord) != -1)									{	fWord[i] = dictry; i++;	}
+
+				if (fWord[i-1] == dictry) { engWordArray.length = 0; }
+				p++; 
+			}	
+		   
+		}
+	}
+
+	if (dirc == "MEM") dirc = "ME";
+
+	/*** ordenen ***/
+
+	var x = 0; 
+	for (x in fWord)
+	{ 
+		rWord = fWord [x];
+		rWordArray = rWord.split("\t")
+		fSlo[x] = rWordArray[0]; fIPA[x] = transliterate (fSlo[x], 10, flaw, 0, 2); fSlo[x] = transliterate (fSlo[x], orth, flaw, 0, 2);
+		fAdd[x]  = rWordArray[1]; fAdd[x] = transliterate (fAdd[x], orth, flaw, 0, 2);
+		fCem[x]  = rWordArray[2]; fCem[x] = fCem[x].replace (/([mfn]).sg./,"$1."); fCem[x] = fCem[x].replace (/m.anim./,"m.");
+		fLev[x]  = rWordArray[3]; if ((!fLev[x]) || (fLev[x] == 0)) { fLev[x] = 9; }
+		fEng[x]  = rWordArray[4];
+		fLex[x]  = rWordArray[5];
+		fEty[x]  = rWordArray[6];
+
+		if (document.getElementById('partofspeech').value != "p-all")
+		{
+			var posp = fCem[x]; 
+			if ((document.getElementById('partofspeech').value == "p-nou") && (posp.charAt(0) != "m") && (posp.charAt(0) != "f") && (posp.charAt(0) != "n"))	{ fWord [x] = "Ƕ"; }
+			else if ((document.getElementById('partofspeech').value == "p-pro") && (posp.substring (0,3) != "pro"))							{ fWord [x] = "Ƕ"; }
+			else if ((document.getElementById('partofspeech').value == "p-ver") && (posp.charAt(0) != "v"))								{ fWord [x] = "Ƕ"; }
+			else if ((document.getElementById('partofspeech').value == "p-adj") && (posp.substring (0,3) != "adj"))							{ fWord [x] = "Ƕ"; }
+			else if ((document.getElementById('partofspeech').value == "p-num") && (posp.substring (0,3) != "num"))							{ fWord [x] = "Ƕ"; }
+			else if ((document.getElementById('partofspeech').value == "p-prp") && (posp.substring (0,4) != "prep"))						{ fWord [x] = "Ƕ"; }
+		}
+
+		if (cSLA == true) 
+		{	if (fEty[x] == "I")		{ fLev[x] = 9; }
+			else if (fEty[x] == "S")	{ fLev[x] = 1; }
+		}
+
+		if ((!fLex[x]) || (fLex[x] != fLex[x].toLowerCase ()))											{ }
+		else
+		{	var teller = 0; 
+			if ((cRU == true) && ((fLex[x].indexOf ("ru") != -1) || (fLex[x].indexOf ("v")  != -1)))						{ teller = 1; }
+			if ((cUB == true) && ((fLex[x].indexOf ("be") != -1) || (fLex[x].indexOf ("uk") != -1) || (fLex[x].indexOf ("v") != -1))) 		{ teller = 1; }
+			if ((cPL == true) && ((fLex[x].indexOf ("pl") != -1) || (fLex[x].indexOf ("z")  != -1)))						{ teller = 1; }
+			if ((cCS == true) && ((fLex[x].indexOf ("cz") != -1) || (fLex[x].indexOf ("sk") != -1) || (fLex[x].indexOf ("z") != -1))) 		{ teller = 1; }
+			if ((cSS == true) && ((fLex[x].indexOf ("sh") != -1) || (fLex[x].indexOf ("sl") != -1) || (fLex[x].indexOf ("j") != -1))) 		{ teller = 1; }
+			if ((cBM == true) && ((fLex[x].indexOf ("mk") != -1) || (fLex[x].indexOf ("bg") != -1) || (fLex[x].indexOf ("j") != -1))) 		{ teller = 1; }
+			if ((fLex[x].indexOf ("ns") != -1) ||  (fLex[x].indexOf ("sj") != -1) || (fLex[x].indexOf ("sx") != -1))				{ teller = 1; }
+			else																	{ teller = 1; }
+			if (teller != 1)															{ fWord [x] = "Ƕ"; }
+		} 
+		
+		if ((cNEO == false) && (fLev[x] == 5)) 													{ fWord[x] = "Ƕ"; }
+		else if ((cOCS == false) && (fLev[x] == 4)) 												{ fWord[x] = "Ƕ"; }
+
+		if (fWord[x] != "Ƕ")
+		{ 	if (cIPA == true) { var ipek = " <span style='font-family:Cambria; color:grey;'>[" + fIPA[x] + "]</span>"; } else { var ipek = ""; }
+			var word = fSlo[x]; if (fAdd[x] != "") { word += " " + fAdd[x]; }
+			if (dirc == "EM")
+			{	if ((fCem[x] == "m.") || (fCem[x] == "m.pl") || (fCem[x] == "f.") || (fCem[x] == "f.pl.") || (fCem[x] == "m./f.") || (fCem[x] == "n.") || (fCem[x] == "n.pl."))
+				{ var fWS = "n."; fCem[x] = " (" + fCem[x] + ")"; }
+				else if ((fCem[x].indexOf ("v.intr. ") != -1) || (fCem[x].indexOf ("v.refl. ") != -1))
+				{ var fWS = "v.intr."; if (fCem[x].indexOf ("pf.") != -1) { fCem[x] = " (" + fCem[x].substring (fCem[x].indexOf (" ") + 1, fCem[x].length) + ")"; } }
+				else if (fCem[x].indexOf ("v.tr. ") != -1)
+				{ var fWS = "v.tr."; if (fCem[x].indexOf ("pf.") != -1) { fCem[x] = " (" + fCem[x].substring (fCem[x].indexOf (" ") + 1, fCem[x].length) + ")"; } }
+				else
+				{ var fWS = fCem[x]; fCem[x] = ""; }
+
+				var engWord = fEng[x];
+				if (engWord.indexOf (",") != -1)
+				{
+					var engWordArray = engWord.split(","); var p = 0; var engStaart = "";
+					for (p in engWordArray)
+					{ 
+						if (engWordArray[p].indexOf (iWord) == -1)
+						{	engStaart = engStaart + "," + engWordArray[p];	}
+						else 
+						{	engWord = engWordArray[p]; }
+					p++;
+					}
+					if (engWord.indexOf (" ") == 0) { engWord = engWord.substring (1, engWord.length); }
+					engWord = "<b> " + engWord + " </b> <small>(" + engStaart + ")</small>";
+					engWord = engWord.replace ("(,","("); engWord = engWord.replace ("( ","(");
+				}
+				else 
+				{
+					engWord = "<b> " + engWord + "</b>";
+				}
+
+				fWord[x] = engWord + "  ." + fWS + fLev[x] + "Ƕ";
+				fWord[x] += "<tr style='font-family:ms sans serif, verdana; font-size:11pt;'><td>" + engWord + "</td><td><em> (" + fWS + ") </em> </td>";
+				fWord[x] += "<td>&nbsp;</td><td>#" + word + ipek + "<em><small>" + fCem[x] + "</small></em></td></tr>";
+			}
+			else if (dirc == "ME")
+			{	fWord[x] = transliterate (fSlo[x], orth, "3", 0, 2); 
+				fWord[x] = fWord[x].replace (/č/gi,"cz"); fWord[x] = fWord[x].replace (/š/gi,"sz"); fWord[x] = fWord[x].replace (/ž/gi,"zz"); 
+				fWord[x] = fWord[x].replace (/ľ/gi,"l"); fWord[x] = fWord[x].replace (/ń/gi,"n"); fWord[x] = fWord[x].replace (/ŕ/gi,"r"); 
+				fWord[x] = fWord[x].replace (/ť/gi,"t"); fWord[x] = fWord[x].replace (/ď/gi,"d"); 
+				fWord[x] = fWord[x].replace (/ј/gi,"й"); fWord[x] = fWord[x].replace (/-/gi,""); 
+				fWord[x] += "  ." + fAdd[x] + fCem[x] + fLev[x] + "Ƕ";
+				fWord[x] += "<tr style='font-family:ms sans serif, verdana; font-size:11pt;'><td><b> " + word + "</b>";
+				fWord[x] += ipek + "</td><td width=100px><em> (" + fCem[x] + ") </em>&nbsp;</td><td>&nbsp;#" + fEng[x] + "</td></tr>";
+			}
+		}
+		else
+		{	i--; fWord.splice (x+1, 1); }
+	}
+
+	fWord = fWord.join("\n");
+	result = sorteren (fWord); 
+
+	fWord = result.split("\n"); var teller = 0; var x = 0; for (x in fWord) { if (fWord[x] != "") {teller += 1;} }
+
+	if (result == "") 	{ result = "<p style='margin:0;'><em>Nothing found!</em></p>"; }
+	else if (teller == 1)	{ result = "<p style='margin:0;'><em>(1 result found)</em></p><br /><table>" + result + "</table>"; }
+	else			{ result = "<p style='margin:0;'><em>(" + teller + " results found)</em></p><br /><table>" + result + "</table>"; }
+
+	document.getElementById("Result").innerHTML = result;
+}
+
+function sorteren (fWord)
+{
+	var fWordArray = fWord.split("\n");
+
+	var i = 0;
+	while(i < fWordArray.length){
+		var nodsp = /\s+/g;
+		fWordArray[i] = fWordArray[i].replace(nodsp," ");
+	i++;
+	}	
+
+	fWordArray.sort(sortTextReal);
+	
+	var i = fWordArray.length-1;
+	while(i > -1){
+		if(fWordArray[i] == " "){
+			fWordArray.splice (i, 1);
+		}
+	i--;
+	}
+
+	/*** Sorteercriteria weghalen ***/
+
+	var i = 0; while (i < fWordArray.length)
+	{ 	fWordArray[i] = fWordArray[i].substring (fWordArray[i].indexOf ("Ƕ") + 1, fWordArray[i].length); 
+		if ((i > 0) && (fWordArray[i] != "") && (fWordArray[i].substring (0, fWordArray[i].indexOf ("#")) == fWordArray[i-1].substring (0, fWordArray[i].indexOf ("#"))))
+		{ fWordArray[i-1] = fWordArray[i-1].substring (0, fWordArray[i-1].lastIndexOf ("</td></tr>")) + ", " + fWordArray[i].substring (fWordArray[i].indexOf ("#") + 1, fWordArray[i].length); i--; fWordArray.splice (i+1, 1);
+		}
+		i++;
+	}		
+
+	fWord = fWordArray.join ("\n");
+	fWord = fWord.replace (/#/g, ""); fWord = fWord.replace (/ ,/g, ","); 
+
+	return fWord;
+}
+
+function sortTextReal(a,b)
+{
+	var aa;var bb;
+	aa = a.toLowerCase(); bb = b.toLowerCase();
+	if(aa>bb){
+		return 1;
+	}
+	if(aa<bb){
+		return -1;
+	}
+	return 0;
+}
+
+function ops ()
+{
+	if (!type) { var type = document.getElementById("orth").value; if (!type) type = 1; }
+	if (!flaw) { var flaw = document.getElementById("flaw").value; if (!flaw) flaw = "2"; }
+
+	if (type == 1)		{ document.getElementById('flaw').options[0].disabled = false; }
+	else if (type == 5)	{ if (document.getElementById("flaw").selectedIndex == 0) { document.getElementById("flaw").selectedIndex = "1"; } 
+				  document.getElementById('flaw').options[0].disabled = true; }
+}
+
+function reset ()
+{ 
+	document.getElementById("check_ru").checked		= true;
+	document.getElementById("check_be_uk").checked		= true;
+	document.getElementById("check_pl").checked		= true;
+	document.getElementById("check_cz_sk").checked		= true;
+	document.getElementById("check_sl_sh").checked		= true;
+	document.getElementById("check_mk_bg").checked		= true;
+	document.getElementById("check_ocs").checked		= true;
+	document.getElementById("check_neo").checked		= true;
+	document.getElementById("check_sla").checked		= true;
+	document.getElementById("hide_ipa").checked		= false;
+	document.getElementById("orth").selectedIndex		= 0;
+	document.getElementById("flaw").selectedIndex   	= 1;
+	document.getElementById("partofspeech").selectedIndex	= 0;
+	document.getElementById("Result").innerHTML		= "";
+	document.getElementById("input_word").value		= "";
+	document.getElementById("input_word").focus(); 
+}
+</script>
+
+<style>
+INPUT.text
+	{
+	width:				288px;
+	height:				16pt;
+	font-family:			courier new, arial unicode ms;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+TEXTAREA
+	{
+	width:				100%;
+	height:				200px;
+	border:				2pt;
+	background:			none;
+	font-size:			100%;
+	font-weight:			normal;
+	font-family:			ms sans serif, Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
+					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
+	font-size:			10pt;
+	overflow:			auto;
+	}
+
+.button
+	{
+	font-family:			Tahoma, Verdana, Geneva, sans-serif;
+	font-size:			8pt;
+	font-weight:			bold;
+	width:				140px;
+	height:				30px;
+	background:			#ccf;
+	}
+
+option:disabled
+	{
+	display:			none;
+	}
+</style>
+
+</head>
+<body>
+
+<script type="text/javascript">
+	var lang='';
+	var level=0;
+	header(lang,level);
+</script>
+
+<body>
+<h1>Dinamičny medžuslovjansky slovnik</h1>
+<h2>Dynamiczny słownik języka międzysłowiańskiego</h2>
+
+<table width="100%" class="toolkop">
+	<tr>
+	<td width="40%">
+		<input id="input_word" tabindex="1" class="text" type="text" maxlength="48" value="" onkeypress="entr ()">
+		<br /><br />
+		<input type="button" id="submit" tabindex="2" value="Szukaj" class="button" onclick="search ()">&nbsp;
+		<input type="button" id="reset" tabindex="3" value="Zresetuj" class="button" onclick="reset ()">
+		<br /><br />
+		Ukryj MAF <input id="hide_ipa" tabindex="4" type="checkbox"><br /><br />
+	</td>
+	<td width="30%">
+		<select id="dirc" tabindex="5" onchange="">
+		  <option value="MEM">Międzysłowiański <> Polski</option>
+		  <option value="ME">Międzysłowiański > Polski</option>
+		  <option value="EM">Polski > Międzysłowiański</option>
+		</select>
+		<br /><br /><small><b>Hasło wyszukiwania</b></small>
+		<table width="100%"><tr><td colspan="2">
+			<tr><td>
+				<form action="slownik_dynamiczny.html" name="radiobutton" method="get">
+				<table style="color:white" style="font-size:9pt"><col align="left"><col align="left">
+					<tr><td>Całe słowo		</td><td>	<input type="radio" tabindex="6" name="sopt" value="1"></td></tr>
+					<tr><td>Część słowa		</td><td>	<input type="radio" checked="checked" name="sopt" value="2"></td></tr>
+					<tr><td>Początek słowa		</td><td>	<input type="radio" name="sopt" value="3"></td></tr>
+					<tr><td>Koniec słowa		</td><td>	<input type="radio" name="sopt" value="4"></td></tr>
+					<tr><td>Brakujące w słowie	</td><td>	<input type="radio" name="sopt" value="5"></td></tr>
+				</table>
+				</form>
+		</td></tr></table>
+		<br /><small><b>Część mowy</b></small>
+				<table style="color:white" style="font-size:9pt"><col align="left"><col align="left">
+					<tr><td>Pokaź&nbsp;
+					<select id="partofspeech" tabindex="5" onchange="">
+					  <option value="p-all" selected>wszystkie</option>
+					  <option value="p-nou">tylko rzeczowniki</option>
+					  <option value="p-pro">tylko zaimki</option>
+					  <option value="p-adj">tylko przymiotniki</option>
+					  <option value="p-num">tylko liczebniki</option>
+					  <option value="p-ver">tylko czasowniki</option>
+					  <option value="p-prp">tylko przyimki</option>
+				</select>
+				</td></tr></table>
+	</td>
+	<td width="30%" style="border:1px solid grey";>
+		<table width="100%"><tr><td>
+		<h4>Opcje językowe</h4><br>
+			<table width="100%" cellpadding="10"><tr><td>
+				<b><small>Pisownia</small></b><br>
+				<select id="orth" onchange="ops ()" style="margin:10px;">
+				  <option value="1">Łacińka</option>');
+				  <option value="5">Cyrylica</option>');
+				</select>
+			<br />
+				<b><small>Zabarwienie</small></b><br>
+				<select id="flaw" onchange="ops ()" style="margin:10px;">
+				  <option value="2">Etymologiczne</option>');
+				  <option value="3" selected>Standardowe</option>');
+				  <option value="4">Uproszczone</option>');
+				  <option value="S">Północnosłowiańskie</option>');
+				  <option value="J">Południowosłowiańskie</option>');
+				</select>
+			</td><td>
+				<b><small><div style="margin-bottom:8px;">Obejmuje</div></small></b>
+				<table width="100%" style="color:white;"><col width="60%" align="right"><col width="40%" align="left">
+					<tr><td>RU	</td><td>	<input id="check_ru" type="checkbox" checked></td></tr>
+					<tr><td>BE+UK	</td><td>	<input id="check_be_uk" type="checkbox" checked></td></tr>
+					<tr><td>PL	</td><td>	<input id="check_pl" type="checkbox" checked></td></tr>
+					<tr><td>CZ+SK	</td><td>	<input id="check_cz_sk" type="checkbox" checked></td></tr>
+					<tr><td>SL+SH	</td><td>	<input id="check_sl_sh" type="checkbox" checked></td></tr>
+					<tr><td>MK+BG	</td><td>	<input id="check_mk_bg" type="checkbox" checked></td></tr>
+				</table>
+			</td><td>
+				<b><small><div style="margin-bottom:8px;">&nbsp;</div></small></b>
+				<table width="100%" style="color:white" style="font-size:9pt"><col width="60%" align="right"><col width="40%" align="left">
+					<tr><td>Archaizmy	</td><td>	<input id="check_ocs" type="checkbox" checked></td></tr>
+					<tr><td>Neologizmy	</td><td>	<input id="check_neo" type="checkbox" checked></td></tr>
+					<tr><td>Slavicyzmy	</td><td>	<input id="check_sla" type="checkbox" checked></td></tr>
+				</table>
+			</td></tr></table>
+		</td></tr></table>
+	</td></tr>
+	<tr><td colspan="3">
+		<div id="Result"></div>
+	</td><td></table>
+</td></tr></table>
+
+<script type="text/javascript">
+	var lastupdate = "03.04.2020";
+	footer (lastupdate);
+</script>
+
+</body>
+</html>
