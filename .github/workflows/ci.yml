@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/**/*.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/**/*.yml'
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+
+  main:
+    name: Crawl
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Re-download
+        run: |
+          rm -rf steen.free.fr
+          wget \
+          --execute="robots = off" \
+          --mirror \
+          --convert-links \
+          --no-parent \
+          --wait=1 \
+          --accept "htm,html,css,js" \
+          http://steen.free.fr/interslavic || true
+
+      - name: Stage
+        run: git add -A
+
+      - name: Commit & Push changes
+        uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: steen.free.fr
+          commit-message: 'chore: website sync [skip ci]'
+          push-branch: 'main'
+          name: 'github-actions[bot]'
+          email: 'github-actions[bot]@users.noreply.github.com'
