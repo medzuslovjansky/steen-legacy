@@ -35,6 +35,9 @@ jobs:
           --accept "htm,html,css,js" \
           http://steen.free.fr/interslavic || true
 
+      - name: Git config
+        run: git config --global --add safe.directory /github/workspace
+
       - name: Stage
         run: git add -A
 
