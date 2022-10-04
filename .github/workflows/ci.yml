@@ -35,14 +35,11 @@ jobs:
           --accept "htm,html,css,js" \
           http://steen.free.fr/interslavic || true
 
-      - name: Git config
-        run: git config --global --add safe.directory /github/workspace
-
       - name: Stage
         run: git add -A
 
       - name: Commit & Push changes
-        uses: github-actions-x/commit@v2.8
+        uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: steen.free.fr
