@@ -256,14 +256,23 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13e = ''; nm13e = 'Non-European languages'; cd13e = "'wiki5'";
 	lk13f = ''; nm13f = 'Constructed languages'; cd13f = "'wiki6'";
 
-	lk13am = 'https://am.wikipedia.org/wiki/%E1%8A%A2%E1%8A%95%E1%89%B0%E1%88%AD%E1%88%B5%E1%88%8B%E1%89%AA%E1%8A%AD'; 
+	lk13af = 'https://af.wikipedia.org/wiki/Interslawies'; 
+	nm13af = '<img src="images/flag_af.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawies';
+
+	lk13am = 'https://am.wikipedia.org/wiki/ኢንተርስላቪክ'; 
 	nm13am = '<img src="images/flag_et.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> ኢንተርስላቪክ';
+
+	lk13an = 'https://an.wikipedia.org/wiki/Idioma_intereslavo'; 
+	nm13an = '<img src="images/flag_an.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Idioma intereslavo';
 
 	lk13ar = 'https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%81%D9%88%D9%86%D9%8A%D8%A9_%D9%83%D9%86%D8%B3%D9%8A%D8%A9'; 
 	nm13ar = '<img src="images/flag_ar.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> سلافونية كنسية';
 
 	lk13ast = 'https://ast.wikipedia.org/wiki/Idioma_intereslavu'; 
 	nm13ast = '<img src="images/flag_ast.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Idioma intereslavu';
+
+	lk13avk = 'https://avk.wikipedia.org/wiki/Walslavava'; 
+	nm13avk = '<img src="images/flag_avk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Walslavava';
 
 	lk13az1 = 'https://az.wikipedia.org/wiki/Slovyan_dili'; 
 	nm13az1 = '<img src="images/flag_az.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slovyan dili';
@@ -274,8 +283,11 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13id = 'https://id.wikipedia.org/wiki/Bahasa_Interslavia'; 
 	nm13id = '<img src="images/flag_id.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Bahasa Interslavia';
 
-	lk13be = 'https://be.wikipedia.org/wiki/%D0%9C%D1%96%D0%B6%D1%81%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D1%81%D0%BA%D0%B0_%D0%BC%D0%BE%D0%B2%D0%B0'; 
-	nm13be = '<img src="images/flag_by.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міжславянска мова';
+	lk13by = 'https://be.wikipedia.org/wiki/Міжславянская_мова'; 
+	nm13by = '<img src="images/flag_by.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міжславянска мова';
+
+	lk13be = 'https://be-tarask.wikipedia.org/wiki/Міжславянская_мова'; 
+	nm13be = '<img src="images/flag_be.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міжславянска мова';
 
 	lk13bg = 'https://bg.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D1%81%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D1%81%D0%BA%D0%B8_%D0%B5%D0%B7%D0%B8%D0%BA'; 
 	nm13bg = '<img src="images/flag_bg.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Междуславянски език';
@@ -283,11 +295,11 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13ca = 'https://ca.wikipedia.org/wiki/Intereslau'; 
 	nm13ca = '<img src="images/flag_ca.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Intereslau';
 
-	lk13cs1 = 'https://cs.wikipedia.org/wiki/Slovianski'; 
-	nm13cs1 = '<img src="images/flag_cz.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slovianski';
+	lk13cs = 'https://cs.wikipedia.org/wiki/Mezislovanština'; 
+	nm13cs = '<img src="images/flag_cz.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Mezislovanština';
 
-	lk13cs2 = 'https://cs.wikipedia.org/wiki/Novoslov%C4%9Bn%C5%A1tina'; 
-	nm13cs2 = '<img src="images/flag_cz.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Novoslověnština';
+	lk13cy = 'https://cy.wikipedia.org/wiki/Rhyngslafeg'; 
+	nm13cy = '<img src="images/flag_cy.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Rhyngslafeg';
 
 	lk13de = 'https://de.wikipedia.org/wiki/Interslawische_Sprache'; 
 	nm13de = '<img src="images/flag_de.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawische Sprache';
@@ -301,20 +313,23 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13el = 'https://el.wikipedia.org/wiki/%CE%94%CE%B9%CE%B1%CF%83%CE%BB%CE%B1%CE%B2%CE%B9%CE%BA%CE%AE_%CE%B3%CE%BB%CF%8E%CF%83%CF%83%CE%B1'; 
 	nm13el = '<img src="images/flag_gr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Διασλαβική γλώσσα';
 
-	lk13en = 'https://en.wikipedia.org/wiki/Interslavic_language'; 
+	lk13en = 'https://en.wikipedia.org/wiki/Interslavic'; 
 	nm13en = '<img src="images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavic language';
 
 	lk13sim = 'https://simple.wikipedia.org/wiki/Interslavic_language'; 
 	nm13sim = '<img src="images/flag_en.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavic language (simple)';
 
-	lk13eo = 'https://eo.wikipedia.org/wiki/Slovianski'; 
-	nm13eo = '<img src="images/flag_eo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slovianski';
+	lk13eo = 'https://eo.wikipedia.org/wiki/Interslava_lingvo'; 
+	nm13eo = '<img src="images/flag_eo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslava lingvo';
 
 	lk13es = 'https://es.wikipedia.org/wiki/Idioma_intereslavo'; 
 	nm13es = '<img src="images/flag_es.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Idioma intereslavo';
 
 	lk13fa = 'https://fa.wikipedia.org/wiki/%D8%B2%D8%A8%D8%A7%D9%86_%D8%A8%DB%8C%D9%86%E2%80%8C%D8%A7%D8%B3%D9%84%D8%A7%D9%88%DB%8C'; 
 	nm13fa = '<img src="images/flag_fa.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> زبان بین‌اسلاوی';
+
+	lk13fi = 'https://fi.wikipedia.org/wiki/Interslaavi'; 
+	nm13fi = '<img src="images/flag_fi.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslaavi';
 
 	lk13fr = 'https://fr.wikipedia.org/wiki/Interslave'; 
 	nm13fr = '<img src="images/flag_fr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslave';
@@ -324,6 +339,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 
 	lk13ga = 'https://ga.wikipedia.org/wiki/An_Idirshlaivis'; 
 	nm13ga = '<img src="images/flag_ie.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> An Idirshlaivis';
+
+	lk13gl = 'https://gl.wikipedia.org/wiki/Lingua_intereslava'; 
+	nm13gl = '<img src="images/flag_gl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Lingua intereslava';
 
 	lk13he = 'https://he.wikipedia.org/wiki/%D7%94%D7%A9%D7%A4%D7%94_%D7%94%D7%91%D7%99%D7%9F-%D7%A1%D7%9C%D7%90%D7%91%D7%99%D7%AA'; 
 	nm13he = '<img src="images/flag_il.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> השפה הבין-סלאבית';
@@ -343,6 +361,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13ia2 = 'https://ia.wikipedia.org/wiki/Lingua_neoslavonic'; 
 	nm13ia2 = '<img src="images/flag_ia.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Lingua neoslavonic';
 
+	lk13ile = 'https://ie.wikipedia.org/wiki/Interslavic'; 
+	nm13ile = '<img src="images/flag_ile.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavic';
+
 	lk13io = 'https://io.wikipedia.org/wiki/Inter-Slava_linguo'; 
 	nm13io = '<img src="images/flag_io.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Inter-Slava linguo';
 
@@ -350,13 +371,16 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	nm13ja = '<img src="images/flag_jp.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> インタースラーヴィク';
 
 	lk13ka = 'https://ka.wikipedia.org/wiki/%E1%83%A1%E1%83%9A%E1%83%90%E1%83%95%E1%83%97%E1%83%90%E1%83%A8%E1%83%9D%E1%83%A0%E1%83%98%E1%83%A1%E1%83%98_%E1%83%94%E1%83%9C%E1%83%90';
-	nm13ka = '<img src="images/flag_ge.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> სლავთაშორისი ენა';
+	nm13ka = '<img src="images/flag_ge.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> <span style="font-family:Calibri">სლავთაშორისი ენა</span>';
 
 	lk13csb = 'https://csb.wikipedia.org/wiki/Midz%C3%ABs%C5%82owia%C5%84sczi_j%C3%A3z%C3%ABk'; 
 	nm13csb = '<img src="images/flag_csb.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Midzësłowiańsczi jãzëk';
 
 	lk13kk = 'https://kk.wikipedia.org/wiki/%D0%A1%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D0%B0%D1%80%D0%B0%D0%BB%D1%8B%D2%9B_%D1%82%D1%96%D0%BB%D1%96'; 
 	nm13kk = '<img src="images/flag_kk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Славянаралық тілі';
+
+	lk13ko = 'https://ko.wikipedia.org/wiki/인터슬라빅'; 
+	nm13ko = '<img src="images/flag_ko.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> 인터슬라빅';
 
 	lk13la = 'https://la.wikipedia.org/wiki/Lingua_Interslavica'; 
 	nm13la = '<img src="images/flag_vat2.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Lingua Interslavica';
@@ -367,8 +391,8 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13lu = 'https://lb.wikipedia.org/wiki/Interslawesch'; 
 	nm13lu = '<img src="images/flag_lu.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawesch';
 
-	lk13lt = 'https://lt.wikipedia.org/wiki/Slovianski'; 
-	nm13lt = '<img src="images/flag_lt.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slovianski';
+	lk13lt = 'https://lt.wikipedia.org/wiki/Tarpslavų_kalba'; 
+	nm13lt = '<img src="images/flag_lt.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Tarpslavų kalba';
 
 	lk13lfn1 = 'https://lfn.wikipedia.org/wiki/Medjusloviansce'; 
 	nm13lfn1 = '<img src="images/flag_lfn.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Medjusloviansce';
@@ -379,8 +403,14 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13hu = 'https://hu.wikipedia.org/wiki/Interszl%C3%A1v_nyelv'; 
 	nm13hu = '<img src="images/flag_hu.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interszláv nyelv';
 
+	lk13mc = 'https://lij.wikipedia.org/wiki/Ünterslavu'; 
+	nm13mc = '<img src="images/flag_id.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Ünterslavu';
+
 	lk13mk = 'https://mk.wikipedia.org/wiki/%D0%9C%D0%B5%D1%93%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B5%D0%BD%D1%81%D0%BA%D0%B8_%D1%98%D0%B0%D0%B7%D0%B8%D0%BA'; 
 	nm13mk = '<img src="images/flag_mk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Меѓусловенски јазик';
+
+	lk13mn = 'https://mn.wikipedia.org/wiki/Славян_хоорондын_хэл'; 
+	nm13mn = '<img src="images/flag_mo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Славян хоорондын хэл';
 
 	lk13mr = 'https://mr.wikipedia.org/wiki/%E0%A4%86%E0%A4%82%E0%A4%A4%E0%A4%B0%E0%A4%B8%E0%A5%8D%E0%A4%B2%E0%A4%BE%E0%A4%B5%E0%A5%8D%E0%A4%B9%E0%A4%BF%E0%A4%95_%E0%A4%AD%E0%A4%BE%E0%A4%B7%E0%A4%BE'; 
 	nm13mr = '<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Marathi_Flag.svg" height="14pt" style="border:0px solid black; margin:1px 5px 0 0;"> आंतरस्लाव्हिक भाषा';
@@ -397,14 +427,23 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13oc = 'https://oc.wikipedia.org/wiki/Intereslau'; 
 	nm13oc = '<img src="images/flag_oc.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Intereslau';
 
+	lk13os = 'https://os.wikipedia.org/wiki/Æхсæнславяйнаг_æвзаг'; 
+	nm13os = '<img src="images/flag_os.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Æхсæнславяйнаг æвзаг';
+
 	lk13nds = 'https://nds.wikipedia.org/wiki/Interslaawsche_Spraak'; 
 	nm13nds = '<img src="images/flag_nds.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslaawsche Spraak';
 
 	lk13pl = 'https://pl.wikipedia.org/wiki/J%C4%99zyk_mi%C4%99dzys%C5%82owia%C5%84ski'; 
 	nm13pl = '<img src="images/flag_pl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Język międzysłowiański';
 
+	lk13pt = 'https://pt.wikipedia.org/wiki/Língua_intereslava'; 
+	nm13pt = '<img src="images/flag_pt.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Língua intereslava';
+
 	lk13rm = 'https://rm.wikipedia.org/wiki/Lingua_interslava'; 
 	nm13rm = '<img src="images/flag_ch.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Lingua interslava';
+
+	lk13ro = 'https://ro.wikipedia.org/wiki/Limba_interslavă'; 
+	nm13ro = '<img src="images/flag_ro.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Limba interslavă';
 
 	lk13rue = 'https://rue.wikipedia.org/wiki/%D0%9C%D1%96%D0%B4%D0%B6%D1%96%D1%81%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D1%8C%D1%81%D0%BA%D1%8B%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA'; 
 	nm13rue = '<img src="images/flag_rue.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міджіславяньскый язык';
@@ -445,11 +484,20 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13uk = 'https://uk.wikipedia.org/wiki/%D0%9C%D1%96%D0%B6%D1%81%D0%BB%D0%BE%D0%B2%27%D1%8F%D0%BD%D1%81%D1%8C%D0%BA%D0%B0_%D0%BC%D0%BE%D0%B2%D0%B0'; 
 	nm13uk = '<img src="images/flag_ua.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міжслов’янська мова';
 
+	lk13uy = 'https://ug.wikipedia.org/wiki/%D8%B3%D9%89%D9%84%D8%A7%DB%8B%D9%89%D9%8A%D8%A7%D9%86%D9%84%D8%A7%D8%B1_%D8%A6%D8%A7%D8%B1%D8%A7_%D8%AA%D9%89%D9%84%D9%89'; 
+	nm13uy = '<img src="images/flag_uy.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> سىلاۋىيانلار ئارا تىلى';
+
 	lk13vi = 'https://vi.wikipedia.org/wiki/Ti%E1%BA%BFng_Li%C3%AAn_Slav'; 
 	nm13vi = '<img src="images/flag_vi.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Tiếng Liên Slav';
 
 	lk13vo = 'https://vo.wikipedia.org/wiki/Bev%C3%BCslavap%C3%BCk'; 
 	nm13vo = '<img src="images/flag_vo.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Bevüslavapük';
+
+	lk13wuu = 'https://wuu.wikipedia.org/wiki/斯拉夫共通语'; 
+	nm13wuu = '<img src="images/flag_wuu.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> 斯拉夫共通语';
+
+	lk13yi = 'https://yi.wikipedia.org/wiki/אינטערסלאוויש'; 
+	nm13yi = '<img src="images/flag_yi.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> אינטערסלאוויש';
 
 	lk13zh = 'https://zh.wikipedia.org/wiki/%E6%96%AF%E6%8B%89%E5%A4%AB%E5%85%B1%E9%80%9A%E8%AA%9E'; 
 	nm13zh = '<img src="images/flag_cn.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> 斯拉夫共通語';
@@ -746,10 +794,10 @@ lk24 += '</form></p>';
 
   document.write(bgu + cd13 + mout + cd13 + arf + lk13 + tit + al13 + div + nm13 + slu + ukop1 + 'wiki' + ukop2);
   document.write(	bgu + cd13a + mout + cd13a + ');"><a><div>' + nm13a + slu + ukop1 + 'wiki1' + ukop2);
+  document.write(		bgz + lk13by + div + nm13by + slu);
   document.write(		bgz + lk13be + div + nm13be + slu);
   document.write(		bgz + lk13bg + div + nm13bg + slu);
-  document.write(		bgz + lk13cs1 + div + nm13cs1 + slu);
-  document.write(		bgz + lk13cs2 + div + nm13cs2 + slu);
+  document.write(		bgz + lk13cs + div + nm13cs + slu);
   document.write(		bgz + lk13dsb + div + nm13dsb + slu);
   document.write(		bgz + lk13hsb + div + nm13hsb + slu);
   document.write(		bgz + lk13hr + div + nm13hr + slu);
@@ -767,6 +815,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13sh + div + nm13sh + slu);
   document.write(		bgz + lk13uk + div + nm13uk + slu + uvoet);
   document.write(	bgu + cd13b + mout + cd13b + ');"><a><div>' + nm13b + slu + ukop1 + 'wiki2' + ukop2);
+  document.write(		bgz + lk13af + div + nm13af + slu);
   document.write(		bgz + lk13de + div + nm13de + slu);
   document.write(		bgz + lk13en + div + nm13en + slu);
   document.write(		bgz + lk13sim + div + nm13sim + slu);
@@ -775,25 +824,34 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13nl + div + nm13nl + slu);
   document.write(		bgz + lk13nds + div + nm13nds + slu);
   document.write(		bgz + lk13sco + div + nm13sco + slu);
-  document.write(		bgz + lk13sv + div + nm13sv + slu + uvoet);
+  document.write(		bgz + lk13sv + div + nm13sv + slu);
+  document.write(		bgz + lk13yi + div + nm13yi + slu + uvoet);
   document.write(	bgu + cd13c + mout + cd13c + ');"><a><div>' + nm13c + slu + ukop1 + 'wiki3' + ukop2);
+  document.write(		bgz + lk13an + div + nm13an + slu);
   document.write(		bgz + lk13ast + div + nm13ast + slu);
   document.write(		bgz + lk13ca + div + nm13ca + slu);
   document.write(		bgz + lk13es + div + nm13es + slu);
   document.write(		bgz + lk13fr + div + nm13fr + slu);
+  document.write(		bgz + lk13gl + div + nm13gl + slu);
   document.write(		bgz + lk13la + div + nm13la + slu);
+  document.write(		bgz + lk13mc + div + nm13mc + slu);
   document.write(		bgz + lk13oc + div + nm13oc + slu);
+  document.write(		bgz + lk13pt + div + nm13pt + slu);
+  document.write(		bgz + lk13ro + div + nm13ro + slu);
   document.write(		bgz + lk13rm + div + nm13rm + slu + uvoet);
   document.write(	bgu + cd13d + mout + cd13d + ');"><a><div>' + nm13d + slu + ukop1 + 'wiki4' + ukop2);
   document.write(		bgz + lk13az1 + div + nm13az1 + slu);
   document.write(		bgz + lk13az2 + div + nm13az2 + slu);
+  document.write(		bgz + lk13cy + div + nm13cy + slu);
   document.write(		bgz + lk13ee + div + nm13ee + slu);
   document.write(		bgz + lk13el + div + nm13el + slu);
+  document.write(		bgz + lk13fi + div + nm13fi + slu);
   document.write(		bgz + lk13ga + div + nm13ga + slu);
   document.write(		bgz + lk13ka + div + nm13ka + slu);
   document.write(		bgz + lk13lv + div + nm13lv + slu);
   document.write(		bgz + lk13lt + div + nm13lt + slu);
   document.write(		bgz + lk13hu + div + nm13hu + slu);
+  document.write(		bgz + lk13os + div + nm13os + slu);
   document.write(		bgz + lk13sq + div + nm13sq + slu);
   document.write(		bgz + lk13udm + div + nm13udm + slu + uvoet);
   document.write(	bgu + cd13e + mout + cd13e + ');"><a><div>' + nm13e + slu + ukop1 + 'wiki5' + ukop2);
@@ -805,14 +863,20 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13hi + div + nm13hi + slu);
   document.write(		bgz + lk13ja + div + nm13ja + slu);
   document.write(		bgz + lk13kk + div + nm13kk + slu);
+  document.write(		bgz + lk13ko + div + nm13ko + slu);
   document.write(		bgz + lk13mr + div + nm13mr + slu);
+  document.write(		bgz + lk13mn + div + nm13mn + slu);
+  document.write(		bgz + lk13uy + div + nm13uy + slu);
   document.write(		bgz + lk13vi + div + nm13vi + slu);
+  document.write(		bgz + lk13wuu + div + nm13wuu + slu);
   document.write(		bgz + lk13zh + div + nm13zh + slu + uvoet);
   document.write(	bgu + cd13f + mout + cd13f + ');"><a><div>' + nm13f + slu + ukop1 + 'wiki6' + ukop2);
   document.write(		bgz + lk13eo + div + nm13eo + slu);
   document.write(		bgz + lk13ia1 + div + nm13ia1 + slu);
   document.write(		bgz + lk13ia2 + div + nm13ia2 + slu);
+  document.write(		bgz + lk13ile + div + nm13ile + slu);
   document.write(		bgz + lk13io + div + nm13io + slu);
+  document.write(		bgz + lk13avk + div + nm13avk + slu);
   document.write(		bgz + lk13lfn1 + div + nm13lfn1 + slu);
   document.write(		bgz + lk13lfn2 + div + nm13lfn2 + slu);
   document.write(		bgz + lk13nov + div + nm13nov + slu);
