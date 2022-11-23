@@ -256,6 +256,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13e = ''; nm13e = 'Non-European languages'; cd13e = "'wiki5'";
 	lk13f = ''; nm13f = 'Constructed languages'; cd13f = "'wiki6'";
 
+	lk13ab = 'https://ab.wikipedia.org/wiki/Аславианбжьаратәи_бызшәа'; 
+	nm13ab = '<img src="images/flag_ab.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Аславианбжьаратәи бызшәа';
+
 	lk13af = 'https://af.wikipedia.org/wiki/Interslawies'; 
 	nm13af = '<img src="images/flag_af.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawies';
 
@@ -288,6 +291,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 
 	lk13be = 'https://be-tarask.wikipedia.org/wiki/Міжславянская_мова'; 
 	nm13be = '<img src="images/flag_be.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Міжславянска мова';
+
+	lk13bs = 'https:/bs.wikipedia.org/wiki/Мeđuslavenski_jezik'; 
+	nm13bs = '<img src="images/flag_bih.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Međuslavenski jezik';
 
 	lk13bg = 'https://bg.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D0%B4%D1%83%D1%81%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D1%81%D0%BA%D0%B8_%D0%B5%D0%B7%D0%B8%D0%BA'; 
 	nm13bg = '<img src="images/flag_bg.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Междуславянски език';
@@ -394,6 +400,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13lt = 'https://lt.wikipedia.org/wiki/Tarpslavų_kalba'; 
 	nm13lt = '<img src="images/flag_lt.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Tarpslavų kalba';
 
+	lk13li = 'https://li.wikipedia.org/wiki/Interslavisch'; 
+	nm13li = '<img src="images/flag_li.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavisch';
+
 	lk13lfn1 = 'https://lfn.wikipedia.org/wiki/Medjusloviansce'; 
 	nm13lfn1 = '<img src="images/flag_lfn.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Medjusloviansce';
 
@@ -490,8 +499,11 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13vi = 'https://vi.wikipedia.org/wiki/Ti%E1%BA%BFng_Li%C3%AAn_Slav'; 
 	nm13vi = '<img src="images/flag_vi.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Tiếng Liên Slav';
 
-	lk13vo = 'https://vo.wikipedia.org/wiki/Bev%C3%BCslavap%C3%BCk'; 
-	nm13vo = '<img src="images/flag_vo.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Bevüslavapük';
+	lk13vo = 'https://vo.wikipedia.org/wiki/Bevüslav'; 
+	nm13vo = '<img src="images/flag_vo.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Bevüslav';
+
+	lk13wa = 'https://wa.wikipedia.org/wiki/Eter-eslåve'; 
+	nm13wa = '<img src="images/flag_wa.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Eter-eslåve';
 
 	lk13wuu = 'https://wuu.wikipedia.org/wiki/斯拉夫共通语'; 
 	nm13wuu = '<img src="images/flag_wuu.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> 斯拉夫共通语';
@@ -796,6 +808,7 @@ lk24 += '</form></p>';
   document.write(	bgu + cd13a + mout + cd13a + ');"><a><div>' + nm13a + slu + ukop1 + 'wiki1' + ukop2);
   document.write(		bgz + lk13by + div + nm13by + slu);
   document.write(		bgz + lk13be + div + nm13be + slu);
+  document.write(		bgz + lk13bs + div + nm13bs + slu);
   document.write(		bgz + lk13bg + div + nm13bg + slu);
   document.write(		bgz + lk13cs + div + nm13cs + slu);
   document.write(		bgz + lk13dsb + div + nm13dsb + slu);
@@ -821,6 +834,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13sim + div + nm13sim + slu);
   document.write(		bgz + lk13fy + div + nm13fy + slu);
   document.write(		bgz + lk13lu + div + nm13lu + slu);
+  document.write(		bgz + lk13li + div + nm13li + slu);
   document.write(		bgz + lk13nl + div + nm13nl + slu);
   document.write(		bgz + lk13nds + div + nm13nds + slu);
   document.write(		bgz + lk13sco + div + nm13sco + slu);
@@ -838,8 +852,10 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13oc + div + nm13oc + slu);
   document.write(		bgz + lk13pt + div + nm13pt + slu);
   document.write(		bgz + lk13ro + div + nm13ro + slu);
-  document.write(		bgz + lk13rm + div + nm13rm + slu + uvoet);
+  document.write(		bgz + lk13rm + div + nm13rm + slu);
+  document.write(		bgz + lk13wa + div + nm13wa + slu + uvoet);
   document.write(	bgu + cd13d + mout + cd13d + ');"><a><div>' + nm13d + slu + ukop1 + 'wiki4' + ukop2);
+  document.write(		bgz + lk13ab + div + nm13ab + slu);
   document.write(		bgz + lk13az1 + div + nm13az1 + slu);
   document.write(		bgz + lk13az2 + div + nm13az2 + slu);
   document.write(		bgz + lk13cy + div + nm13cy + slu);
