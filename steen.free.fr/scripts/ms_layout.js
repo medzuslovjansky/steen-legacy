@@ -262,11 +262,14 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13af = 'https://af.wikipedia.org/wiki/Interslawies'; 
 	nm13af = '<img src="images/flag_af.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawies';
 
+	lk13als = 'https://als.wikipedia.org/wiki/Interslawische_Sprache'; 
+	nm13als = '<img src="images/flag_lc.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslawischi Schproch';
+
 	lk13am = 'https://am.wikipedia.org/wiki/ኢንተርስላቪክ'; 
 	nm13am = '<img src="images/flag_et.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> ኢንተርስላቪክ';
 
-	lk13an = 'https://an.wikipedia.org/wiki/Idioma_intereslavo'; 
-	nm13an = '<img src="images/flag_an.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Idioma intereslavo';
+	lk13an = 'https://an.wikipedia.org/wiki/Idioma_intereslau'; 
+	nm13an = '<img src="images/flag_an.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Idioma intereslau';
 
 	lk13ar = 'https://ar.wikipedia.org/wiki/%D8%B3%D9%84%D8%A7%D9%81%D9%88%D9%86%D9%8A%D8%A9_%D9%83%D9%86%D8%B3%D9%8A%D8%A9'; 
 	nm13ar = '<img src="images/flag_ar.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> سلافونية كنسية';
@@ -531,7 +534,7 @@ lk20 = '../index.html'; al20 = 'IZHOD do domašnjej stranice | ИЗХОД до �
 
 lk21 = '<p style="text-align:center;"><a href="http://www.facebook.com/groups/interslavic"><img src="./images/banner_facebook.png" border="0" /></a></p>';
 lk21 = lk21 + '<p style="text-align:center;"><a href="http://slovjani.info/"><img src="./images/banner_slovjani.gif" border="0" /></a></p>';
-lk21 = lk21 + '<p style="text-align:center;"><a href="http://izvesti.info/"><img src="./images/banner_izvesti.gif" border="0" /></a></p>';
+lk21 = lk21 + '<p style="text-align:center;"><a href="https://interslavic.news/"><img src="./images/banner_interslavic-news.png" border="0" /></a></p>';
 lk21 = lk21 + '<p style="text-align:center;"><a href="http://isv.miraheze.org"><img src="./images/banner_medzuviki.png" border="0" /></a></p>';
 lk21 = lk21 + '<p style="text-align:center;"><a href="https://isv.miraheze.org/wiki/Sbornik:Glavna_stranica"><img src="./images/banner_vikisbornik.png" border="0" /></a></p>';
 lk21 = lk21 + '<p style="text-align:center;"><a href="https://twitter.com/MSVesti"><img src="./images/banner_twitter.jpg" width="170px" border="0" /></a></p>';
@@ -829,6 +832,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13uk + div + nm13uk + slu + uvoet);
   document.write(	bgu + cd13b + mout + cd13b + ');"><a><div>' + nm13b + slu + ukop1 + 'wiki2' + ukop2);
   document.write(		bgz + lk13af + div + nm13af + slu);
+  document.write(		bgz + lk13als + div + nm13als + slu);
   document.write(		bgz + lk13de + div + nm13de + slu);
   document.write(		bgz + lk13en + div + nm13en + slu);
   document.write(		bgz + lk13sim + div + nm13sim + slu);
