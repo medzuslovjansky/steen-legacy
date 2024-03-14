@@ -60,17 +60,20 @@ lk2 = ''; al2 = 'Vvedenje | Введенје'; 				nm2 = 'Introduction'; 				cd2
 		lk2dc = 'relay.html'; 				nm2dc = 'The Pan-Slavic Relay: Naše selo';
 		lk2dd = 'slavic_pronouns.html'; 		nm2dd = 'Slavic personal pronouns';
 	lk2e = 'faq.html'; 					nm2e = 'FAQ'; 					cd2e = "'faq'";
-		lk2ea = 'faq.html#howto'; 			nm2ea = 'How to learn and use Interslavic?';
-		lk2eb = 'faq.html#allslavs'; 			nm2eb = 'Can all Slavs understand Interslavic?';
-		lk2ec = 'faq.html#characters'; 			nm2ec = 'What are those weird characters and letters?';
-		lk2ed = 'faq.html#keyboard'; 			nm2ed = 'How can I write Interslavic on my own keyboard?';
-		lk2ee = 'faq.html#word'; 			nm2ee = 'Help! I can’t find a word!';
-		lk2ef = 'faq.html#english'; 			nm2ef = 'Interslavic and ...'; 			cd2ef = "'faq1'";	
-			lk2ef1 = 'faq.html#english'; 		nm2ef1 = '... English';
-			lk2ef2 = 'faq.html#russian'; 		nm2ef2 = '... Russian';
-			lk2ef3 = 'faq.html#esperanto'; 		nm2ef3 = '... Esperanto';
-			lk2ef4 = 'faq.html#slovio'; 		nm2ef4 = '... Slovio';
-			lk2ef5 = 'faq.html#common_slavic'; 	nm2ef5 = '... Proto-Slavic/OCS';
+		lk2ea = 'faq.html#how-to-learn'; 		nm2ea = 'How to learn and use Interslavic?';
+		lk2eb = 'faq.html#all-slavs'; 			nm2eb = 'Can all Slavs understand it?';
+		lk2ec = 'faq.html#how-many'; 			nm2ec = 'How many people speak it?';
+		lk2ed = 'faq.html#latin-or-cyrillic'; 		nm2ed = 'Latin or Cyrillic?';
+		lk2ee = 'faq.html#keyboard'; 			nm2ee = 'How can I write Interslavic on my own keyboard?';
+		lk2ef = 'faq.html#characters'; 			nm2ef = 'What are those weird characters?';
+		lk2eg = 'faq.html#glagolitic'; 			nm2eg = 'Ⰿⰵⰴⰶⱆⱄⰾⱁⰲⱑⱀⱄⰽⱏⰹ ⱗⰸⱏⰹⰽ???';
+		lk2eh = 'faq.html#word'; 			nm2eh = 'Help! I can’t find a word!';
+		lk2ei = 'faq.html#english'; 			nm2ei = 'Interslavic and ...'; 			cd2ei = "'faq1'";	
+			lk2ei1 = 'faq.html#english'; 		nm2ei1 = '... English';
+			lk2ei2 = 'faq.html#russian'; 		nm2ei2 = '... Russian';
+			lk2ei3 = 'faq.html#esperanto'; 		nm2ei3 = '... Esperanto';
+			lk2ei4 = 'faq.html#slovio'; 		nm2ei4 = '... Slovio';
+			lk2ei5 = 'faq.html#ocs'; 		nm2ei5 = '... Old Church Slavonic';
 
 lk3 = 'orthography.html'; al3 = 'Pravopis | Правопис'; 		nm3 = 'Orthography'; cd3 = "'ortho'";
 	lk3a = lk3 + '#standard_alphabet'; 			nm3a = 'Standard alphabet';
@@ -343,6 +346,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13fr = 'https://fr.wikipedia.org/wiki/Interslave'; 
 	nm13fr = '<img src="images/flag_fr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslave';
 
+	lk13frr = 'https://frr.wikipedia.org/wiki/Interslaawisk_spriak'; 
+	nm13frr = '<img src="images/flag_frr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslaawisk spriak';
+
 	lk13fy = 'https://fy.wikipedia.org/wiki/Ynterslavysk'; 
 	nm13fy = '<img src="images/flag_fy.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Ynterslavysk';
 
@@ -376,6 +382,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13io = 'https://io.wikipedia.org/wiki/Inter-Slava_linguo'; 
 	nm13io = '<img src="images/flag_io.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Inter-Slava linguo';
 
+	lk13it = 'https://it.wikipedia.org/wiki/Interslavo'; 
+	nm13it = '<img src="images/flag_it.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavo';
+
 	lk13ja = 'https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%B9%E3%83%A9%E3%83%BC%E3%83%B4%E3%82%A3%E3%82%AF'; 
 	nm13ja = '<img src="images/flag_jp.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> インタースラーヴィク';
 
@@ -391,10 +400,16 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13ko = 'https://ko.wikipedia.org/wiki/인터슬라빅'; 
 	nm13ko = '<img src="images/flag_ko.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> 인터슬라빅';
 
+	lk13kv = 'https://kv.wikipedia.org/wiki/Славянкостса_кыв'; 
+	nm13kv = '<img src="images/flag_kv.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Славянкостса кыв';
+
 	lk13la = 'https://la.wikipedia.org/wiki/Lingua_Interslavica'; 
 	nm13la = '<img src="images/flag_vat2.jpg" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Lingua Interslavica';
 
-	lk13lv = 'https://lv.wikipedia.org/wiki/Starpsl%C4%81vu_valoda'; 
+	lk13ltg = 'https://ltg.wikipedia.org/wiki/Storpslavu_volūda'; 
+	nm13ltg = '<img src="images/flag_ltg.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Storpslavu volūda';
+
+	lk13lv = 'https://lv.wikipedia.org/wiki/Starpslāvu_valoda'; 
 	nm13lv = '<img src="images/flag_lv.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Starpslāvu valoda';
 
 	lk13lu = 'https://lb.wikipedia.org/wiki/Interslawesch'; 
@@ -432,6 +447,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 
 	lk13nl = 'https://nl.wikipedia.org/wiki/Interslavisch'; 
 	nm13nl = '<img src="images/flag_nl.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavisch';
+
+	lk13no = 'https://no.wikipedia.org/wiki/Interslavisk'; 
+	nm13no = '<img src="images/flag_no.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavisk';
 
 	lk13nov = 'https://nov.wikipedia.org/wiki/Interslavum';
 	nm13nov = '<img src="images/flag_nov.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslavum';
@@ -613,12 +631,15 @@ lk24 += '</form></p>';
   document.write(		bgz + lk2ec + div + nm2ec + slu);
   document.write(		bgz + lk2ed + div + nm2ed + slu);
   document.write(		bgz + lk2ee + div + nm2ee + slu);
-  document.write(		bgu + cd2ef + mout + cd2ef + arf + lk2ef + div + nm2ef + slu + ukop1 + cd2ef + ukop2);
-  document.write(			bgz + lk2ef1 + div + nm2ef1 + slu);
-  document.write(			bgz + lk2ef2 + div + nm2ef2 + slu);
-  document.write(			bgz + lk2ef3 + div + nm2ef3 + slu);
-  document.write(			bgz + lk2ef4 + div + nm2ef4 + slu);
-  document.write(			bgz + lk2ef5 + div + nm2ef5 + slu + uvoet + uvoet);
+  document.write(		bgz + lk2ef + div + nm2ef + slu);
+  document.write(		bgz + lk2eg + div + nm2eg + slu);
+  document.write(		bgz + lk2eh + div + nm2eh + slu);
+  document.write(		bgu + cd2ei + mout + cd2ei + arf + lk2ei + div + nm2ei + slu + ukop1 + cd2ei + ukop2);
+  document.write(			bgz + lk2ei1 + div + nm2ei1 + slu);
+  document.write(			bgz + lk2ei2 + div + nm2ei2 + slu);
+  document.write(			bgz + lk2ei3 + div + nm2ei3 + slu);
+  document.write(			bgz + lk2ei4 + div + nm2ei4 + slu);
+  document.write(			bgz + lk2ei5 + div + nm2ei5 + slu + uvoet + uvoet);
   document.write(uvoet);
 
   document.write(bgu + cd3 + mout + cd3 + arf + lk3 + tit + al3 + div + nm3 + slu + ukop1 + 'ortho' + ukop2);
@@ -840,6 +861,8 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13lu + div + nm13lu + slu);
   document.write(		bgz + lk13li + div + nm13li + slu);
   document.write(		bgz + lk13nl + div + nm13nl + slu);
+  document.write(		bgz + lk13no + div + nm13no + slu);
+  document.write(		bgz + lk13frr + div + nm13frr + slu);
   document.write(		bgz + lk13nds + div + nm13nds + slu);
   document.write(		bgz + lk13sco + div + nm13sco + slu);
   document.write(		bgz + lk13sv + div + nm13sv + slu);
@@ -851,6 +874,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13es + div + nm13es + slu);
   document.write(		bgz + lk13fr + div + nm13fr + slu);
   document.write(		bgz + lk13gl + div + nm13gl + slu);
+  document.write(		bgz + lk13it + div + nm13it + slu);
   document.write(		bgz + lk13la + div + nm13la + slu);
   document.write(		bgz + lk13mc + div + nm13mc + slu);
   document.write(		bgz + lk13oc + div + nm13oc + slu);
@@ -868,6 +892,8 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13fi + div + nm13fi + slu);
   document.write(		bgz + lk13ga + div + nm13ga + slu);
   document.write(		bgz + lk13ka + div + nm13ka + slu);
+  document.write(		bgz + lk13kv + div + nm13kv + slu);
+  document.write(		bgz + lk13ltg + div + nm13ltg + slu);
   document.write(		bgz + lk13lv + div + nm13lv + slu);
   document.write(		bgz + lk13lt + div + nm13lt + slu);
   document.write(		bgz + lk13hu + div + nm13hu + slu);
