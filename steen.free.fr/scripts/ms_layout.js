@@ -517,6 +517,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13uy = 'https://ug.wikipedia.org/wiki/%D8%B3%D9%89%D9%84%D8%A7%DB%8B%D9%89%D9%8A%D8%A7%D9%86%D9%84%D8%A7%D8%B1_%D8%A6%D8%A7%D8%B1%D8%A7_%D8%AA%D9%89%D9%84%D9%89'; 
 	nm13uy = '<img src="images/flag_uy.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> سىلاۋىيانلار ئارا تىلى';
 
+	lk13uz = 'https://uz.wikipedia.org/wiki/Slavyanlararo_tili'; 
+	nm13uz = '<img src="images/flag_uz.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slavyanlararo tili';
+
 	lk13vi = 'https://vi.wikipedia.org/wiki/Ti%E1%BA%BFng_Li%C3%AAn_Slav'; 
 	nm13vi = '<img src="images/flag_vi.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Tiếng Liên Slav';
 
@@ -913,6 +916,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13mr + div + nm13mr + slu);
   document.write(		bgz + lk13mn + div + nm13mn + slu);
   document.write(		bgz + lk13uy + div + nm13uy + slu);
+  document.write(		bgz + lk13uz + div + nm13uz + slu);
   document.write(		bgz + lk13vi + div + nm13vi + slu);
   document.write(		bgz + lk13wuu + div + nm13wuu + slu);
   document.write(		bgz + lk13zh + div + nm13zh + slu + uvoet);
