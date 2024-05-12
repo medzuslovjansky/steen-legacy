@@ -283,8 +283,8 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 	lk13avk = 'https://avk.wikipedia.org/wiki/Walslavava'; 
 	nm13avk = '<img src="images/flag_avk.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Walslavava';
 
-	lk13az1 = 'https://az.wikipedia.org/wiki/Slovyan_dili'; 
-	nm13az1 = '<img src="images/flag_az.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slovyan dili';
+	lk13az1 = 'https://az.wikipedia.org/wiki/Slavyanlararası_dil'; 
+	nm13az1 = '<img src="images/flag_az.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Slavyanlararası dil';
 
 	lk13az2 = 'https://az.wikipedia.org/wiki/%C3%9Cmumslavyan_dili'; 
 	nm13az2 = '<img src="images/flag_az.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Ümumslavyan dili';
@@ -507,6 +507,9 @@ lk13 = 'wikipedia.html'; al13 = 'Medžuslovjansky na Vikipediji | Меджусл
 
 	lk13sv = 'https://sv.wikipedia.org/wiki/Interslaviska'; 
 	nm13sv = '<img src="images/flag_sv.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Interslaviska';
+
+	lk13tr = 'https://tr.wikipedia.org/wiki/İnterslavca'; 
+	nm13tr = '<img src="images/flag_tr.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> İnterslavca';
 
 	lk13udm = 'https://udm.wikipedia.org/wiki/%D0%A1%D0%BB%D0%B0%D0%B2%D1%8F%D0%BD%D0%BA%D1%83%D1%81%D0%BF%D0%BE_%D0%BA%D1%8B%D0%BB'; 
 	nm13udm = '<img src="images/flag_udm.png" height="14pt" style="border:1px solid black; margin:1px 5px 0 0;"> Славянкуспо кыл';
@@ -902,6 +905,7 @@ lk24 += '</form></p>';
   document.write(		bgz + lk13hu + div + nm13hu + slu);
   document.write(		bgz + lk13os + div + nm13os + slu);
   document.write(		bgz + lk13sq + div + nm13sq + slu);
+  document.write(		bgz + lk13tr + div + nm13tr + slu);
   document.write(		bgz + lk13udm + div + nm13udm + slu + uvoet);
   document.write(	bgu + cd13e + mout + cd13e + ');"><a><div>' + nm13e + slu + ukop1 + 'wiki5' + ukop2);
   document.write(		bgz + lk13am + div + nm13am + slu);
