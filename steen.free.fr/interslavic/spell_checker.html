@@ -36,19 +36,20 @@ function search ()
 	orthografie = document.getElementById ("ort").value;
 
 	if (orthografie == "latin")
-	{	priet = priet.replace (/([čšžjČŠŽJ])ě/g,"$1e");
-		priet = priet.replace (/([ŕťďśź])e/g,"$1œ"); priet = priet.replace (/([ŕťďśź])u/g,"$1ů"); priet = priet.replace (/([ŕťďśź])i/g,"$1î");
+	{	priet = priet.replace (/([ŕťďśź])e/g,"$1ê"); priet = priet.replace (/([ŕťďśź])u/g,"$1û"); priet = priet.replace (/([ŕťďśź])i/g,"$1î");
 		if (document.getElementById ("check_a").checked == false)	{ priet = priet.replace (/å/g, "a"); }
 		if (document.getElementById ("check_je").checked == false)	{ priet = priet.replace (/ě/g, "e"); }
 		if (document.getElementById ("check_eu").checked == false)	{ priet = priet.replace (/ę/g, "e"); priet = priet.replace (/ų/g, "u"); }
-		if (document.getElementById ("check_o").checked == false)	{ priet = priet.replace (/ȯ/g, "o"); }
+		if (document.getElementById ("check_o").checked == false)	{ priet = priet.replace (/ȯ/g, "o"); priet = priet.replace (/ė/g, "e"); }
 		if (document.getElementById ("check_y").checked == false)	{ priet = priet.replace (/y/g, "i"); }
-		if (document.getElementById ("check_n").checked == false)	{ priet = priet.replace (/ń/g, "n"); priet = priet.replace (/ľ/g, "l"); }
+		if (document.getElementById ("check_nj").checked == true)	{ priet = priet.replace (/ńj/g, "ňj"); priet = priet.replace (/ľj/g, "ĺj"); }
+		if (document.getElementById ("check_l").checked == false)	{ priet = priet.replace (/ľ/g, "l"); priet = priet.replace (/ń/g, "n"); }
 		if (document.getElementById ("check_r").checked == false)	{ priet = priet.replace (/ŕ/g, "r"); }
 		if (document.getElementById ("check_t").checked == false)	{ priet = priet.replace (/ť/g, "t"); priet = priet.replace (/ď/g, "d"); }
 		if (document.getElementById ("check_s").checked == false)	{ priet = priet.replace (/ś/g, "s"); priet = priet.replace (/ź/g, "z"); }
 		if (document.getElementById ("check_c").checked == false)	{ priet = priet.replace (/ć/g, "č"); }
 		if (document.getElementById ("check_d").checked == false)	{ priet = priet.replace (/đ/g, "dž"); }
+		priet = priet.replace (/ĺ/g, "ľ"); priet = priet.replace (/ň/g, "ń"); 
 	}
 	else
 	{	if (document.getElementById ("check_jat").checked == true)	{ priet = priet.replace (/ě/g, "є"); } else { priet = priet.replace (/ě/g, "е"); }
@@ -92,7 +93,7 @@ function search ()
 	var iTextLength = iText.length;
 	var woord = ""; var result = ""; var lijst = ""; var i = 0;
 
-	var teken = new Array(); teken = ["\t", "\n", "\r", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ",", ":", ";", "!", "?", "$", "€", "#", "@", "%", "&", "^", "*", "=", "≈", "+", "±", "−", "-", "–", "—", '"', "'", "‘", "‛", '“', '”', '„', '‟', "«", "»", "(", ")", "<", ">", "{", "}", "[", "]", "/", "←", "→", "|", "•"];
+	var teken = new Array(); teken = ["\t", "\n", "\r", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "…", ",", ":", ";", "!", "?", "$", "€", "#", "@", "%", "&", "^", "*", "=", "≈", "+", "±", "−", "-", "–", "—", '"', "'", "‘", "‛", '“', '”', '„', '‟', "«", "»", "(", ")", "<", ">", "{", "}", "[", "]", "/", "←", "→", "|", "•"];
 
 	while (i < iTextLength + 1)
 	{ 
@@ -108,7 +109,7 @@ function search ()
 			if ((priet.indexOf (woordgr) < 0) && (priet.indexOf (woordkl) < 0))
 			{ 
 				if ((woordkl.indexOf ("e ") > 0) || (woordkl.indexOf ("u ") > 0))
-				{	woordkl = woordkl.replace (/([eu]) /,"ů ");
+				{	woordkl = woordkl.replace (/([eu]) /,"û ");
 					if (priet.indexOf (woordkl) < 0)
 					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
 				}
@@ -118,7 +119,7 @@ function search ()
 					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
 				}
 				else if ((woordkl.indexOf ("ev ") > 0) || (woordkl.indexOf ("ov ") > 0) || (woordkl.indexOf ("em ") > 0) || (woordkl.indexOf ("om ") > 0))
-				{	woordkl = woordkl.replace (/([eo])([vm]) /,"œ$2 ");
+				{	woordkl = woordkl.replace (/([eo])([vm]) /,"ê$2 ");
 					if (priet.indexOf (woordkl) < 0)
 					{ woord = bewerk (woord, type); lijst = lijst + woord + " "; }
 				}
@@ -219,7 +220,7 @@ INPUT.text
 	width:				288px;
 	height:				500pt;
 	font-family:			courier new, arial unicode ms;
-	font-size:			10pt;
+	font-size:			11pt;
 	overflow:			auto;
 	}
 
@@ -233,7 +234,7 @@ TEXTAREA, .output_words
 	font-weight:			normal;
 	font-family:			ms sans serif, Arial Unicode MS, Cambria, Code2000, Courier New, Gentium, Thryomanes, Tahoma, Lucida Sans Unicode, 
 					Microsoft Sans Serif, MS Reference Sans Serif, Chrysanthi Unicode;
-	font-size:			10pt;
+	font-size:			11pt;
 	overflow:			auto;
 	}
 
@@ -289,10 +290,11 @@ TEXTAREA, .output_words
 		<tr><td width="48%" style="text-align:right;"><input id="check_a" type="checkbox"></td><td><b>å</b></td></tr>	
 		<tr><td align="right"><input id="check_je" type="checkbox" checked></td><td><b>ě</b></td></tr>	
 		<tr><td align="right"><input id="check_eu" type="checkbox"></td><td><b>ę ų</b></td></tr>	
-		<tr><td align="right"><input id="check_o" type="checkbox"></td><td><b>ȯ</b></td></tr>	
+		<tr><td align="right"><input id="check_o" type="checkbox"></td><td><b>ė ȯ</b></td></tr>	
 		<tr><td align="right"><input id="check_y" type="checkbox" checked></td><td><b>y</b></td></tr>	
 		<tr><td align="right"><input id="check_r" type="checkbox"></td><td><b>ŕ</b></td></tr>	
-		<tr><td align="right"><input id="check_n" type="checkbox"></td><td><b>ĺ ń</b></td></tr>	
+		<tr><td align="right"><input id="check_nj" type="checkbox"></td><td><b>ĺj ńj</b></td></tr>	
+		<tr><td align="right"><input id="check_l" type="checkbox"></td><td><b>ĺ ń</b></td></tr>	
 		<tr><td align="right"><input id="check_t" type="checkbox"></td><td><b>t́ d́</b></td></tr>	
 		<tr><td align="right"><input id="check_s" type="checkbox"></td><td><b>ś ź</b></td></tr>	
 		<tr><td align="right"><input id="check_c" type="checkbox"></td><td><b>ć</b></td></tr>	

@@ -1101,6 +1101,8 @@ function letters (lang, letter)
 	else		{ cyd = '<a href="#D"><span class="klletter">Д</span></a> '; }
   if (letter == "Е")	{ cye = '<span class="grletter">Е</span> '; letter = "E"; }
 	else		{ cye = '<a href="#E"><span class="klletter">Е</span></a> '; }
+  if (letter == "Є")	{ cyie = '<span class="grletter">Є</span> '; letter = "E"; }
+	else		{ cyie = '<a href="#IE"><span class="klletter">Є</span></a> '; }
   if (letter == "Ж")	{ cyzs = '<span class="grletter">Ж</span> '; letter = "ZS"; }
 	else		{ cyzs = '<a href="#ZS"><span class="klletter">Ж</span></a> '; }
   if (letter == "З")	{ cyz = '<span class="grletter">З</span> '; letter = "Z"; }
@@ -1162,7 +1164,7 @@ function letters (lang, letter)
   else if (lang == "91")
   { document.write('<center>'+lta+ltb+ltc+ltcj+ltcz+ltd+ltdzj+lte+ltf+ltg+ltgj+lth+lti+ltj+ltk+ltkj+ltl+ltlj+ltm+ltn+ltnj+lto+ltp+ltr+lts+ltsj+ltsz+ltt+lttj+ltu+ltv+ltz+ltzs+'</center>'); }
   else if (lang == "5")
-  { document.write('<center>'+cya+cyb+cyv+cyg+cyd+cye+cyzs+cyz+cyi+cyjj+cyk+cyl+cym+cyn+cyo+cyp+cyr+cys+cyt+cyu+cyf+cyh+cyc+cycz+cysz+cyy+'</center>'); }
+  { document.write('<center>'+cya+cyb+cyv+cyg+cyd+cye+cyzs+cyz+cyi+cyjj+cyk+cyl+cylj+cym+cyn+cynj+cyo+cyp+cyr+cys+cyt+cyu+cyf+cyh+cyc+cycz+cysz+cyy+'</center>'); }
   else if (lang == "en")
   { document.write('<center>'+lta+ltb+ltc+ltd+lte+ltf+ltg+lth+lti+ltj+ltk+ltl+ltm+ltn+lto+ltp+ltq+ltr+lts+ltt+ltu+ltv+ltw+ltx+lty+ltz+'</center>'); }
   else if (lang == "pl")
